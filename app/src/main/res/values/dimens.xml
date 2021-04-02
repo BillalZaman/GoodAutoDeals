@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textextrasmall">10sp</dimen>
+    <dimen name="textsmall">12sp</dimen>
+    <dimen name="textnormal">14sp</dimen>
+    <dimen name="textnormallarge">16sp</dimen>
+    <dimen name="large">20sp</dimen>
+    <dimen name="textextra_large">24sp</dimen>
+    <dimen name="large_txt">40sp</dimen>
+    <dimen name="nav_drawer_width">280dp</dimen>
+    <dimen name="ultra_small">8sp</dimen>
+    <dimen name="cat_toc_grid_divider_size">1dp</dimen>
+    <dimen name="eight_btn">18sp</dimen>
+</resources>

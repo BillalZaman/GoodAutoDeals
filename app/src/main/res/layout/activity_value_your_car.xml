@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="onClick"
+            type="com.goodautodeal.goodautodeal.views.activities.ValueYourCarActivity" />
+        <variable
+            name="onModel"
+            type="com.goodautodeal.goodautodeal.views.models.ValuationListModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/group_235"
+        tools:context=".views.activities.ValueYourCarActivity">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tab"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:padding="10dp"
+                android:onClick="@{(view)->onClick.onClick(view)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/back_white" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Value your car"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textnormallarge"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgBack"
+                app:layout_constraintTop_toTopOf="@+id/imgBack" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/txtCarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="Suzuki SX5 SZ5"
+            android:textSize="@dimen/textnormallarge"
+            android:textColor="@color/colorLightBlack"
+            android:fontFamily="@font/poppins_semibold"
+            android:letterSpacing=".1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tab" />
+
+        <TextView
+            android:id="@+id/btnViewDetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/gradient_button"
+            android:fontFamily="@font/avenir_black"
+            android:gravity="center"
+            android:text="View Details"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textnormallarge"
+            android:onClick="@{(view)->onClick.onClick(view)}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txtCarTitle"
+            app:layout_constraintTop_toBottomOf="@+id/txtCarTitle" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/avenir_black"
+            android:text="Prices"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textnormallarge"
+            app:layout_constraintEnd_toEndOf="@+id/btnViewDetail"
+            app:layout_constraintStart_toStartOf="@+id/btnViewDetail"
+            app:layout_constraintTop_toBottomOf="@+id/btnViewDetail" />
+
+        <TextView
+            android:id="@+id/txtDealerEscort"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/primary_stroke"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center|start"
+            android:paddingStart="16dp"
+            android:text="Dealer For Ecort"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textsmall"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txtPrivateAverage"
+            app:layout_constraintTop_toBottomOf="@+id/txtPrivateAverage" />
+
+        <TextView
+            android:id="@+id/txtDealerEscortPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="end|start"
+            android:paddingStart="16dp"
+            android:text="@{'£'+onModel.dealerForecourt}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textnormal"
+            app:layout_constraintBottom_toBottomOf="@+id/txtDealerEscort"
+            app:layout_constraintEnd_toEndOf="@+id/txtDealerEscort"
+            app:layout_constraintTop_toTopOf="@+id/txtDealerEscort" />
+
+        <TextView
+            android:id="@+id/txtPrivateClean"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/primary_stroke"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center|start"
+            android:paddingStart="16dp"
+            android:text="Private Clean"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textsmall"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView13"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <TextView
+            android:id="@+id/txtPrivateCleanPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="end|start"
+            android:paddingStart="16dp"
+            android:text="@{'£'+onModel.privateClean}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textnormal"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPrivateClean"
+            app:layout_constraintEnd_toEndOf="@+id/txtPrivateClean"
+            app:layout_constraintTop_toTopOf="@+id/txtPrivateClean" />
+
+        <TextView
+            android:id="@+id/txtPrivateAverage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/primary_stroke"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center|start"
+            android:paddingStart="16dp"
+            android:text="Private Average"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textsmall"
+            app:layout_constraintEnd_toEndOf="@+id/txtPrivateClean"
+            app:layout_constraintStart_toStartOf="@+id/txtPrivateClean"
+            app:layout_constraintTop_toBottomOf="@+id/txtPrivateClean" />
+
+        <TextView
+            android:id="@+id/txtPrivateAveragePrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="end|start"
+            android:paddingStart="16dp"
+            android:text="@{'£'+onModel.privateAverage}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textnormal"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPrivateAverage"
+            app:layout_constraintEnd_toEndOf="@+id/txtPrivateAverage"
+            app:layout_constraintTop_toTopOf="@+id/txtPrivateAverage" />
+
+        <TextView
+            android:id="@+id/txtTradeAverage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/primary_stroke"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center|start"
+            android:paddingStart="16dp"
+            android:text="Trade Average"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textsmall"
+            app:layout_constraintEnd_toEndOf="@+id/txtPrivateAverage"
+            app:layout_constraintStart_toStartOf="@+id/txtPrivateAverage"
+            app:layout_constraintTop_toBottomOf="@+id/txtDealerEscort" />
+
+        <TextView
+            android:id="@+id/txtTradeAveragePrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="end|start"
+            android:paddingStart="16dp"
+            android:text="@{'£'+onModel.tradeAverage}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textnormal"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTradeAverage"
+            app:layout_constraintEnd_toEndOf="@+id/txtTradeAverage"
+            app:layout_constraintTop_toTopOf="@+id/txtTradeAverage" />
+
+        <TextView
+            android:id="@+id/txtTradePoor"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/primary_stroke"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center|start"
+            android:paddingStart="16dp"
+            android:text="Trade Poor"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textsmall"
+            app:layout_constraintEnd_toEndOf="@+id/txtTradeAverage"
+            app:layout_constraintStart_toStartOf="@+id/txtTradeAverage"
+            app:layout_constraintTop_toBottomOf="@+id/txtTradeAverage" />
+
+        <TextView
+            android:id="@+id/txtTradePoorPrice"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="end|start"
+            android:paddingStart="16dp"
+            android:text="@{'£'+onModel.tradePoor}"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textnormal"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTradePoor"
+            app:layout_constraintEnd_toEndOf="@+id/txtTradePoor"
+            app:layout_constraintTop_toTopOf="@+id/txtTradePoor" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

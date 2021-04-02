@@ -1,0 +1,4 @@
+include ':library'
+include ':autoimageslider'
+include ':app'
+rootProject.name = "GoodAutoDeal"

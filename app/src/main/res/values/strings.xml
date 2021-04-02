@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">GoodAutoDeal</string>
+    <string name="app_id">251975092992054</string>
+    <string name="fb_login_protocol_scheme">fb251975092992054</string>
+
+    <string name="home">Home</string>
+    <string name="sell_car">Sell My Car</string>
+    <string name="new_car">New Car</string>
+    <string name="used_car">Used Car</string>
+    <string name="value_car">Value Your Car</string>
+    <string name="dealers">Dealers</string>
+    <string name="car_insurance">Car Insurance</string>
+    <string name="car_finance">Car Finance</string>
+    <string name="faq">FAQ\'s</string>
+    <string name="about_us">About Us</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="privacy">Privacy Policy</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="hint_email">Enter your email</string>
+    <string name="hint_password">Enter your password</string>
+    <string name="login">Login</string>
+    <string name="signup">Sign Up</string>
+    <string name="hint_name">Enter your name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sell_my_car">Sell my car</string>
+    <string name="register">Register</string>
+    <string name="overview">Overview</string>
+    <string name="published">Published</string>
+    <string name="pending">Pending</string>
+    <string name="rejected">Rejected</string>
+    <string name="sold">Sold Vehicles</string>
+    <string name="draft">Draft</string>
+    <string name="change_pasword">Change Password</string>
+    <string name="profile">Profile</string>
+    <string name="favourite">Favourite</string>
+
+    <string-array name="nav_drawer_labels">
+        <item>@string/home</item>
+        <item>@string/profile</item>
+        <item>@string/sell_car</item>
+        <item>@string/new_car</item>
+        <item>@string/used_car</item>
+        <item>@string/favourite</item>
+        <item>@string/value_car</item>
+        <item>@string/dealers</item>
+        <item>@string/car_insurance</item>
+        <item>@string/car_finance</item>
+        <item>@string/change_pasword</item>
+        <item>@string/faq</item>
+        <item>@string/contact_us</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="vehicle_details">Vehicle Details</string>
+    <string name="ads_management">Ads Management</string>
+    <string name="car_details">Car Details</string>
+    <string name="address">Address:</string>
+    <string name="contact">Contact:</string>
+    <string name="email">Email:</string>
+    <string name="view_website">View Website</string>
+    <string name="contact_dealer">Contact Dealer</string>
+    <string name="new_cars">New Cars</string>
+    <string name="enter_your_new_password">Enter your new password</string>
+    <string name="confrim_your_new_password">Confrim your new password</string>
+    <string name="enter_your_current_password">Enter your current password</string>
+    <string name="enter_your_phone_number">Enter your Phone Number</string>
+    <string name="enter_your_description">Enter your Description</string>
+    <string name="send">Send</string>
+    <string name="faq_s">FAQ\'s</string>
+    <string name="forgot_detail">Enter your registered email to reset your password</string>
+    <string name="search">Search</string>
+    <string name="view_your_ads">View Your Ads</string>
+    <string name="your_post_added_successfully">Your Post Added Successfully</string>
+    <string name="ad_submit">Ad Submit</string>
+    <string name="notification">Notification</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="more">More</string>
+    <string name="car_history">Car History</string>
+    <string name="logout">Logout</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="field_empty">Password Field Cannot Be Empty</string>
+    <string name="minimum_character">Password should be minimum 6 digits length</string>
+    <string name="password_mismatch">Passwords mismatch</string>
+    <string name="loading">Loading...</string>
+    <string name="no_interrnet_connection">There is no or poor internet connection. Please connect to stable internet connection and try again.</string>
+</resources>

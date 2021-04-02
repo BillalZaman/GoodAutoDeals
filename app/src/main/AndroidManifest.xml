@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.goodautodeal.goodautodeal">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <application
+        android:name=".ApplicationState"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_circle"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".views.activities.PackagesActivity"/>
+        <activity android:name=".views.activities.WelcomeActivity" />
+        <activity android:name=".views.activities.FilterActivity" />
+        <activity android:name=".views.activities.FavouriteActivity" />
+        <activity android:name=".views.activities.DealerMainActivity" />
+        <activity android:name=".views.activities.CarAdDetailActivity" />
+        <activity android:name=".views.activities.ProfileActivity" />
+        <activity android:name=".views.activities.ChangePasswordActivity" />
+        <activity android:name=".views.activities.ForgotPasswordActivity" />
+        <activity android:name=".views.activities.CarInsuranceActivity" />
+        <activity android:name=".views.activities.DealersActivity" />
+        <activity android:name=".views.activities.CarFinanceActivity" />
+        <activity android:name=".views.activities.CarViewAdListingActivity" />
+        <activity android:name=".views.activities.ContactUsActivity" />
+        <activity android:name=".views.activities.AdsManagementActivity" />
+        <activity android:name=".views.activities.PostAdSucesssActivity" />
+        <activity android:name=".views.activities.ValueYourCarActivity" />
+        <activity android:name=".views.activities.FAQListActivity" />
+        <activity android:name=".views.activities.AccessoriesActivity" />
+        <activity android:name=".views.activities.SellMyCarPartFiveActivity" />
+        <activity android:name=".views.activities.SellMyCarPartFourActivity" />
+        <activity android:name=".views.activities.SellMyCarPartThreeActivity" />
+        <activity android:name=".views.activities.SellMyCarPartTwoActivity" />
+        <activity android:name=".views.activities.SellMyCarPartOneActivity" />
+        <activity android:name=".views.activities.RegistrationActivity" />
+        <activity android:name=".views.activities.LoginActivity" />
+        <activity android:name=".views.activities.MainActivity" />
+        <activity android:name=".views.activities.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
+
+    </application>
+
+</manifest>

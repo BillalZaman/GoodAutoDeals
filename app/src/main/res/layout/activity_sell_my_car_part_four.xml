@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="onClick"
+            type="com.goodautodeal.goodautodeal.views.activities.SellMyCarPartFourActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/group_235"
+        tools:context=".views.activities.SellMyCarPartFourActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/tab"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:padding="10dp"
+                android:onClick="@{(view)->onClick.onClick(view)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/back_white" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Vehicle Details"
+                android:textAllCaps="true"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/textnormallarge"
+                app:layout_constraintBottom_toBottomOf="@+id/imgBack"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imgBack"
+                app:layout_constraintTop_toTopOf="@+id/imgBack" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/scroller"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnNext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tab">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/txtDemand"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/light_btn_stroke"
+                    android:text="£5000"
+                    android:padding="15dp"
+                    android:textSize="@dimen/textnormallarge"
+                    android:textColor="@color/colorLightBlack"
+                    android:gravity="center|start"
+                    android:fontFamily="@font/poppins_regular"
+                    android:paddingStart="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/light_btn_stroke"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center|start"
+                    android:paddingStart="24dp"
+                    android:text="Suzuki SX4 SZ4"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDemand" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/spinnerFilter"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/colorWhite"
+                    android:backgroundTint="@android:color/transparent"
+                    android:hint="Condition"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:helperTextEnabled="true"
+                    app:layout_constraintEnd_toEndOf="@+id/txtTitle"
+                    app:layout_constraintStart_toStartOf="@+id/txtTitle"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitle">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/edtGender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/avenir_medium"
+                        android:inputType="textAutoComplete"
+                        android:maxLines="1"
+                        android:paddingStart="25dp"
+                        android:paddingEnd="40dp"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/textnormallarge" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <MultiAutoCompleteTextView
+                    android:id="@+id/edtAdditionalDesc"
+                    android:layout_width="0dp"
+                    android:layout_height="120dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/light_btn_stroke"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="start"
+                    android:hint="Description"
+                    android:inputType="textPersonName|textMultiLine"
+                    android:paddingStart="16dp"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormallarge"
+                    app:hintEnabled="false"
+                    app:layout_constraintEnd_toEndOf="@+id/spinnerFilter"
+                    app:layout_constraintStart_toStartOf="@+id/spinnerFilter"
+                    app:layout_constraintTop_toBottomOf="@+id/spinnerFilter" />
+
+                <TextView
+                    android:id="@+id/Acess"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Accessories And Features"
+                    android:gravity="center|start"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/large"
+                    android:textAllCaps="true"
+                    android:fontFamily="@font/poppins_bold"
+                    app:layout_constraintEnd_toEndOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintStart_toStartOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/edtAdditionalDesc" />
+
+                <TextView
+                    android:id="@+id/btnComfort"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Comfort"
+                    android:drawableEnd="@drawable/ic_baseline_add_24"
+                    android:paddingEnd="16dp"
+                    android:gravity="center|start"
+                    android:textColor="@color/colorLightBlack"
+                    android:paddingStart="12dp"
+                    android:textSize="@dimen/textnormallarge"
+                    android:textAllCaps="true"
+                    android:padding="12dp"
+                    android:onClick="@{(view)->onClick.onClick(view)}"
+                    android:fontFamily="@font/poppins_semibold"
+                    app:layout_constraintEnd_toEndOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintStart_toStartOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/Acess" />
+
+                <TextView
+                    android:id="@+id/btnSafety"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Safety and Security"
+                    android:drawableEnd="@drawable/ic_baseline_add_24"
+                    android:paddingEnd="16dp"
+                    android:gravity="center|start"
+                    android:textColor="@color/colorLightBlack"
+                    android:paddingStart="12dp"
+                    android:textSize="@dimen/textnormallarge"
+                    android:textAllCaps="true"
+                    android:padding="12dp"
+                    android:onClick="@{(view)->onClick.onClick(view)}"
+                    android:fontFamily="@font/poppins_semibold"
+                    app:layout_constraintEnd_toEndOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintStart_toStartOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/btnComfort" />
+
+                <TextView
+                    android:id="@+id/btnExterior"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Exterior"
+                    android:drawableEnd="@drawable/ic_baseline_add_24"
+                    android:paddingEnd="16dp"
+                    android:gravity="center|start"
+                    android:textColor="@color/colorLightBlack"
+                    android:paddingStart="12dp"
+                    android:textSize="@dimen/textnormallarge"
+                    android:textAllCaps="true"
+                    android:padding="12dp"
+                    android:onClick="@{(view)->onClick.onClick(view)}"
+                    android:fontFamily="@font/poppins_semibold"
+                    app:layout_constraintEnd_toEndOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintStart_toStartOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/btnSafety" />
+
+                <TextView
+                    android:id="@+id/btnInterior"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Interior"
+                    android:drawableEnd="@drawable/ic_baseline_add_24"
+                    android:paddingEnd="16dp"
+                    android:gravity="center|start"
+                    android:textColor="@color/colorLightBlack"
+                    android:paddingStart="12dp"
+                    android:textSize="@dimen/textnormallarge"
+                    android:textAllCaps="true"
+                    android:padding="12dp"
+                    android:onClick="@{(view)->onClick.onClick(view)}"
+                    android:fontFamily="@font/poppins_semibold"
+                    app:layout_constraintEnd_toEndOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintStart_toStartOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/btnExterior" />
+
+                <TextView
+                    android:id="@+id/btnOthers"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Others"
+                    android:drawableEnd="@drawable/ic_baseline_add_24"
+                    android:paddingEnd="16dp"
+                    android:gravity="center|start"
+                    android:textColor="@color/colorLightBlack"
+                    android:paddingStart="12dp"
+                    android:textSize="@dimen/textnormallarge"
+                    android:textAllCaps="true"
+                    android:padding="12dp"
+                    android:onClick="@{(view)->onClick.onClick(view)}"
+                    android:fontFamily="@font/poppins_semibold"
+                    app:layout_constraintEnd_toEndOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintStart_toStartOf="@+id/edtAdditionalDesc"
+                    app:layout_constraintTop_toBottomOf="@+id/btnInterior" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/btnNext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/gradient_button"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="Next Step"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/eight_btn"
+            android:onClick="@{(view)->onClick.onClick(view)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
