@@ -1,6 +1,6 @@
 package com.goodautodeal.goodautodeal.webview.response;
 
-import com.goodautodeal.goodautodeal.views.models.ValueYourCarModel;
+import com.goodautodeal.goodautodeal.views.models.AdDataItemsModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -28,14 +28,14 @@ public class Response {
 
     @SerializedName("Response")
     @Expose
-    private Resp valueYourCarModel;
+    private Resp resp;
 
-    public Resp getValueYourCarModel() {
-        return valueYourCarModel;
+    public Resp getResp() {
+        return resp;
     }
 
-    public void setValueYourCarModel(Resp valueYourCarModel) {
-        this.valueYourCarModel = valueYourCarModel;
+    public void setResp(Resp resp) {
+        this.resp = resp;
     }
 
     public void setDataObject(DataObject dataObject) {

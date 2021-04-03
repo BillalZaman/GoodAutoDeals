@@ -4,9 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="onClick"
             type="com.goodautodeal.goodautodeal.views.activities.SellMyCarPartTwoActivity" />
+
+        <variable
+            name="onCarTechnicalDetail"
+            type="com.goodautodeal.goodautodeal.views.models.AdTechnicalDetailsModel" />
+
+        <variable
+            name="onCarSmmtDetail"
+            type="com.goodautodeal.goodautodeal.views.models.AdSmmtDetailsModel" />
+
+        <variable
+            name="onCarVehicleRegistration"
+            type="com.goodautodeal.goodautodeal.views.models.AdVehicleRegistrationModel" />
+
+        <variable
+            name="onCarDimension"
+            type="com.goodautodeal.goodautodeal.views.models.AdDimensionsModel" />
+
+        <variable
+            name="onCarGeneral"
+            type="com.goodautodeal.goodautodeal.views.models.AdGeneralModel" />
+
+        <variable
+            name="onCarPower"
+            type="com.goodautodeal.goodautodeal.views.models.AdPowerModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,8 +55,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:padding="10dp"
                 android:onClick="@{(view)->onClick.onClick(view)}"
+                android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +71,7 @@
                 android:text="@string/overview"
                 android:textAllCaps="true"
                 android:textColor="@color/colorWhite"
-                android:textSize="@dimen/textnormallarge"
+                android:textSize="@dimen/textnormal"
                 app:layout_constraintBottom_toBottomOf="@+id/imgBack"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imgBack"
@@ -61,7 +87,8 @@
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Vehicle details found:"
-            android:textSize="@dimen/textnormallarge"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/large"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tab" />
@@ -84,6 +111,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/btnNext"
             app:layout_constraintEnd_toEndOf="parent"
@@ -99,17 +127,1344 @@
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="40dp"
-            android:text="Next Step"
             android:background="@drawable/gradient_button"
-            android:textSize="@dimen/eight_btn"
+            android:fontFamily="@font/poppins_semibold"
             android:gravity="center"
             android:onClick="@{(view)->onClick.onClick(view)}"
-            android:textColor="@color/colorWhite"
+            android:text="Next Step"
             android:textAlignment="center"
             android:textAllCaps="true"
-            android:fontFamily="@font/poppins_semibold"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textnormallarge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scroller"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnNext"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view3">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/make"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Make:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtMake"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarSmmtDetail.marque}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/make"
+                    app:layout_constraintTop_toBottomOf="@+id/make" />
+
+                <View
+                    android:id="@+id/view4"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtMake" />
+
+                <TextView
+                    android:id="@+id/model"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Model:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view4" />
+
+                <TextView
+                    android:id="@+id/txtModel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarSmmtDetail.range}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/model"
+                    app:layout_constraintTop_toBottomOf="@+id/model" />
+
+                <View
+                    android:id="@+id/view5"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtModel" />
+
+                <TextView
+                    android:id="@+id/variant"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Variant:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view5" />
+
+                <TextView
+                    android:id="@+id/txtVariant"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarSmmtDetail.modelVariant}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/variant"
+                    app:layout_constraintTop_toBottomOf="@+id/variant" />
+
+                <View
+                    android:id="@+id/view6"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtVariant" />
+
+                <TextView
+                    android:id="@+id/mileage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Mileage:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view6" />
+
+                <TextView
+                    android:id="@+id/txtMileage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarSmmtDetail.Range}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/mileage"
+                    app:layout_constraintTop_toBottomOf="@+id/mileage" />
+
+                <View
+                    android:id="@+id/view7"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtMileage" />
+
+                <TextView
+                    android:id="@+id/color"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Colour:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view7"
+                    tools:layout_editor_absoluteY="8dp" />
+
+                <TextView
+                    android:id="@+id/txtColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarVehicleRegistration.colour}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/color"
+                    app:layout_constraintTop_toBottomOf="@+id/color" />
+
+                <View
+                    android:id="@+id/view8"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtColor" />
+
+                <TextView
+                    android:id="@+id/bodystyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Body Style:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view8"
+                    tools:layout_editor_absoluteY="8dp" />
+
+                <TextView
+                    android:id="@+id/txtBodystyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarSmmtDetail.bodyStyle}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/bodystyle"
+                    app:layout_constraintTop_toBottomOf="@+id/bodystyle" />
+
+                <View
+                    android:id="@+id/view9"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtBodystyle" />
+
+                <TextView
+                    android:id="@+id/engine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Engine:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view9"
+                    tools:layout_editor_absoluteY="8dp" />
+
+                <TextView
+                    android:id="@+id/txtEngine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Double.toString(onCarSmmtDetail.nominalEngineCapacity)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/engine"
+                    app:layout_constraintTop_toBottomOf="@+id/engine" />
+
+                <View
+                    android:id="@+id/view10"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEngine" />
+
+                <TextView
+                    android:id="@+id/fueltype"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Fuel Type:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view10"
+                    tools:layout_editor_absoluteY="8dp" />
+
+                <TextView
+                    android:id="@+id/txtFuelType"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarVehicleRegistration.fuelType}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/fueltype"
+                    app:layout_constraintTop_toBottomOf="@+id/fueltype" />
+
+                <View
+                    android:id="@+id/view11"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFuelType" />
+
+                <TextView
+                    android:id="@+id/nodoor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="No. of Doors:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view11"
+                    tools:layout_editor_absoluteY="8dp" />
+
+                <TextView
+                    android:id="@+id/txtNumDoor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarDimension.numberOfDoors)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/nodoor"
+                    app:layout_constraintTop_toBottomOf="@+id/nodoor" />
+
+                <View
+                    android:id="@+id/view12"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNumDoor" />
+
+                <TextView
+                    android:id="@+id/transmission"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Transmission:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view12"
+                    tools:layout_editor_absoluteY="8dp" />
+
+                <TextView
+                    android:id="@+id/txtTransmission"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarSmmtDetail.transmission}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/transmission"
+                    app:layout_constraintTop_toBottomOf="@+id/transmission" />
+
+                <View
+                    android:id="@+id/view13"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTransmission" />
+
+                <TextView
+                    android:id="@+id/seatcapacity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Seat Capacity:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view13" />
+
+                <TextView
+                    android:id="@+id/txtSeatCapacity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarVehicleRegistration.seatingCapacity)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/seatcapacity"
+                    app:layout_constraintTop_toBottomOf="@+id/seatcapacity" />
+
+                <View
+                    android:id="@+id/view14"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtSeatCapacity" />
+
+                <TextView
+                    android:id="@+id/euroStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Euro Status:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view14" />
+
+                <TextView
+                    android:id="@+id/txtEuroStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarGeneral.euroStatus}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/euroStatus"
+                    app:layout_constraintTop_toBottomOf="@+id/euroStatus" />
+
+                <View
+                    android:id="@+id/view15"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEuroStatus" />
+
+                <TextView
+                    android:id="@+id/wheelplan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Wheel Plan:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view15" />
+
+                <TextView
+                    android:id="@+id/txtWheelPlan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarVehicleRegistration.wheelPlan}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/wheelplan"
+                    app:layout_constraintTop_toBottomOf="@+id/wheelplan" />
+
+                <View
+                    android:id="@+id/view16"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWheelPlan" />
+
+                <TextView
+                    android:id="@+id/grossWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Gross Weight:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view16" />
+
+                <TextView
+                    android:id="@+id/txtGrossWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarVehicleRegistration.grossWeight)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/grossWeight"
+                    app:layout_constraintTop_toBottomOf="@+id/grossWeight" />
+
+                <View
+                    android:id="@+id/view17"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtGrossWeight" />
+
+                <TextView
+                    android:id="@+id/heigth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Height:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view17" />
+
+                <TextView
+                    android:id="@+id/txtHeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarDimension.height)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/heigth"
+                    app:layout_constraintTop_toBottomOf="@+id/heigth" />
+
+                <View
+                    android:id="@+id/view18"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtHeight" />
+
+                <TextView
+                    android:id="@+id/length"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Length:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view18" />
+
+                <TextView
+                    android:id="@+id/txtLength"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarDimension.carLength)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/length"
+                    app:layout_constraintTop_toBottomOf="@+id/length" />
+
+                <View
+                    android:id="@+id/view19"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtLength" />
+
+
+                <TextView
+                    android:id="@+id/width"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Width:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view19" />
+
+                <TextView
+                    android:id="@+id/txtWidth"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarDimension.width)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/width"
+                    app:layout_constraintTop_toBottomOf="@+id/width" />
+
+                <View
+                    android:id="@+id/view20"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWidth" />
+
+                <TextView
+                    android:id="@+id/KerbWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Kerb Weight:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view20" />
+
+                <TextView
+                    android:id="@+id/txtKerbWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarDimension.kerbWeight)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/KerbWeight"
+                    app:layout_constraintTop_toBottomOf="@+id/KerbWeight" />
+
+                <View
+                    android:id="@+id/view21"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtKerbWeight" />
+
+                <TextView
+                    android:id="@+id/Wheelbase"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Wheelbase:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view21" />
+
+                <TextView
+                    android:id="@+id/txtWheelbase"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarDimension.wheelBase)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/Wheelbase"
+                    app:layout_constraintTop_toBottomOf="@+id/Wheelbase" />
+
+                <View
+                    android:id="@+id/view22"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtWheelbase" />
+
+                <TextView
+                    android:id="@+id/drivingAxele"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Driving Axele:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view22" />
+
+                <TextView
+                    android:id="@+id/txtDrivingAxele"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarDimension.numberOfAxles)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/drivingAxele"
+                    app:layout_constraintTop_toBottomOf="@+id/drivingAxele" />
+
+                <View
+                    android:id="@+id/view23"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDrivingAxele" />
+
+                <TextView
+                    android:id="@+id/FuelTankCapacity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Fuel Tank Capacity:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view23" />
+
+                <TextView
+                    android:id="@+id/txtFuelTankCapacity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarDimension.fuelTankCapacity)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/FuelTankCapacity"
+                    app:layout_constraintTop_toBottomOf="@+id/FuelTankCapacity" />
+
+                <View
+                    android:id="@+id/view24"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtFuelTankCapacity" />
+
+                <TextView
+                    android:id="@+id/noofgears"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Number of Gears:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view24" />
+
+                <TextView
+                    android:id="@+id/txtNoofgears"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarSmmtDetail.numberOfGears)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/noofgears"
+                    app:layout_constraintTop_toBottomOf="@+id/noofgears" />
+
+                <View
+                    android:id="@+id/view25"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtNoofgears" />
+
+                <TextView
+                    android:id="@+id/bhp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="BHP:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view25" />
+
+                <TextView
+                    android:id="@+id/txtBHP"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarPower.bhp)}"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/bhp"
+                    app:layout_constraintTop_toBottomOf="@+id/bhp" />
+
+                <View
+                    android:id="@+id/view26"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtBHP" />
+
+                <TextView
+                    android:id="@+id/co2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Co2 Emissions"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view26" />
+
+                <TextView
+                    android:id="@+id/txtEmission"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarVehicleRegistration.co2Emissions)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/co2"
+                    app:layout_constraintTop_toBottomOf="@+id/co2" />
+
+                <View
+                    android:id="@+id/view27"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEmission" />
+
+                <TextView
+                    android:id="@+id/ExtraUrban"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="ExtraUrban:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view27" />
+
+                <TextView
+                    android:id="@+id/txtExtraUrban"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/ExtraUrban"
+                    app:layout_constraintTop_toBottomOf="@+id/ExtraUrban" />
+
+                <View
+                    android:id="@+id/view28"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtExtraUrban" />
+
+                <TextView
+                    android:id="@+id/UrbanCold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="UrbanCold:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view28" />
+
+                <TextView
+                    android:id="@+id/txtUrbanCold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="7 July 2020"
+                    android:textSize="@dimen/textnormal"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/UrbanCold"
+                    app:layout_constraintTop_toBottomOf="@+id/UrbanCold" />
+
+                <View
+                    android:id="@+id/view29"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtUrbanCold" />
+
+                <TextView
+                    android:id="@+id/Combined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Combined:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view29" />
+
+                <TextView
+                    android:id="@+id/txtCombined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="7 July 2020"
+                    android:textSize="@dimen/textnormal"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/Combined"
+                    app:layout_constraintTop_toBottomOf="@+id/Combined" />
+
+                <View
+                    android:id="@+id/view30"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCombined" />
+
+                <TextView
+                    android:id="@+id/Accelration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Accelration:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view27" />
+
+                <TextView
+                    android:id="@+id/txtAccelration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="7 July 2020"
+                    android:textSize="@dimen/textnormal"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/Accelration"
+                    app:layout_constraintTop_toBottomOf="@+id/Accelration" />
+
+                <View
+                    android:id="@+id/view31"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtAccelration" />
+
+                <TextView
+                    android:id="@+id/Topspeed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Top speed:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view31" />
+
+                <TextView
+                    android:id="@+id/txtTopspeed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="7 July 2020"
+                    android:textSize="@dimen/textnormal"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/Topspeed"
+                    app:layout_constraintTop_toBottomOf="@+id/Topspeed" />
+
+                <View
+                    android:id="@+id/view32"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTopspeed" />
+
+                <TextView
+                    android:id="@+id/DrivingAxle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Driving Axle:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view27" />
+
+                <TextView
+                    android:id="@+id/txtDrivingAxle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarDimension.numberOfAxles)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/DrivingAxle"
+                    app:layout_constraintTop_toBottomOf="@+id/DrivingAxle" />
+
+                <View
+                    android:id="@+id/view33"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtDrivingAxle" />
+
+                <TextView
+                    android:id="@+id/EngineCapacity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Engine Capacity:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view33" />
+
+                <TextView
+                    android:id="@+id/txtEngineCapacity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="@{onCarVehicleRegistration.engineCapacity}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/EngineCapacity"
+                    app:layout_constraintTop_toBottomOf="@+id/EngineCapacity" />
+
+                <View
+                    android:id="@+id/view34"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEngineCapacity" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

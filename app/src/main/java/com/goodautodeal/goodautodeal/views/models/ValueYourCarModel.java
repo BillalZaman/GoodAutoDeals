@@ -34,6 +34,20 @@ public class ValueYourCarModel implements Serializable {
     @Expose
     private Integer extractNumber;
 
+    @SerializedName("TechnicalDetails")
+    @Expose
+    private AdTechnicalDetailsModel adTechnicalDetailsModel;
+    @SerializedName("VehicleHistory")
+    @Expose
+    private AdVehicleHistoryModel adVehicleHistoryModel;
+    @SerializedName("VehicleRegistration")
+    @Expose
+    private AdVehicleRegistrationModel adVehicleRegistrationModel;
+    @SerializedName("SmmtDetails")
+    @Expose
+    private AdSmmtDetailsModel adSmmtDetailsModel;
+
+
     public String getVrm() {
         return vrm;
     }
@@ -96,5 +110,37 @@ public class ValueYourCarModel implements Serializable {
 
     public void setExtractNumber(Integer extractNumber) {
         this.extractNumber = extractNumber;
+    }
+
+    public AdTechnicalDetailsModel getAdTechnicalDetailsModel() {
+        return adTechnicalDetailsModel;
+    }
+
+    public void setAdTechnicalDetailsModel(AdTechnicalDetailsModel adTechnicalDetailsModel) {
+        this.adTechnicalDetailsModel = adTechnicalDetailsModel;
+    }
+
+    public AdVehicleHistoryModel getAdVehicleHistoryModel() {
+        return adVehicleHistoryModel;
+    }
+
+    public void setAdVehicleHistoryModel(AdVehicleHistoryModel adVehicleHistoryModel) {
+        this.adVehicleHistoryModel = adVehicleHistoryModel;
+    }
+
+    public AdVehicleRegistrationModel getAdVehicleRegistrationModel() {
+        return adVehicleRegistrationModel;
+    }
+
+    public void setAdVehicleRegistrationModel(AdVehicleRegistrationModel adVehicleRegistrationModel) {
+        this.adVehicleRegistrationModel = adVehicleRegistrationModel;
+    }
+
+    public AdSmmtDetailsModel getAdSmmtDetailsModel() {
+        return adSmmtDetailsModel;
+    }
+
+    public void setAdSmmtDetailsModel(AdSmmtDetailsModel adSmmtDetailsModel) {
+        this.adSmmtDetailsModel = adSmmtDetailsModel;
     }
 }

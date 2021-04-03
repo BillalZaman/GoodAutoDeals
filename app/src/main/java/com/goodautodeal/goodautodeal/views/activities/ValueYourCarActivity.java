@@ -18,7 +18,6 @@ import com.goodautodeal.goodautodeal.helpers.Internet;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.AdPostingViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
-import com.goodautodeal.goodautodeal.views.models.ValuationListModel;
 import com.goodautodeal.goodautodeal.webview.response.Response;
 
 import javax.inject.Inject;
@@ -32,7 +31,7 @@ public class ValueYourCarActivity extends AppCompatActivity {
     AdPostingViewModel viewModel;
     private ActivityValueYourCarBinding binding;
     private String isActivityName;
-    private ValuationListModel valuationListModel = new ValuationListModel();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,8 +114,8 @@ public class ValueYourCarActivity extends AppCompatActivity {
         viewModel.getUserData().observe(this, new Observer<Response>() {
             @Override
             public void onChanged(@Nullable Response response) {
-                if (response.getValueYourCarModel().getStatusCode().equalsIgnoreCase("success")) {
-                    binding.setOnModel(response.getValueYourCarModel().getDataItems().getValuationList());
+                if (response.getResp().getStatusCode().equalsIgnoreCase("success")) {
+                    binding.setOnModel(response.getResp().getDataItems().getValuationList());
                 } else {
                     uiHelper.showLongToastInCenter(ValueYourCarActivity.this, response.getMessage());
                 }

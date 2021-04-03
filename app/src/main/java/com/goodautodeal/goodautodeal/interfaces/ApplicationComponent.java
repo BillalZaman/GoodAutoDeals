@@ -31,6 +31,10 @@ import dagger.Component;
 @Component(modules = {InternetModule.class, UIHelperModule.class})
 public interface ApplicationComponent {
 
+    void injectInternet(SellMyCarPartTwoActivity sellMyCarPartOneActivity);
+
+    void injectInternet(SellMyCarPartOneActivity sellMyCarPartOneActivity);
+
     void injectInternet(ValueYourCarActivity valueYourCarActivity);
 
     void injectUIHelper(ValueYourCarActivity valueYourCarActivity);
