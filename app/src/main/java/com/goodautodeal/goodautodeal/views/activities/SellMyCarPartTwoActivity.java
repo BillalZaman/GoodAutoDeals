@@ -112,7 +112,11 @@ public class SellMyCarPartTwoActivity extends AppCompatActivity {
                     binding.setOnCarVehicleRegistration(response.getResp().getDataItems().getAdVehicleRegistrationModel());
                     binding.setOnCarDimension(response.getResp().getDataItems().getAdTechnicalDetailsModel().getAdDimensionsModel());
                     binding.setOnCarGeneral(response.getResp().getDataItems().getAdTechnicalDetailsModel().getAdGeneralModel());
-
+                    binding.setOnCarVehicleHistory(response.getResp().getDataItems().getAdVehicleHistoryModel());
+//                    binding.txtBHP.setText(Integer.toString(
+//                            response.getResp().getDataItems().getAdPerfomanceModel().getPower().getBhp()));
+//                    binding.setOnCarUrban(response.getResp().getDataItems().getAdConsumptionModel().getAdExtraUrbanModel());
+//                    binding.setOnCarUrbanCold(response.getResp().getDataItems().getAdConsumptionModel().getAdUrbanColdModel());
                 } else {
                     uiHelper.showLongToastInCenter(SellMyCarPartTwoActivity.this, response.getMessage());
                 }

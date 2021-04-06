@@ -2,6 +2,8 @@ package com.goodautodeal.goodautodeal.views.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -11,12 +13,16 @@ import com.goodautodeal.goodautodeal.R;
 import com.goodautodeal.goodautodeal.databinding.ActivitySellMyCarPartFourBinding;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 
+import java.util.ArrayList;
+
 import javax.inject.Inject;
 
 public class SellMyCarPartFourActivity extends AppCompatActivity {
     @Inject
     UIHelper uiHelper;
     private ActivitySellMyCarPartFourBinding binding;
+    private ArrayList<String> conditionList = new ArrayList<String>();
+    private ArrayAdapter<String> conditionAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,14 @@ public class SellMyCarPartFourActivity extends AppCompatActivity {
 
     private void init() {
         binding.setOnClick(this);
+        conditionList.add("New");
+        conditionList.add("Used");
+        if (conditionList!=null) {
+            conditionAdapter = new ArrayAdapter<String>(this,
+                    R.layout.custom_spinner_design, conditionList);
+            conditionAdapter.setDropDownViewResource(R.layout.custom_spinner_dropdown);
+            binding.edtCondition.setAdapter(conditionAdapter);
+        }
     }
 
     public void onClick(View view) {

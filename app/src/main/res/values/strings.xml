@@ -85,4 +85,5 @@
     <string name="password_mismatch">Passwords mismatch</string>
     <string name="loading">Loading...</string>
     <string name="no_interrnet_connection">There is no or poor internet connection. Please connect to stable internet connection and try again.</string>
+    <string name="choose_any_option">Choose any Option</string>
 </resources>

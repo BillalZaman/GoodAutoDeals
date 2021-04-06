@@ -32,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 uiHelper.openAndClearActivity(SplashActivity.this, MainActivity.class);
             }
-        }, 5000);
+        }, 1000);
     }
 
     @Override

@@ -70,46 +70,263 @@
                     android:id="@+id/txtDemand"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
                     android:background="@drawable/light_btn_stroke"
-                    android:text="£5000"
-                    android:padding="15dp"
-                    android:textSize="@dimen/textnormallarge"
-                    android:textColor="@color/colorLightBlack"
-                    android:gravity="center|start"
                     android:fontFamily="@font/poppins_regular"
+                    android:gravity="center|start"
+                    android:padding="15dp"
                     android:paddingStart="24dp"
+                    android:text="£5000"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormallarge"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+<!--                <EditText-->
+<!--                    android:id="@+id/txtTitle"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:padding="15dp"-->
+<!--                    android:layout_marginStart="24dp"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:layout_marginEnd="24dp"-->
+<!--                    android:background="@drawable/light_btn_stroke"-->
+<!--                    android:fontFamily="@font/poppins_regular"-->
+<!--                    android:gravity="center|start"-->
+<!--                    android:paddingStart="24dp"-->
+<!--                    android:text="Suzuki SX4 SZ4"-->
+<!--                    android:textColor="@color/colorLightBlack"-->
+<!--                    android:textSize="@dimen/textnormallarge"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/txtDemand" />-->
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/txtTitle"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:padding="15dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="24dp"
-                    android:background="@drawable/light_btn_stroke"
-                    android:fontFamily="@font/poppins_regular"
-                    android:gravity="center|start"
-                    android:paddingStart="24dp"
-                    android:text="Suzuki SX4 SZ4"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="@dimen/textnormallarge"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="Title"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorPrimary"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtDemand" />
+                    app:layout_constraintTop_toBottomOf="@+id/txtDemand">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtCarManufacturing"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="Year of Manufacture 2016(65 reg)"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtTitle">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/CarManufacturing"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtBoot"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="Boot Capacity"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCarManufacturing">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/CarBoot"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtCarMOT"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="MOT expires"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtBoot">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/CarMOT"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtCarRoadTax"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="Road Tax"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCarMOT">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/CarRoadTax"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtCarTaxExpire"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="Road Tax Expire"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCarRoadTax">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/CarCarTaxExpire"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="textEmailAddress"
+                        android:maxLines="1"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/spinnerFilter"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:background="@color/colorWhite"
                     android:backgroundTint="@android:color/transparent"
                     android:hint="Condition"
@@ -118,12 +335,12 @@
                     app:boxCornerRadiusTopEnd="50dp"
                     app:boxCornerRadiusTopStart="50dp"
                     app:helperTextEnabled="true"
-                    app:layout_constraintEnd_toEndOf="@+id/txtTitle"
-                    app:layout_constraintStart_toStartOf="@+id/txtTitle"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTitle">
+                    app:layout_constraintEnd_toEndOf="@+id/txtCarTaxExpire"
+                    app:layout_constraintStart_toStartOf="@+id/txtCarTaxExpire"
+                    app:layout_constraintTop_toBottomOf="@+id/txtCarTaxExpire">
 
                     <AutoCompleteTextView
-                        android:id="@+id/edtGender"
+                        android:id="@+id/edtCondition"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/avenir_medium"

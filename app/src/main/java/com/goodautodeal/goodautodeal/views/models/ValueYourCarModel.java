@@ -33,7 +33,6 @@ public class ValueYourCarModel implements Serializable {
     @SerializedName("ExtractNumber")
     @Expose
     private Integer extractNumber;
-
     @SerializedName("TechnicalDetails")
     @Expose
     private AdTechnicalDetailsModel adTechnicalDetailsModel;
@@ -46,7 +45,12 @@ public class ValueYourCarModel implements Serializable {
     @SerializedName("SmmtDetails")
     @Expose
     private AdSmmtDetailsModel adSmmtDetailsModel;
-
+    @SerializedName("Performance")
+    @Expose
+    private AdPerfomanceModel adPerfomanceModel;
+    @SerializedName("Consumption")
+    @Expose
+    private AdConsumptionModel adConsumptionModel;
 
     public String getVrm() {
         return vrm;
@@ -143,4 +147,21 @@ public class ValueYourCarModel implements Serializable {
     public void setAdSmmtDetailsModel(AdSmmtDetailsModel adSmmtDetailsModel) {
         this.adSmmtDetailsModel = adSmmtDetailsModel;
     }
+
+    public AdPerfomanceModel getAdPerfomanceModel() {
+        return adPerfomanceModel;
+    }
+
+    public void setAdPerfomanceModel(AdPerfomanceModel adPerfomanceModel) {
+        this.adPerfomanceModel = adPerfomanceModel;
+    }
+
+    public AdConsumptionModel getAdConsumptionModel() {
+        return adConsumptionModel;
+    }
+
+    public void setAdConsumptionModel(AdConsumptionModel adConsumptionModel) {
+        this.adConsumptionModel = adConsumptionModel;
+    }
 }
+

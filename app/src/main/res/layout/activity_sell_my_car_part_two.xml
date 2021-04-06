@@ -33,6 +33,22 @@
             name="onCarPower"
             type="com.goodautodeal.goodautodeal.views.models.AdPowerModel" />
 
+        <variable
+            name="onCarUrban"
+            type="com.goodautodeal.goodautodeal.views.models.AdExtraUrbanModel" />
+
+        <variable
+            name="onCarUrbanCold"
+            type="com.goodautodeal.goodautodeal.views.models.AdUrbanColdModel" />
+
+        <variable
+            name="onCarCombined"
+            type="com.goodautodeal.goodautodeal.views.models.AdCombinedModel" />
+
+        <variable
+            name="onCarVehicleHistory"
+            type="com.goodautodeal.goodautodeal.views.models.AdVehicleHistoryModel" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -1099,8 +1115,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="@{Integer.toString(onCarPower.bhp)}"
                     android:textSize="@dimen/textnormal"
+
+                    android:textColor="@color/colorLightBlack"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/bhp"
                     app:layout_constraintTop_toBottomOf="@+id/bhp" />
@@ -1159,226 +1176,6 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtEmission" />
-
-                <TextView
-                    android:id="@+id/ExtraUrban"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="ExtraUrban:"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/textnormallarge"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view27" />
-
-                <TextView
-                    android:id="@+id/txtExtraUrban"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="@dimen/textnormal"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/ExtraUrban"
-                    app:layout_constraintTop_toBottomOf="@+id/ExtraUrban" />
-
-                <View
-                    android:id="@+id/view28"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/barcolor"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtExtraUrban" />
-
-                <TextView
-                    android:id="@+id/UrbanCold"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="UrbanCold:"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/textnormallarge"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view28" />
-
-                <TextView
-                    android:id="@+id/txtUrbanCold"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="7 July 2020"
-                    android:textSize="@dimen/textnormal"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/UrbanCold"
-                    app:layout_constraintTop_toBottomOf="@+id/UrbanCold" />
-
-                <View
-                    android:id="@+id/view29"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/barcolor"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtUrbanCold" />
-
-                <TextView
-                    android:id="@+id/Combined"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="Combined:"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/textnormallarge"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view29" />
-
-                <TextView
-                    android:id="@+id/txtCombined"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="7 July 2020"
-                    android:textSize="@dimen/textnormal"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/Combined"
-                    app:layout_constraintTop_toBottomOf="@+id/Combined" />
-
-                <View
-                    android:id="@+id/view30"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/barcolor"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtCombined" />
-
-                <TextView
-                    android:id="@+id/Accelration"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="Accelration:"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/textnormallarge"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view27" />
-
-                <TextView
-                    android:id="@+id/txtAccelration"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="7 July 2020"
-                    android:textSize="@dimen/textnormal"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/Accelration"
-                    app:layout_constraintTop_toBottomOf="@+id/Accelration" />
-
-                <View
-                    android:id="@+id/view31"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/barcolor"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtAccelration" />
-
-                <TextView
-                    android:id="@+id/Topspeed"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="Top speed:"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/textnormallarge"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view31" />
-
-                <TextView
-                    android:id="@+id/txtTopspeed"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="7 July 2020"
-                    android:textSize="@dimen/textnormal"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/Topspeed"
-                    app:layout_constraintTop_toBottomOf="@+id/Topspeed" />
-
-                <View
-                    android:id="@+id/view32"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginBottom="8dp"
-                    android:background="@color/barcolor"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtTopspeed" />
 
                 <TextView
                     android:id="@+id/DrivingAxle"
@@ -1463,6 +1260,457 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtEngineCapacity" />
+
+                <TextView
+                    android:id="@+id/extraurban"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="ExtraUrban:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view34" />
+
+                <TextView
+                    android:id="@+id/txtExtraurban"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/extraurban"
+                    app:layout_constraintTop_toBottomOf="@+id/extraurban" />
+
+                <View
+                    android:id="@+id/view35"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtExtraurban" />
+
+                <TextView
+                    android:id="@+id/urbancold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="UrbanCold:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view35" />
+
+                <TextView
+                    android:id="@+id/txturbancold"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/urbancold"
+                    app:layout_constraintTop_toBottomOf="@+id/urbancold" />
+
+                <View
+                    android:id="@+id/view36"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txturbancold" />
+
+                <TextView
+                    android:id="@+id/combined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Combined:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view36" />
+
+                <TextView
+                    android:id="@+id/txtcombined"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/combined"
+                    app:layout_constraintTop_toBottomOf="@+id/combined" />
+
+                <View
+                    android:id="@+id/view37"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtcombined" />
+
+<!--                m-->
+
+                <TextView
+                    android:id="@+id/destruction"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Certification of Destruction Issue:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view37" />
+
+                <TextView
+                    android:id="@+id/txtdestruction"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    android:text="@{Boolean.toString(onCarVehicleRegistration.certificateOfDestructionIssued)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/destruction"
+                    app:layout_constraintTop_toBottomOf="@+id/destruction" />
+
+                <View
+                    android:id="@+id/view38"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtdestruction" />
+
+                <TextView
+                    android:id="@+id/exported"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Exported:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view38" />
+
+                <TextView
+                    android:id="@+id/txtexported"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    android:text="@{Boolean.toString(onCarVehicleRegistration.exported)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/exported"
+                    app:layout_constraintTop_toBottomOf="@+id/exported" />
+
+                <View
+                    android:id="@+id/view39"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtexported" />
+
+                <TextView
+                    android:id="@+id/imported"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Imported:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view39" />
+
+                <TextView
+                    android:id="@+id/txtimported"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    android:text="@{Boolean.toString(onCarVehicleRegistration.imported)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/imported"
+                    app:layout_constraintTop_toBottomOf="@+id/imported" />
+
+                <View
+                    android:id="@+id/view40"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtimported" />
+
+                <TextView
+                    android:id="@+id/importedNU"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Imported NU:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view40" />
+
+                <TextView
+                    android:id="@+id/txtimportedNU"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    android:text="@{Boolean.toString(onCarVehicleRegistration.importNonEu)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/importedNU"
+                    app:layout_constraintTop_toBottomOf="@+id/importedNU" />
+
+                <View
+                    android:id="@+id/view41"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtimportedNU" />
+
+                <TextView
+                    android:id="@+id/scrapped"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Scrapped:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view41" />
+
+                <TextView
+                    android:id="@+id/txtscrapped"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    android:text="@{Boolean.toString(onCarVehicleRegistration.scrapped)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/scrapped"
+                    app:layout_constraintTop_toBottomOf="@+id/scrapped" />
+
+                <View
+                    android:id="@+id/view42"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtscrapped" />
+
+                <TextView
+                    android:id="@+id/platechange"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Plate Change:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view42" />
+
+                <TextView
+                    android:id="@+id/txtplatechange"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    android:text="@{Integer.toString(onCarVehicleHistory.plateChangeCount)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/platechange"
+                    app:layout_constraintTop_toBottomOf="@+id/platechange" />
+
+                <View
+                    android:id="@+id/view43"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtplatechange" />
+
+                <TextView
+                    android:id="@+id/numberOfPreviousKeepers"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Plate Change:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view43" />
+
+                <TextView
+                    android:id="@+id/txtnumberOfPreviousKeepers"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    android:text="@{Integer.toString(onCarVehicleHistory.numberOfPreviousKeepers)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/numberOfPreviousKeepers"
+                    app:layout_constraintTop_toBottomOf="@+id/numberOfPreviousKeepers" />
+
+                <View
+                    android:id="@+id/view44"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtnumberOfPreviousKeepers" />
+
+                <TextView
+                    android:id="@+id/V5CCertificateCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="V5CCertificateCount:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view44" />
+
+                <TextView
+                    android:id="@+id/txtV5CCertificateCount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    android:text="@{Integer.toString(onCarVehicleHistory.V5CCertificateCount)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/V5CCertificateCount"
+                    app:layout_constraintTop_toBottomOf="@+id/V5CCertificateCount" />
+
+                <View
+                    android:id="@+id/view45"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtV5CCertificateCount" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

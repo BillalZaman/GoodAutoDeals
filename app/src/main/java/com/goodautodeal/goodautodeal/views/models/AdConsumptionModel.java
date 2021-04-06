@@ -9,37 +9,37 @@ import java.io.Serializable;
  * Created by Bilal Zaman on 03/04/21.
  */
 public class AdConsumptionModel implements Serializable {
-//    @SerializedName("ExtraUrban")
-//    @Expose
-//    private ExtraUrban extraUrban;
-//    @SerializedName("UrbanCold")
-//    @Expose
-//    private UrbanCold urbanCold;
-//    @SerializedName("Combined")
-//    @Expose
-//    private Combined combined;
-//
-//    public ExtraUrban getExtraUrban() {
-//        return extraUrban;
-//    }
-//
-//    public void setExtraUrban(ExtraUrban extraUrban) {
-//        this.extraUrban = extraUrban;
-//    }
-//
-//    public UrbanCold getUrbanCold() {
-//        return urbanCold;
-//    }
-//
-//    public void setUrbanCold(UrbanCold urbanCold) {
-//        this.urbanCold = urbanCold;
-//    }
-//
-//    public Combined getCombined() {
-//        return combined;
-//    }
-//
-//    public void setCombined(Combined combined) {
-//        this.combined = combined;
-//    }
+    @SerializedName("ExtraUrban")
+    @Expose
+    private AdExtraUrbanModel adExtraUrbanModel;
+    @SerializedName("UrbanCold")
+    @Expose
+    private AdUrbanColdModel adUrbanColdModel;
+    @SerializedName("Combined")
+    @Expose
+    private AdCombinedModel adCombinedModel;
+
+    public AdExtraUrbanModel getAdExtraUrbanModel() {
+        return adExtraUrbanModel;
+    }
+
+    public void setAdExtraUrbanModel(AdExtraUrbanModel adExtraUrbanModel) {
+        this.adExtraUrbanModel = adExtraUrbanModel;
+    }
+
+    public AdUrbanColdModel getAdUrbanColdModel() {
+        return adUrbanColdModel;
+    }
+
+    public void setAdUrbanColdModel(AdUrbanColdModel adUrbanColdModel) {
+        this.adUrbanColdModel = adUrbanColdModel;
+    }
+
+    public AdCombinedModel getAdCombinedModel() {
+        return adCombinedModel;
+    }
+
+    public void setAdCombinedModel(AdCombinedModel adCombinedModel) {
+        this.adCombinedModel = adCombinedModel;
+    }
 }
