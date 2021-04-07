@@ -58,6 +58,7 @@
             android:layout_marginEnd="16dp"
             android:text="CAR INSURANCE"
             android:textSize="@dimen/textnormallarge"
+            android:visibility="gone"
             android:textColor="@color/colorLightBlack"
             android:fontFamily="@font/poppins_bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,10 +73,20 @@
             android:textColor="@color/colorLightBlack"
             android:textSize="@dimen/textnormal"
             android:fontFamily="@font/poppins_medium"
+            android:visibility="gone"
             android:text="Companies are making it easy to get a car and offering various type of loans to make it more easy to get a brand new or used car from any trusted dealer.
             We are helping our visitors to find the right type of car finance which the can afford to buy their dream car."
             app:layout_constraintEnd_toEndOf="@+id/textView15"
             app:layout_constraintStart_toStartOf="@+id/textView15"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

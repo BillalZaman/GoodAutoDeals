@@ -76,7 +76,7 @@ public class PackagesAdapter extends PagerAdapter {
 
     public void onBuyClick(View view, final int position) {
         uiHelper.showLongToastInCenter(context, "" + position);
-        if (position == 0) {
+        if ((position == 0)) {
             paypalInterface.buyPackages("Silver","39.99");
         } else if (position == 1) {
             paypalInterface.buyPackages("Gold","59.99");

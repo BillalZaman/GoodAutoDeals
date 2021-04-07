@@ -124,4 +124,9 @@ public class SellMyCarPartTwoActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        viewModel.clear();
+    }
 }

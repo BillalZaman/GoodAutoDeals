@@ -5,6 +5,9 @@
 
     <data>
         <variable
+            name="onModel"
+            type="com.goodautodeal.goodautodeal.views.models.ValuationListModel" />
+        <variable
             name="onClick"
             type="com.goodautodeal.goodautodeal.views.activities.SellMyCarPartThreeActivity" />
     </data>
@@ -109,7 +112,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="24dp"
-            android:text="£5600"
+            android:text="@{'£'+onModel.privateAverage}"
             android:textColor="@android:color/black"
             android:textSize="@dimen/large"
             android:fontFamily="@font/avenir_black"
