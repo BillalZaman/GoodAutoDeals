@@ -86,7 +86,7 @@ public class SellMyCarPartThreeActivity extends AppCompatActivity {
                 if (response.getResp().getStatusCode().equalsIgnoreCase("success")) {
                     binding.setOnModel(response.getResp().getDataItems().getValuationList());
                 } else {
-                    uiHelper.showLongToastInCenter(SellMyCarPartThreeActivity.this, response.getMessage());
+                    uiHelper.showLongToastInCenter(SellMyCarPartThreeActivity.this, response.getResp().getMessage());
                 }
             }
         });

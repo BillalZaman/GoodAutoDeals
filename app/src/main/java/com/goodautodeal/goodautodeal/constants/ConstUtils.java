@@ -7,9 +7,10 @@ import android.content.Context;
  */
 public class ConstUtils {
 
-    public static final String ApiUserName ="do-ne";
-    public static final String ApiPassword="donepwd";
-    public static final String PHONE_NUMBER = "phoneNo";
+    public static final String APIAccessToken ="";
+    public static final String APITokenType ="Bearer";
+    public static final String USER_INFO = "userinfo";
+    public static final String USER_NAME = "userinfo";
 
     public static Context CONTEXT = null;
     public static final String PREF_NAMES = "user_preferences";

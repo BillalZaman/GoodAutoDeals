@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="onRegisterModel"
+            type="com.goodautodeal.goodautodeal.views.models.UserInfoModel" />
+        <variable
+            name="onRegisterClick"
+            type="com.goodautodeal.goodautodeal.views.activities.RegistrationActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,6 +25,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:padding="10dp"
+            android:onClick="@{(view)->onRegisterClick.onRegisterClick(view)}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
@@ -86,6 +92,7 @@
                         android:paddingStart="30dp"
                         android:paddingLeft="30dp"
                         android:paddingEnd="40dp"
+                        android:text="@={onRegisterModel.name}"
                         android:paddingRight="40dp"
                         android:textColor="@color/colorPrimary"
                         android:textSize="16sp" />
@@ -119,6 +126,155 @@
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
+                        android:text="@={onRegisterModel.email}"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtPhoneNumber"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/enter_your_phone_number"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtEmail">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:text="@={onRegisterModel.cellNo}"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtCity"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/hint_city"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtPhoneNumber">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:text="@={onRegisterModel.city}"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtPostCode"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/hint_post_code"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtCity">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPostCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:text="@={onRegisterModel.postCode}"
+                        android:paddingStart="30dp"
+                        android:paddingLeft="30dp"
+                        android:paddingEnd="40dp"
+                        android:paddingRight="40dp"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtAddress"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/hint_address"
+                    app:boxCornerRadiusBottomEnd="50dp"
+                    app:boxCornerRadiusBottomStart="50dp"
+                    app:boxCornerRadiusTopEnd="50dp"
+                    app:boxCornerRadiusTopStart="50dp"
+                    app:boxStrokeColor="@color/colorPrimary"
+                    app:errorEnabled="true"
+                    app:helperTextEnabled="true"
+                    app:helperTextTextColor="@color/colorPrimary"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtPostCode">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:inputType="textPersonName"
+                        android:maxLines="1"
+                        android:text="@={onRegisterModel.address}"
                         android:paddingStart="30dp"
                         android:paddingLeft="30dp"
                         android:paddingEnd="40dp"
@@ -146,7 +302,7 @@
                     app:helperTextTextColor="@color/colorPrimary"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txtEmail">
+                    app:layout_constraintTop_toBottomOf="@+id/txtAddress">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtPassword"
@@ -155,6 +311,7 @@
                         android:fontFamily="@font/poppins_medium"
                         android:inputType="textPassword"
                         android:maxLines="1"
+                        android:text="@={onRegisterModel.password}"
                         android:paddingStart="30dp"
                         android:paddingLeft="30dp"
                         android:paddingEnd="40dp"
@@ -214,6 +371,7 @@
                     android:textAllCaps="true"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/eight_btn"
+                    android:onClick="@{(view)->onRegisterClick.onRegisterClick(view)}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/txtPassword"
                     app:layout_constraintStart_toStartOf="@+id/txtPassword"

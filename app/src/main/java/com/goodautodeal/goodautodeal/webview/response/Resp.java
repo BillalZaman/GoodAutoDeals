@@ -19,6 +19,50 @@ public class Resp implements Serializable {
     @SerializedName("DataItems")
     @Expose
     private ValueYourCarModel dataItems;
+    @SerializedName("DataObject")
+    @Expose
+    private DataObject dataObject;
+    @SerializedName("status")
+    @Expose
+    private String success;
+    @SerializedName("code")
+    @Expose
+    private int code;
+    @SerializedName("Message")
+    @Expose
+    private String message;
+
+    public String getSuccess() {
+        return success;
+    }
+
+    public void setSuccess(String success) {
+        this.success = success;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public DataObject getDataObject() {
+        return dataObject;
+    }
+
+    public void setDataObject(DataObject dataObject) {
+        this.dataObject = dataObject;
+    }
 
     public String getStatusCode() {
         return statusCode;

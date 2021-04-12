@@ -31,10 +31,6 @@ public class WelcomeActivity extends AppCompatActivity {
     private void init() {
         binding.setOnLoginClick(this);
         isActivityName = getIntent().getStringExtra(ConstUtils.ValueKey);
-
-        if (isActivityName.equalsIgnoreCase("user")){
-            uiHelper.openActivityAndSendValue(this, LoginActivity.class,"user");
-        }
     }
 
     public void onLoginClick(View view){
@@ -44,11 +40,17 @@ public class WelcomeActivity extends AppCompatActivity {
                 break;
             }
             case R.id.btnSignup:{
-                uiHelper.openActivity(this, RegistrationActivity.class);
+                if (isActivityName.equalsIgnoreCase("user")){
+                    uiHelper.openActivityAndSendValue(this, RegistrationActivity.class,"user");
+                    finish();
+                }
                 break;
             }
             case R.id.btnLogin:{
-                uiHelper.openActivity(this, LoginActivity.class);
+                if (isActivityName.equalsIgnoreCase("user")){
+                    uiHelper.openActivityAndSendValue(this, LoginActivity.class,"user");
+                    finish();
+                }
                 break;
             }
         }

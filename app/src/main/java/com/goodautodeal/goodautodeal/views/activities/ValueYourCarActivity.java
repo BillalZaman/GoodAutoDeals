@@ -117,7 +117,7 @@ public class ValueYourCarActivity extends AppCompatActivity {
                 if (response.getResp().getStatusCode().equalsIgnoreCase("success")) {
                     binding.setOnModel(response.getResp().getDataItems().getValuationList());
                 } else {
-                    uiHelper.showLongToastInCenter(ValueYourCarActivity.this, response.getMessage());
+                    uiHelper.showLongToastInCenter(ValueYourCarActivity.this, response.getResp().getMessage());
                 }
             }
         });

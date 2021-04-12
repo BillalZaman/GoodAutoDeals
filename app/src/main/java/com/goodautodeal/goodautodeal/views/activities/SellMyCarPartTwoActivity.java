@@ -118,7 +118,7 @@ public class SellMyCarPartTwoActivity extends AppCompatActivity {
 //                    binding.setOnCarUrban(response.getResp().getDataItems().getAdConsumptionModel().getAdExtraUrbanModel());
 //                    binding.setOnCarUrbanCold(response.getResp().getDataItems().getAdConsumptionModel().getAdUrbanColdModel());
                 } else {
-                    uiHelper.showLongToastInCenter(SellMyCarPartTwoActivity.this, response.getMessage());
+                    uiHelper.showLongToastInCenter(SellMyCarPartTwoActivity.this, response.getResp().getMessage());
                 }
             }
         });

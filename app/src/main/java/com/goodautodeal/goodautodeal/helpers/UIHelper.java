@@ -5,7 +5,6 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
@@ -43,12 +42,10 @@ import android.view.animation.LayoutAnimationController;
 import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
-import com.goodautodeal.goodautodeal.R;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
 
 import java.io.BufferedReader;
@@ -77,7 +74,7 @@ public class UIHelper {
     public String getAuthKey() {
         byte[] data = new byte[0];
         try {
-            data = (ConstUtils.ApiUserName + ":" + ConstUtils.ApiPassword).getBytes("UTF-8");
+            data = (ConstUtils.APIAccessToken + ":" + ConstUtils.APITokenType).getBytes("UTF-8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -866,19 +863,6 @@ public class UIHelper {
 
     public void openActivityAndSendValue(Activity activity, Class<?> calledActivity, String value) {
         Intent myIntent = new Intent(activity, calledActivity);
-        myIntent.putExtra(ConstUtils.ValueKey, value);
-        activity.startActivity(myIntent);
-    }
-
-    public void openActivityAndSendMobileNo(Activity activity, Class<?> calledActivity, String number) {
-        Intent myIntent = new Intent(activity, calledActivity);
-        myIntent.putExtra(ConstUtils.PHONE_NUMBER, number);
-        activity.startActivity(myIntent);
-    }
-
-    public void openActivityAndSendMobileNoWithKey(Activity activity, Class<?> calledActivity, String number, String value) {
-        Intent myIntent = new Intent(activity, calledActivity);
-        myIntent.putExtra(ConstUtils.PHONE_NUMBER, number);
         myIntent.putExtra(ConstUtils.ValueKey, value);
         activity.startActivity(myIntent);
     }

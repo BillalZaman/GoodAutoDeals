@@ -12,8 +12,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.ActivityMainBinding;
 import com.goodautodeal.goodautodeal.fragments.FragmentNavigationDrawer;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.views.adapters.HomeSliderAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.PremiumAdapter;
@@ -30,13 +32,13 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements FragmentNavigationDrawer.FragmentDrawerListener {
+    @Inject
+    UIHelper uiHelper;
     private ActivityMainBinding binding;
     private FragmentNavigationDrawer fragmentNavigationDrawer;
     private HomeSliderAdapter homeSliderAdapter;
-    private ArrayList<PremiumAdsModel> data = new ArrayList<>();
+    private final ArrayList<PremiumAdsModel> data = new ArrayList<>();
     private PremiumAdapter premiumAdapter;
-    @Inject
-    UIHelper uiHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +62,8 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
 
     private void setRecyclerView() {
         premiumAdapter = new PremiumAdapter(this);
-        for (int i=0; i<=10; i++){
-            data.add(new PremiumAdsModel("BMW 520D M SPORT AUTO", "£900", "2020","1000cc", "500cc"));
+        for (int i = 0; i <= 10; i++) {
+            data.add(new PremiumAdsModel("BMW 520D M SPORT AUTO", "£900", "2020", "1000cc", "500cc"));
         }
         premiumAdapter.setData(data);
         binding.recyclerview.setAdapter(premiumAdapter);
@@ -129,8 +131,13 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             }
             case 1: {
                 // profile
-                uiHelper.openActivityAndSendValue(this, WelcomeActivity.class,"user");
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin,
+                        "").equalsIgnoreCase(ConstUtils.yes)) {
+                    uiHelper.openActivity(this, ProfileActivity.class);
+                } else {
+                    uiHelper.openActivityAndSendValue(this, WelcomeActivity.class, "user");
+                    binding.drawerLayout.closeDrawer(GravityCompat.START);
+                }
                 break;
             }
             case 2: {
@@ -147,11 +154,11 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             }
             case 4: {
                 // used car
-                uiHelper.openActivityAndSendValue(this, CarViewAdListingActivity.class,"used car");
+                uiHelper.openActivityAndSendValue(this, CarViewAdListingActivity.class, "used car");
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 5:{
+            case 5: {
                 // fav
                 uiHelper.openActivity(this, FavouriteActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
@@ -159,7 +166,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             }
             case 6: {
                 // value your car
-                uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class,"value your car");
+                uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class, "value your car");
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
@@ -181,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 10:{
+            case 10: {
                 // change password
                 uiHelper.openActivity(this, ChangePasswordActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
@@ -196,6 +203,13 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             case 12: {
                 // contact us
                 uiHelper.openActivity(this, ContactUsActivity.class);
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            }
+            case 13: {
+                // contact us
+                uiHelper.showLongToastInCenter(this, "User Logout Successfully");
+                PreferenceHelper.getInstance().clearAllPreferences();
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }

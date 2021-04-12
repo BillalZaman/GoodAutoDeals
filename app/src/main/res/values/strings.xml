@@ -49,6 +49,7 @@
         <item>@string/change_pasword</item>
         <item>@string/faq</item>
         <item>@string/contact_us</item>
+        <item>@string/logout</item>
     </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -86,4 +87,9 @@
     <string name="loading">Loading...</string>
     <string name="no_interrnet_connection">There is no or poor internet connection. Please connect to stable internet connection and try again.</string>
     <string name="choose_any_option">Choose any Option</string>
+    <string name="empty_email">Email Field cannot be Empty</string>
+    <string name="guest_user">Guest User</string>
+    <string name="hint_city">Enter your city</string>
+    <string name="hint_address">Enter your Address</string>
+    <string name="hint_post_code">Enter your post code</string>
 </resources>

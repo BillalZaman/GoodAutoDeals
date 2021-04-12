@@ -9,6 +9,7 @@ import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
+import com.goodautodeal.goodautodeal.views.models.UserInfoModel;
 import com.goodautodeal.goodautodeal.webview.ApiClient;
 import com.goodautodeal.goodautodeal.webview.ApiInterface.ApiInterface;
 import com.goodautodeal.goodautodeal.webview.response.Response;
@@ -24,13 +25,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 /**
- * Created by Bilal Zaman on 02/04/21.
+ * Created by Bilal Zaman on 12/04/21.
  */
-public class AdPostingRepository {
+public class UserRepository {
     private final Application application;
     private final MutableLiveData<ViewModelStatus> status;
     private final ViewModelStatus dataStatus;
@@ -42,7 +42,7 @@ public class AdPostingRepository {
     private MutableLiveData<Response> mainResponseLifeData = new MutableLiveData<>();
 
 
-    public AdPostingRepository(Application application) {
+    public UserRepository(Application application) {
         this.application = application;
         status = new MutableLiveData<>();
         dataStatus = new ViewModelStatus();
@@ -59,12 +59,28 @@ public class AdPostingRepository {
         return mainResponseLifeData;
     }
 
-    public Observable<Response> getCarDetail() {
+//    public Observable<Response> getRegister(String _email, String _password, String _name,
+//                                         String _city, String _postcode, String _cellno,
+//                                         String address) {
+
+    public Observable<Response> getRegister(UserInfoModel userInfoModel) {
         dataStatus.isLoadingList = true;
         status.setValue(dataStatus);
 
-        ApiInterface apiInterface = ApiClient.getValueYourCarClient().create(ApiInterface.class);
-        mainResponseObservable = apiInterface.getCarDetail();
+//        Map<String, Object> jsonParams = null;
+//        jsonParams = new ArrayMap<String, Object>();
+//        jsonParams.put("email", _email);
+//        jsonParams.put("name", _name);
+//        jsonParams.put("password", _password);
+//        jsonParams.put("city", _city);
+//        jsonParams.put("post_cody", _postcode);
+//        jsonParams.put("cell_no", _cellno);
+//        jsonParams.put("address", address);
+
+//        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
+//                (new JSONObject(jsonParams)).toString());
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.getRegister(userInfoModel);
 
         mainResponseLifeData = new MutableLiveData<>();
         compositeDisposable.add(mainResponseObservable
@@ -81,10 +97,10 @@ public class AdPostingRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
-                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        if (response.getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getMessage());
                         } else {
-                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                            uiHelper.showLongToastInCenter(application, response.getMessage());
                         }
                     }
 
@@ -101,22 +117,19 @@ public class AdPostingRepository {
         return Observable.just(response);
     }
 
-    public Observable<Response> valueYourCar() {
+    public Observable<Response> getLogin(String _email, String _password) {
         dataStatus.isLoadingList = true;
         status.setValue(dataStatus);
 
         Map<String, Object> jsonParams = null;
         jsonParams = new ArrayMap<String, Object>();
-//        jsonParams.put("key_VRM", vrm);
-//        jsonParams.put("key_mileage", mileage);
-
-        RequestBody _vrm = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), "AP10NBC");
-        RequestBody _mileage = RequestBody.create(MediaType.parse("application/json; charset=utf-8n"), "30,000");
+        jsonParams.put("email", _email);
+        jsonParams.put("password", _password);
 
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
                 (new JSONObject(jsonParams)).toString());
-        ApiInterface apiInterface = ApiClient.getValueYourCarClient().create(ApiInterface.class);
-        mainResponseObservable = apiInterface.valueYourCar();
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.getLogin(body);
 
         mainResponseLifeData = new MutableLiveData<>();
         compositeDisposable.add(mainResponseObservable
@@ -133,10 +146,10 @@ public class AdPostingRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
-                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        if (response.getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getMessage());
                         } else {
-                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                            uiHelper.showLongToastInCenter(application, response.getMessage());
                         }
                     }
 
@@ -157,3 +170,4 @@ public class AdPostingRepository {
         compositeDisposable.clear();
     }
 }
+

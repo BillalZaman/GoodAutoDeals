@@ -14,9 +14,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.FragmentNavigationDrawerBinding;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
+import com.goodautodeal.goodautodeal.helpers.SpecialSharedPrefHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.views.activities.LoginActivity;
 import com.goodautodeal.goodautodeal.views.adapters.NavigationDrawerAdapter;
@@ -31,9 +35,9 @@ import javax.inject.Inject;
  * Created by Bilal Zaman on 18/02/21.
  */
 public class FragmentNavigationDrawer extends Fragment {
-    private static Integer[] imgDrawer = {R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon,
+    private static final Integer[] imgDrawer = {R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon,
             R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon,
-            R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon};
+            R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon,  R.drawable.car_icon};
     private static String[] titles = null;
     @Inject
     UIHelper uiHelper;
@@ -96,7 +100,7 @@ public class FragmentNavigationDrawer extends Fragment {
         binding.btnLoginAsDealer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uiHelper.openActivityAndSendValue(getActivity(), LoginActivity.class,"dealer");
+                uiHelper.openActivityAndSendValue(getActivity(), LoginActivity.class, "dealer");
             }
         });
 
@@ -121,13 +125,12 @@ public class FragmentNavigationDrawer extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-//        if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin, ConstUtils.no).equalsIgnoreCase(ConstUtils.yes)) {
-//            binding.txtUser.setText(SpecialSharedPrefHelper.getInstance().getList(ConstUtils.userInfo).get(0).getName());
-//            Glide.with(getContext()).load(SpecialSharedPrefHelper.getInstance().getList(ConstUtils.userInfo).get(0).getProfileImage())
-//                    .placeholder(R.drawable.profile_placeholder).into(binding.imgUser);
-//        } else {
-//            binding.txtUser.setText(getResources().getString(R.string.guest_user));
-//        }
+        if (PreferenceHelper.getInstance().getString(ConstUtils.USER_NAME,"") != null) {
+            binding.txtUser.setText(PreferenceHelper.getInstance().getString(ConstUtils.USER_NAME,""));
+            Glide.with(context).load(R.drawable.ic_baseline_person_24).into(binding.imgUser);
+        } else {
+            binding.txtUser.setText(R.string.guest_user);
+        }
     }
 
     private void setNavigationRecyclerView() {
@@ -197,8 +200,8 @@ public class FragmentNavigationDrawer extends Fragment {
 
     static class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
 
-        private GestureDetector gestureDetector;
-        private ClickListener clickListener;
+        private final GestureDetector gestureDetector;
+        private final ClickListener clickListener;
 
         public RecyclerTouchListener(Context context, final RecyclerView recyclerView, final ClickListener clickListener) {
             this.clickListener = clickListener;

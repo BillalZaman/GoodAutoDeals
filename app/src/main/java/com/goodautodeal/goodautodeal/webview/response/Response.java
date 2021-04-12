@@ -1,6 +1,7 @@
 package com.goodautodeal.goodautodeal.webview.response;
 
 import com.goodautodeal.goodautodeal.views.models.AdDataItemsModel;
+import com.goodautodeal.goodautodeal.views.models.UserInfoModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -8,45 +9,27 @@ import com.google.gson.annotations.SerializedName;
  * Created by Bilal Zaman on 17/02/21.
  */
 public class Response {
-    @SerializedName("success")
+    @SerializedName("status")
     @Expose
-    private boolean success;
-    @SerializedName("status_code")
+    private String success;
+    @SerializedName("code")
     @Expose
     private int code;
-    @SerializedName("message")
+    @SerializedName("Message")
     @Expose
     private String message;
-
-    @SerializedName("data")
+    @SerializedName("DataObject")
     @Expose
     private DataObject dataObject;
-
-    public DataObject getDataObject() {
-        return dataObject;
-    }
-
     @SerializedName("Response")
     @Expose
     private Resp resp;
 
-    public Resp getResp() {
-        return resp;
-    }
-
-    public void setResp(Resp resp) {
-        this.resp = resp;
-    }
-
-    public void setDataObject(DataObject dataObject) {
-        this.dataObject = dataObject;
-    }
-
-    public boolean isSuccess() {
+    public String getSuccess() {
         return success;
     }
 
-    public void setSuccess(boolean success) {
+    public void setSuccess(String success) {
         this.success = success;
     }
 
@@ -64,5 +47,21 @@ public class Response {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public DataObject getDataObject() {
+        return dataObject;
+    }
+
+    public void setDataObject(DataObject dataObject) {
+        this.dataObject = dataObject;
+    }
+
+    public Resp getResp() {
+        return resp;
+    }
+
+    public void setResp(Resp resp) {
+        this.resp = resp;
     }
 }
