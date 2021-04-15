@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 
 public class SellMyCarPartTwoActivity extends AppCompatActivity {
+    private final ArrayList<CarDetailModel> data = new ArrayList<>();
     @Inject
     UIHelper uiHelper;
     ProgressDialog loading;
@@ -33,7 +34,6 @@ public class SellMyCarPartTwoActivity extends AppCompatActivity {
     @Inject
     Internet internet;
     private ActivitySellMyCarPartTwoBinding binding;
-    private final ArrayList<CarDetailModel> data = new ArrayList<>();
     private CarDetailAdapter adapter;
 
     @Override

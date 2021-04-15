@@ -1,26 +1,34 @@
 package com.goodautodeal.goodautodeal.views.activities;
 
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.ActivityMainBinding;
 import com.goodautodeal.goodautodeal.fragments.FragmentNavigationDrawer;
+import com.goodautodeal.goodautodeal.helpers.Internet;
 import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
+import com.goodautodeal.goodautodeal.viewmodels.AdPostingViewModel;
+import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
 import com.goodautodeal.goodautodeal.views.adapters.HomeSliderAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.PremiumAdapter;
 import com.goodautodeal.goodautodeal.views.models.PremiumAdsModel;
 import com.goodautodeal.goodautodeal.views.models.SliderItem;
+import com.goodautodeal.goodautodeal.webview.response.Response;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -32,24 +40,31 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements FragmentNavigationDrawer.FragmentDrawerListener {
+    private final ArrayList<PremiumAdsModel> data = new ArrayList<>();
     @Inject
     UIHelper uiHelper;
+    @Inject
+    Internet internet;
+    ProgressDialog loading;
+    AdPostingViewModel viewModel;
     private ActivityMainBinding binding;
     private FragmentNavigationDrawer fragmentNavigationDrawer;
     private HomeSliderAdapter homeSliderAdapter;
-    private final ArrayList<PremiumAdsModel> data = new ArrayList<>();
     private PremiumAdapter premiumAdapter;
+    private String bannerURL,bannerURL1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         ApplicationState.getApp().getApplicationComponent().injectUIHelper(this);
+        ApplicationState.getApp().getApplicationComponent().injectInternet(this);
+        viewModel = ViewModelProviders.of(this).get(AdPostingViewModel.class);
         init();
     }
 
     private void init() {
-        setupSlider();
+        getLoadingStatus();
         binding.setOnHomeClick(this);
         fragmentNavigationDrawer = (FragmentNavigationDrawer)
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
@@ -58,15 +73,66 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
 
         displayView(0);
         setRecyclerView();
+
+        if (internet.isNetworkAvailable(this)) {
+            viewModel.getSliderBanner();
+            getData();
+
+        } else {
+            uiHelper.showLongToastInCenter(this, getResources().getString(R.string.no_interrnet_connection));
+
+        }
+    }
+
+    private void getLoadingStatus() {
+        viewModel.getIsLoading().observe(this, new Observer<ViewModelStatus>() {
+            @Override
+            public void onChanged(@Nullable ViewModelStatus viewModelStatus) {
+                if (viewModelStatus.isLoadingList) {
+                    showLoading();
+                } else {
+                    hideLoading();
+                }
+            }
+        });
+    }
+
+    public void showLoading() {
+        loading = ProgressDialog.show(this, getString(R.string.loading), "", true, false);
+    }
+
+    public void hideLoading() {
+        loading.cancel();
     }
 
     private void setRecyclerView() {
         premiumAdapter = new PremiumAdapter(this);
         for (int i = 0; i <= 10; i++) {
-            data.add(new PremiumAdsModel("BMW 520D M SPORT AUTO", "£900", "2020", "1000cc", "500cc"));
+            data.add(new PremiumAdsModel(
+                    "BMW 520D M SPORT AUTO", "£900", "2020", "1000cc", "500cc"));
         }
         premiumAdapter.setData(data);
         binding.recyclerview.setAdapter(premiumAdapter);
+    }
+
+    private void getData() {
+        viewModel.getUserData().observe(this, new Observer<Response>() {
+            @Override
+            public void onChanged(@Nullable Response response) {
+                if (response.getResp().getCode() == 200 && response.getResp().getSuccess().equalsIgnoreCase("success")) {
+                    if (response.getResp().getDataObject().getSlider() != null) {
+                        bannerURL = "https://www.goodautodeals.com" + response.getResp().getDataObject().getSlider().get(0).getImage();
+                        bannerURL1 = "https://www.goodautodeals.com" + response.getResp().getDataObject().getSlider().get(1).getImage();
+                        Log.d("banner", bannerURL);
+                        setupSlider();
+                    } else {
+                        uiHelper.showLongToastInCenter(MainActivity.this, response.getResp().getMessage());
+                    }
+                } else {
+                    uiHelper.showLongToastInCenter(MainActivity.this, response.getResp().getMessage());
+                }
+            }
+        });
     }
 
     private void setupSlider() {
@@ -75,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         binding.imageSlider.setIndicatorAnimation(IndicatorAnimationType.WORM); //set indicator animation by using SliderLayout.IndicatorAnimations. :WORM or THIN_WORM or COLOR or DROP or FILL or NONE or SCALE or SCALE_DOWN or SLIDE and SWAP!!
         binding.imageSlider.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
         binding.imageSlider.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_BACK_AND_FORTH);
+
         binding.imageSlider.setIndicatorSelectedColor(Color.WHITE);
         binding.imageSlider.setIndicatorUnselectedColor(Color.GRAY);
         binding.imageSlider.setScrollTimeInSec(3);
@@ -95,11 +162,11 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         //dummy data
         for (int i = 0; i < 5; i++) {
             SliderItem sliderItem = new SliderItem();
-            sliderItem.setDescription("Slider Item " + i);
+//            sliderItem.setDescription("Slider Item " + i);
             if (i % 2 == 0) {
-                sliderItem.setImageUrl("https://m.atcdn.co.uk/ect/media/w1920/brand-store/audi/hero.jpg?auto=compress&cs=tinysrgb&h=1000&w=1260");
+                sliderItem.setImageUrl(bannerURL);
             } else {
-                sliderItem.setImageUrl("https://www.driving.co.uk/s3/st-driving-prod/uploads/2019/03/2019-Volkswagen-T-Roc-R-Line-01.jpg?auto=compress&cs=tinysrgb&h=1000&w=1260");
+                sliderItem.setImageUrl(bannerURL1);
             }
             sliderItemList.add(sliderItem);
         }
@@ -227,4 +294,12 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             }
         }
     }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        viewModel.clear();
+    }
+
 }

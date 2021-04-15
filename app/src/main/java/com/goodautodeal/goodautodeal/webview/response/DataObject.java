@@ -1,11 +1,13 @@
 package com.goodautodeal.goodautodeal.webview.response;
 
+import com.goodautodeal.goodautodeal.views.models.SliderModel;
 import com.goodautodeal.goodautodeal.views.models.UserInfoModel;
 import com.goodautodeal.goodautodeal.views.models.ValueYourCarModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Bilal Zaman on 17/02/21.
@@ -20,6 +22,9 @@ public class DataObject implements Serializable {
     @SerializedName("UserInfo")
     @Expose
     private UserInfoModel userInfo;
+    @SerializedName("Slider")
+    @Expose
+    private List<SliderModel> slider = null;
     @SerializedName("DataItems")
     @Expose
     private ValueYourCarModel valueYourCarModel;
@@ -54,5 +59,13 @@ public class DataObject implements Serializable {
 
     public void setValueYourCarModel(ValueYourCarModel valueYourCarModel) {
         this.valueYourCarModel = valueYourCarModel;
+    }
+
+    public List<SliderModel> getSlider() {
+        return slider;
+    }
+
+    public void setSlider(List<SliderModel> slider) {
+        this.slider = slider;
     }
 }

@@ -34,6 +34,10 @@ public class AdPostingViewModel extends AndroidViewModel {
         adPostingRepository.valueYourCar();
     }
 
+    public void getSliderBanner() {
+        adPostingRepository.getSliderBanner();
+    }
+
     public LiveData<Response> getUserData() {
         return adPostingRepository.getMainResponseLifeData();
     }

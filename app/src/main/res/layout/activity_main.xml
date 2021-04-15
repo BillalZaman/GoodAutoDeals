@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="onHomeClick"
             type="com.goodautodeal.goodautodeal.views.activities.MainActivity" />
@@ -22,14 +23,14 @@
             <com.smarteist.autoimageslider.SliderView
                 android:id="@+id/imageSlider"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="200dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:sliderAnimationDuration="600"
+                app:sliderAnimationDuration="300"
                 app:sliderAutoCycleDirection="back_and_forth"
                 app:sliderAutoCycleEnabled="true"
-                app:sliderIndicatorAnimationDuration="600"
+                app:sliderIndicatorAnimationDuration="300"
                 app:sliderIndicatorGravity="center_horizontal|bottom"
                 app:sliderIndicatorMargin="15dp"
                 app:sliderIndicatorOrientation="horizontal"

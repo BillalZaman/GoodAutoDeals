@@ -33,6 +33,8 @@ import dagger.Component;
 @Component(modules = {InternetModule.class, UIHelperModule.class})
 public interface ApplicationComponent {
 
+    void injectInternet(MainActivity loginActivity);
+
     void injectInternet(LoginActivity loginActivity);
 
     void injectInternet(RegistrationActivity loginActivity);
