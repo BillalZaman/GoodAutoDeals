@@ -1,5 +1,6 @@
 package com.goodautodeal.goodautodeal.webview.response;
 
+import com.goodautodeal.goodautodeal.views.models.AdPremiumsModel;
 import com.goodautodeal.goodautodeal.views.models.SliderModel;
 import com.goodautodeal.goodautodeal.views.models.UserInfoModel;
 import com.goodautodeal.goodautodeal.views.models.ValueYourCarModel;
@@ -7,6 +8,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,6 +27,9 @@ public class DataObject implements Serializable {
     @SerializedName("Slider")
     @Expose
     private List<SliderModel> slider = null;
+    @SerializedName("PremimumAds")
+    @Expose
+    private ArrayList<AdPremiumsModel> premimumAds = null;
     @SerializedName("DataItems")
     @Expose
     private ValueYourCarModel valueYourCarModel;
@@ -67,5 +72,13 @@ public class DataObject implements Serializable {
 
     public void setSlider(List<SliderModel> slider) {
         this.slider = slider;
+    }
+
+    public ArrayList<AdPremiumsModel> getPremimumAds() {
+        return premimumAds;
+    }
+
+    public void setPremimumAds(ArrayList<AdPremiumsModel> premimumAds) {
+        this.premimumAds = premimumAds;
     }
 }

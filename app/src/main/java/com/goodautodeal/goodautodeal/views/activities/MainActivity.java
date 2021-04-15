@@ -26,7 +26,7 @@ import com.goodautodeal.goodautodeal.viewmodels.AdPostingViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
 import com.goodautodeal.goodautodeal.views.adapters.HomeSliderAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.PremiumAdapter;
-import com.goodautodeal.goodautodeal.views.models.PremiumAdsModel;
+import com.goodautodeal.goodautodeal.views.models.AdPremiumsModel;
 import com.goodautodeal.goodautodeal.views.models.SliderItem;
 import com.goodautodeal.goodautodeal.webview.response.Response;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
@@ -40,18 +40,18 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements FragmentNavigationDrawer.FragmentDrawerListener {
-    private final ArrayList<PremiumAdsModel> data = new ArrayList<>();
     @Inject
     UIHelper uiHelper;
     @Inject
     Internet internet;
     ProgressDialog loading;
     AdPostingViewModel viewModel;
+    private ArrayList<AdPremiumsModel> data = new ArrayList<>();
     private ActivityMainBinding binding;
     private FragmentNavigationDrawer fragmentNavigationDrawer;
     private HomeSliderAdapter homeSliderAdapter;
     private PremiumAdapter premiumAdapter;
-    private String bannerURL,bannerURL1;
+    private String bannerURL, bannerURL1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +70,12 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 getSupportFragmentManager().findFragmentById(R.id.fragment_navigation_drawer);
         fragmentNavigationDrawer.setUp(R.id.fragment_navigation_drawer, (DrawerLayout) findViewById(R.id.drawer_layout));
         fragmentNavigationDrawer.setDrawerListener(this);
-
+        premiumAdapter = new PremiumAdapter(this);
         displayView(0);
-        setRecyclerView();
 
         if (internet.isNetworkAvailable(this)) {
             viewModel.getSliderBanner();
+            viewModel.getPremiumAds();
             getData();
 
         } else {
@@ -107,11 +107,11 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
 
     private void setRecyclerView() {
         premiumAdapter = new PremiumAdapter(this);
-        for (int i = 0; i <= 10; i++) {
-            data.add(new PremiumAdsModel(
-                    "BMW 520D M SPORT AUTO", "£900", "2020", "1000cc", "500cc"));
-        }
-        premiumAdapter.setData(data);
+//        for (int i = 0; i <= 10; i++) {
+//            data.add(new PremiumAdsModel(
+//                    "BMW 520D M SPORT AUTO", "£900", "2020", "1000cc", "500cc"));
+//        }
+//        premiumAdapter.setData(data);
         binding.recyclerview.setAdapter(premiumAdapter);
     }
 
@@ -119,14 +119,21 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         viewModel.getUserData().observe(this, new Observer<Response>() {
             @Override
             public void onChanged(@Nullable Response response) {
-                if (response.getResp().getCode() == 200 && response.getResp().getSuccess().equalsIgnoreCase("success")) {
+                if (response.getResp().getCode() == 200 &&
+                        response.getResp().getSuccess().equalsIgnoreCase("success")) {
                     if (response.getResp().getDataObject().getSlider() != null) {
                         bannerURL = "https://www.goodautodeals.com" + response.getResp().getDataObject().getSlider().get(0).getImage();
                         bannerURL1 = "https://www.goodautodeals.com" + response.getResp().getDataObject().getSlider().get(1).getImage();
                         Log.d("banner", bannerURL);
                         setupSlider();
-                    } else {
-                        uiHelper.showLongToastInCenter(MainActivity.this, response.getResp().getMessage());
+
+                    } else if (response.getResp().getDataObject().getPremimumAds() != null) {
+//                    premiumAdapter = new PremiumAdapter(this);
+
+                        data = response.getResp().getDataObject().getPremimumAds();
+                        premiumAdapter.setData(data);
+                        binding.recyclerview.setAdapter(premiumAdapter);
+
                     }
                 } else {
                     uiHelper.showLongToastInCenter(MainActivity.this, response.getResp().getMessage());
@@ -294,7 +301,6 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             }
         }
     }
-
 
     @Override
     protected void onDestroy() {

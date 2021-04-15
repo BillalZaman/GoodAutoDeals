@@ -52,7 +52,7 @@ public class CarViewAdListingActivity extends AppCompatActivity {
             data.add(new PremiumAdsModel("BMW 520D M SPORT AUTO", "£900", "2020",
                     "1000cc", "500cc"));
         }
-        premiumAdapter.setData(data);
+//        premiumAdapter.setData(data);
         binding.recyclerview.setAdapter(premiumAdapter);
     }
 
