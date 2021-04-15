@@ -2,7 +2,6 @@ package com.goodautodeal.goodautodeal.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,37 +11,34 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
-import com.goodautodeal.goodautodeal.databinding.ItemListPremiumadsBinding;
+import com.goodautodeal.goodautodeal.databinding.ItemListGeneralAdViewBinding;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.views.activities.CarAdDetailActivity;
-import com.goodautodeal.goodautodeal.views.models.AdPremiumsModel;
+import com.goodautodeal.goodautodeal.views.models.AdGeneralViewModel;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
 /**
- * Created by Bilal Zaman on 18/02/21.
+ * Created by Bilal Zaman on 15/04/21.
  */
-public class PremiumAdapter extends RecyclerView.Adapter<PremiumAdapter.ViewHolder> {
+public class GeneralAdViewAdapter extends RecyclerView.Adapter<GeneralAdViewAdapter.ViewHolder> {
     @Inject
     UIHelper uiHelper;
     int widthdp, heightdp;
     private final Context context;
-    private ArrayList<AdPremiumsModel> data;
+    private ArrayList<AdGeneralViewModel> data;
 
-    public PremiumAdapter(Context context) {
+    public GeneralAdViewAdapter(Context context) {
         this.context = context;
         this.data = new ArrayList<>();
         ApplicationState.getApp().getApplicationComponent().injectUIHelper(this);
-        widthdp = (int) (94 * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT));
-        heightdp = (int) (69.5 * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
-    public void setData(ArrayList<AdPremiumsModel> _data) {
+    public void setData(ArrayList<AdGeneralViewModel> _data) {
         this.data = _data;
         notifyDataSetChanged();
     }
@@ -50,8 +46,8 @@ public class PremiumAdapter extends RecyclerView.Adapter<PremiumAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemListPremiumadsBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
-                R.layout.item_list_premiumads, parent, false);
+        ItemListGeneralAdViewBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+                R.layout.item_list_general_ad_view, parent, false);
         return new ViewHolder(binding);
     }
 
@@ -60,11 +56,11 @@ public class PremiumAdapter extends RecyclerView.Adapter<PremiumAdapter.ViewHold
         holder.binding.setModel(data.get(position));
         Glide.with(context)
                 .load("https://goodautodeals.com" + data.get(position).getAdimage().get(0).getPath())
-                .placeholder(R.drawable.homebanner).apply(new RequestOptions().override(widthdp, heightdp))
-                .into(holder.binding.imgAd);
+                .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
 
         holder.binding.txtYear.setText(data.get(position).getYear() + " | " + data.get(position).getEngine() +
                 " | " + data.get(position).getMileage());
+
         holder.binding.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,9 +75,9 @@ public class PremiumAdapter extends RecyclerView.Adapter<PremiumAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ItemListPremiumadsBinding binding;
+        ItemListGeneralAdViewBinding binding;
 
-        public ViewHolder(@NonNull ItemListPremiumadsBinding itemView) {
+        public ViewHolder(@NonNull ItemListGeneralAdViewBinding itemView) {
             super(itemView.getRoot());
             this.binding = itemView;
         }

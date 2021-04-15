@@ -39,6 +39,9 @@ public interface ApiInterface {
     @GET(Request.PREMIUM_ADS)
     Observable<Response> getPremiumAds();
 
+    @GET(Request.NEW_CAR)
+    Observable<Response> getNewCar();
+
     interface Request {
         String LOGIN = "login";
         String REGISTER = "register";
@@ -47,5 +50,6 @@ public interface ApiInterface {
         String GET_CAR_DETAIL = "VehicleData?v=2&api_nullitems=1&auth_apikey=ac3f0001-4f94-4c53-987c-e481980d4bbd&user_tag=&key_VRM=" + ConstUtils.VRM;
         String SLIDER_BANNER = "slider/banners";
         String PREMIUM_ADS = "premimum/ads";
+        String NEW_CAR = "new/cars";
     }
 }

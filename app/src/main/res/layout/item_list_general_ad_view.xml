@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.goodautodeal.goodautodeal.views.models.AdGeneralViewModel" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:elevation="12dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgAd"
+                android:layout_width="170dp"
+                android:layout_height="130dp"
+                android:adjustViewBounds="false"
+                android:cropToPadding="false"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/homebanner" />
+
+            <TextView
+                android:id="@+id/txtAdName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:hint="FORD FIESTA EDGE 60"
+                android:text="@{model.title}"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/textnormal"
+                app:layout_constraintEnd_toStartOf="@+id/txtPrice"
+                app:layout_constraintStart_toEndOf="@+id/imgAd"
+                app:layout_constraintTop_toTopOf="@+id/imgAd" />
+
+            <TextView
+                android:id="@+id/txtPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppins_bold"
+                android:hint="£6000"
+                android:text="@{'£'+Integer.toString(model.price)}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/textnormal"
+                app:layout_constraintBottom_toBottomOf="@+id/txtAdName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtAdName" />
+
+
+            <TextView
+                android:id="@+id/txtYear"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center|start"
+                android:textSize="@dimen/textsmall"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="@+id/txtPrice"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/txtAdName"
+                app:layout_constraintTop_toBottomOf="@+id/txtAdName" />
+
+            <CheckBox
+                android:id="@+id/compare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:gravity="center|start"
+                android:padding="5dp"
+                android:text="compare"
+                android:textSize="@dimen/textnormal"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/imgHeart"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imgHeart" />
+
+            <ImageView
+                android:id="@+id/imgHeart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:padding="5dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtYear"
+                app:srcCompat="@drawable/fav" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,5 +1,6 @@
 package com.goodautodeal.goodautodeal.webview.response;
 
+import com.goodautodeal.goodautodeal.views.models.AdGeneralViewModel;
 import com.goodautodeal.goodautodeal.views.models.AdPremiumsModel;
 import com.goodautodeal.goodautodeal.views.models.SliderModel;
 import com.goodautodeal.goodautodeal.views.models.UserInfoModel;
@@ -30,6 +31,9 @@ public class DataObject implements Serializable {
     @SerializedName("PremimumAds")
     @Expose
     private ArrayList<AdPremiumsModel> premimumAds = null;
+    @SerializedName("AdPosts")
+    @Expose
+    private ArrayList<AdGeneralViewModel> newCarAds = null;
     @SerializedName("DataItems")
     @Expose
     private ValueYourCarModel valueYourCarModel;
@@ -80,5 +84,13 @@ public class DataObject implements Serializable {
 
     public void setPremimumAds(ArrayList<AdPremiumsModel> premimumAds) {
         this.premimumAds = premimumAds;
+    }
+
+    public ArrayList<AdGeneralViewModel> getNewCarAds() {
+        return newCarAds;
+    }
+
+    public void setNewCarAds(ArrayList<AdGeneralViewModel> newCarAds) {
+        this.newCarAds = newCarAds;
     }
 }

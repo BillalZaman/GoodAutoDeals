@@ -22,6 +22,7 @@ import com.goodautodeal.goodautodeal.views.activities.SplashActivity;
 import com.goodautodeal.goodautodeal.views.activities.ValueYourCarActivity;
 import com.goodautodeal.goodautodeal.views.activities.WelcomeActivity;
 import com.goodautodeal.goodautodeal.views.adapters.DealerDashboardAdapter;
+import com.goodautodeal.goodautodeal.views.adapters.GeneralAdViewAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.PackagesAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.PremiumAdapter;
 
@@ -32,6 +33,8 @@ import dagger.Component;
 @Singleton
 @Component(modules = {InternetModule.class, UIHelperModule.class})
 public interface ApplicationComponent {
+
+    void injectInternet(CarViewAdListingActivity loginActivity);
 
     void injectInternet(MainActivity loginActivity);
 
@@ -91,4 +94,5 @@ public interface ApplicationComponent {
 
     void injectUIHelper(RegistrationActivity adPostingRepository);
 
+    void injectUIHelper(GeneralAdViewAdapter adPostingRepository);
 }

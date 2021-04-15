@@ -237,6 +237,48 @@ public class AdPostingRepository {
         return Observable.just(response);
     }
 
+    public Observable<Response> getNewCar() {
+        dataStatus.isLoadingList = true;
+        status.setValue(dataStatus);
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.getNewCar();
+
+        mainResponseLifeData = new MutableLiveData<>();
+        compositeDisposable.add(mainResponseObservable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Response>() {
+                    @Override
+                    public void onNext(Response _response) {
+                        response = _response;
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        } else {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+//                        Toast.makeText(application, "Success" + response.getMessage(), Toast.LENGTH_SHORT).show();
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        mainResponseLifeData.setValue(response);
+
+                    }
+                }));
+
+        return Observable.just(response);
+    }
+
     public void clear() {
         compositeDisposable.clear();
     }
