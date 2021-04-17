@@ -3,11 +3,13 @@ package com.goodautodeal.goodautodeal.webview.ApiInterface;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.views.models.UserInfoModel;
 import com.goodautodeal.goodautodeal.webview.response.Response;
+import com.google.android.gms.auth.api.Auth;
 
 import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -42,6 +44,12 @@ public interface ApiInterface {
     @GET(Request.NEW_CAR)
     Observable<Response> getNewCar();
 
+    @GET(Request.USED_CAR)
+    Observable<Response> getUsedCar();
+
+    @POST(Request.CHANGE_PASSWORD)
+    Observable<Response> getChangePassword(@Header("Authorization") String authkey, @Body RequestBody body);
+
     interface Request {
         String LOGIN = "login";
         String REGISTER = "register";
@@ -51,5 +59,7 @@ public interface ApiInterface {
         String SLIDER_BANNER = "slider/banners";
         String PREMIUM_ADS = "premimum/ads";
         String NEW_CAR = "new/cars";
+        String USED_CAR = "used/cars";
+        String CHANGE_PASSWORD = "user/change_password";
     }
 }

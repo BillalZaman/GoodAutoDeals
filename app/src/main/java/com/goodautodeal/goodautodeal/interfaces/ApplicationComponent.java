@@ -4,6 +4,7 @@ import com.goodautodeal.goodautodeal.respository.AdPostingRepository;
 import com.goodautodeal.goodautodeal.respository.UserRepository;
 import com.goodautodeal.goodautodeal.views.activities.AdsManagementActivity;
 import com.goodautodeal.goodautodeal.views.activities.CarViewAdListingActivity;
+import com.goodautodeal.goodautodeal.views.activities.ChangePasswordActivity;
 import com.goodautodeal.goodautodeal.views.activities.DealerMainActivity;
 import com.goodautodeal.goodautodeal.views.activities.LoginActivity;
 import com.goodautodeal.goodautodeal.views.activities.PackagesActivity;
@@ -21,6 +22,7 @@ import com.goodautodeal.goodautodeal.views.activities.SellMyCarPartTwoActivity;
 import com.goodautodeal.goodautodeal.views.activities.SplashActivity;
 import com.goodautodeal.goodautodeal.views.activities.ValueYourCarActivity;
 import com.goodautodeal.goodautodeal.views.activities.WelcomeActivity;
+import com.goodautodeal.goodautodeal.views.adapters.AdFeaturedAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.DealerDashboardAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.GeneralAdViewAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.PackagesAdapter;
@@ -33,6 +35,8 @@ import dagger.Component;
 @Singleton
 @Component(modules = {InternetModule.class, UIHelperModule.class})
 public interface ApplicationComponent {
+
+    void injectInternet(ChangePasswordActivity loginActivity);
 
     void injectInternet(CarViewAdListingActivity loginActivity);
 
@@ -95,4 +99,8 @@ public interface ApplicationComponent {
     void injectUIHelper(RegistrationActivity adPostingRepository);
 
     void injectUIHelper(GeneralAdViewAdapter adPostingRepository);
+
+    void injectUIHelper(AdFeaturedAdapter adPostingRepository);
+
+    void injectUIHelper(ChangePasswordActivity adPostingRepository);
 }

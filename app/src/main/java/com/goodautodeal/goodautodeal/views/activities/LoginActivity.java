@@ -18,7 +18,6 @@ import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.ActivityLoginBinding;
 import com.goodautodeal.goodautodeal.helpers.Internet;
 import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
-import com.goodautodeal.goodautodeal.helpers.SpecialSharedPrefHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.UserViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
@@ -37,6 +36,7 @@ import javax.inject.Inject;
 
 public class LoginActivity extends AppCompatActivity {
     private static final int SIGN_IN = 100;
+    private final ArrayList<UserInfoModel> userInfoModel = new ArrayList<>();
     @Inject
     UIHelper uiHelper;
     @Inject
@@ -46,7 +46,6 @@ public class LoginActivity extends AppCompatActivity {
     private String isActivityName;
     private GoogleSignInClient signInClient;
     private UserViewModel userViewModel;
-    private final ArrayList<UserInfoModel> userInfoModel = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -59,10 +59,6 @@ public class UserRepository {
         return mainResponseLifeData;
     }
 
-//    public Observable<Response> getRegister(String _email, String _password, String _name,
-//                                         String _city, String _postcode, String _cellno,
-//                                         String address) {
-
     public Observable<Response> getRegister(UserInfoModel userInfoModel) {
         dataStatus.isLoadingList = true;
         status.setValue(dataStatus);
@@ -130,6 +126,55 @@ public class UserRepository {
                 (new JSONObject(jsonParams)).toString());
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mainResponseObservable = apiInterface.getLogin(body);
+
+        mainResponseLifeData = new MutableLiveData<>();
+        compositeDisposable.add(mainResponseObservable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Response>() {
+                    @Override
+                    public void onNext(Response _response) {
+                        response = _response;
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        if (response.getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        } else {
+                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+//                        Toast.makeText(application, "Success" + response.getMessage(), Toast.LENGTH_SHORT).show();
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        mainResponseLifeData.setValue(response);
+
+                    }
+                }));
+
+        return Observable.just(response);
+    }
+
+    public Observable<Response> getChangePassword(String oldPassword, String newPassword) {
+        dataStatus.isLoadingList = true;
+        status.setValue(dataStatus);
+
+        Map<String, Object> jsonParams = null;
+        jsonParams = new ArrayMap<String, Object>();
+        jsonParams.put("old_password", oldPassword);
+        jsonParams.put("new_password", newPassword);
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
+                (new JSONObject(jsonParams)).toString());
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.getChangePassword(uiHelper.getAuthKey(),body);
 
         mainResponseLifeData = new MutableLiveData<>();
         compositeDisposable.add(mainResponseObservable

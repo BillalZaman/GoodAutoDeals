@@ -31,14 +31,12 @@ public class UserViewModel extends AndroidViewModel {
         userRepository.getLogin(email, password);
     }
 
-//    public void getRegister(String _name, String _email, String _cellno,
-//                            String _city, String _postcode, String address,
-//                            String _password) {
-//        userRepository.getRegister(_name, _email, _cellno, _city, _postcode, address, _password);
-//    }
-
     public void getRegister(UserInfoModel userInfoModel) {
         userRepository.getRegister(userInfoModel);
+    }
+
+    public void getChangePassword(String oldPassword, String newPassword) {
+        userRepository.getChangePassword(oldPassword, newPassword);
     }
 
     public LiveData<Response> getUserData() {

@@ -18,7 +18,10 @@ import com.goodautodeal.goodautodeal.helpers.Internet;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.AdPostingViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
+import com.goodautodeal.goodautodeal.views.adapters.AdFeaturedAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.GeneralAdViewAdapter;
+import com.goodautodeal.goodautodeal.views.adapters.PremiumAdapter;
+import com.goodautodeal.goodautodeal.views.models.AdFeatureModel;
 import com.goodautodeal.goodautodeal.views.models.AdGeneralViewModel;
 import com.goodautodeal.goodautodeal.views.models.AdPremiumsModel;
 import com.goodautodeal.goodautodeal.webview.response.Response;
@@ -36,7 +39,9 @@ public class CarViewAdListingActivity extends AppCompatActivity {
     AdPostingViewModel viewModel;
     private ActivityCarViewAdListingBinding binding;
     private ArrayList<AdGeneralViewModel> data = new ArrayList<>();
+    private ArrayList<AdFeatureModel> data_Featured = new ArrayList<>();
     private GeneralAdViewAdapter generalAdViewAdapter;
+    private AdFeaturedAdapter adFeaturedAdapter;
     private String isActivityName;
 
     @Override
@@ -54,9 +59,18 @@ public class CarViewAdListingActivity extends AppCompatActivity {
         getLoadingStatus();
         isActivityName = getIntent().getStringExtra(ConstUtils.ValueKey);
         generalAdViewAdapter = new GeneralAdViewAdapter(this);
+        adFeaturedAdapter = new AdFeaturedAdapter(this);
 
         if (isActivityName.equalsIgnoreCase("used car")) {
             binding.textView.setText(getString(R.string.used_car));
+            if (internet.isNetworkAvailable(this)) {
+                viewModel.getUsedCar();
+                getData();
+
+            } else {
+                uiHelper.showLongToastInCenter(this, getResources().getString(R.string.no_interrnet_connection));
+
+            }
         } else {
             binding.textView.setText(getString(R.string.new_car));
             if (internet.isNetworkAvailable(this)) {
@@ -99,10 +113,17 @@ public class CarViewAdListingActivity extends AppCompatActivity {
                 if (response.getResp().getCode() == 200 &&
                         response.getResp().getSuccess().equalsIgnoreCase("success")) {
 
+                    if (response.getResp().getDataObject().getFeatureAd() != null) {
+                        data_Featured = response.getResp().getDataObject().getFeatureAd();
+                        adFeaturedAdapter.setData(data_Featured);
+                        binding.recyclerFeatured.setAdapter(adFeaturedAdapter);
+
+                    }
+                    if (response.getResp().getDataObject().getNewCarAds() != null) {
                         data = response.getResp().getDataObject().getNewCarAds();
                         generalAdViewAdapter.setData(data);
                         binding.recyclerview.setAdapter(generalAdViewAdapter);
-
+                    }
                 } else {
                     uiHelper.showLongToastInCenter(CarViewAdListingActivity.this, response.getResp().getMessage());
                 }
