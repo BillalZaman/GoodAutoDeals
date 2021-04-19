@@ -39,6 +39,14 @@ public class UserViewModel extends AndroidViewModel {
         userRepository.getChangePassword(oldPassword, newPassword);
     }
 
+    public void getUserProfile() {
+        userRepository.getUser();
+    }
+
+    public void getDealerList() {
+        userRepository.getDealerList();
+    }
+
     public LiveData<Response> getUserData() {
         return userRepository.getMainResponseLifeData();
     }

@@ -135,15 +135,11 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable Response response) {
                 if (response.getResp().getCode() == 1 && response.getResp().getMessage().equalsIgnoreCase("success")) {
+                    PreferenceHelper.getInstance().setString(ConstUtils.APIAccessToken, response.getResp().getDataObject().getToken());
                     if (response.getResp().getDataObject().getUserInfo() != null) {
-                        PreferenceHelper.getInstance().setString(ConstUtils.APIAccessToken, response.getResp().getDataObject().getToken());
                         PreferenceHelper.getInstance().setString(ConstUtils.USER_NAME, response.getResp().getDataObject().getUserInfo().getName());
                         uiHelper.openActivity(LoginActivity.this, MainActivity.class);
                         PreferenceHelper.getInstance().setString(ConstUtils.isLogin, ConstUtils.yes);
-                        finish();
-                    } else {
-                        uiHelper.showLongToastInCenter(LoginActivity.this, response.getResp().getMessage());
-                        finish();
                     }
                 } else {
                     uiHelper.showLongToastInCenter(LoginActivity.this, response.getResp().getMessage());

@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         ApplicationState.getApp().getApplicationComponent().injectUIHelper(this);
         ApplicationState.getApp().getApplicationComponent().injectInternet(this);
         viewModel = ViewModelProviders.of(this).get(AdPostingViewModel.class);
+
         init();
     }
 
@@ -72,6 +73,9 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         fragmentNavigationDrawer.setDrawerListener(this);
         premiumAdapter = new PremiumAdapter(this);
         displayView(0);
+
+        Log.d("token",PreferenceHelper.getInstance().getAppString(ConstUtils.APIAccessToken,""));
+        Log.d("token",ConstUtils.APIAccessToken);
 
         if (internet.isNetworkAvailable(this)) {
             viewModel.getSliderBanner();
@@ -205,13 +209,14 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             }
             case 1: {
                 // profile
-                if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin,
-                        "").equalsIgnoreCase(ConstUtils.yes)) {
-                    uiHelper.openActivity(this, ProfileActivity.class);
-                } else {
-                    uiHelper.openActivityAndSendValue(this, WelcomeActivity.class, "user");
-                    binding.drawerLayout.closeDrawer(GravityCompat.START);
-                }
+                uiHelper.openActivity(this, ProfileActivity.class);
+//                if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin,
+//                        "").equalsIgnoreCase(ConstUtils.yes)) {
+//                    uiHelper.openActivity(this, ProfileActivity.class);
+//                } else {
+//                    uiHelper.openActivityAndSendValue(this, WelcomeActivity.class, "user");
+//                    binding.drawerLayout.closeDrawer(GravityCompat.START);
+//                }
                 break;
             }
             case 2: {
@@ -284,6 +289,8 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 // contact us
                 uiHelper.showLongToastInCenter(this, "User Logout Successfully");
                 PreferenceHelper.getInstance().clearAllPreferences();
+                Log.d("logout", PreferenceHelper.getInstance().getAppString(ConstUtils.APIAccessToken,"")
+                + ConstUtils.APIAccessToken);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }

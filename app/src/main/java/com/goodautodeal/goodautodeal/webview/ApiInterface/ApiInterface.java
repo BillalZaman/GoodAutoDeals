@@ -26,8 +26,8 @@ public interface ApiInterface {
     @POST(Request.REGISTER)
     Observable<Response> getRegister(@Body UserInfoModel body);
 
-    @POST(Request.GET_USER)
-    Observable<Response> getUser(@Body Request body);
+    @GET(Request.GET_USER)
+    Observable<Response> getUser(@Header("Authorization") String authkey);
 
     @GET(Request.VALUE_YOUR_CAR)
     Observable<Response> valueYourCar();
@@ -50,6 +50,9 @@ public interface ApiInterface {
     @POST(Request.CHANGE_PASSWORD)
     Observable<Response> getChangePassword(@Header("Authorization") String authkey, @Body RequestBody body);
 
+    @GET(Request.DEALER_LIST)
+    Observable<Response> GetDealerList();
+
     interface Request {
         String LOGIN = "login";
         String REGISTER = "register";
@@ -61,5 +64,6 @@ public interface ApiInterface {
         String NEW_CAR = "new/cars";
         String USED_CAR = "used/cars";
         String CHANGE_PASSWORD = "user/change_password";
+        String DEALER_LIST = "dealers/list";
     }
 }

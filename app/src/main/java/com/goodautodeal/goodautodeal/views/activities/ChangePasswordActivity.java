@@ -44,8 +44,8 @@ public class ChangePasswordActivity extends AppCompatActivity {
     }
 
     private void init() {
-        binding.setOnClick(this);
         getLoadingStatus();
+        binding.setOnClick(this);
     }
 
     private void getLoadingStatus() {
@@ -85,8 +85,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
                     } else {
                         uiHelper.showLongToastInCenter(this, getString(R.string.no_interrnet_connection));
                     }
-                    Toast.makeText(this, "Your Password has been changed. Please logged in again to continue", Toast.LENGTH_SHORT).show();
-                    finish();
                 }
                 break;
             }
@@ -97,13 +95,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
         userViewModel.getUserData().observe(this, new Observer<Response>() {
             @Override
             public void onChanged(@Nullable Response response) {
-                if (response.getResp().getCode() == 200 &&
-                        response.getResp().getMessage().equalsIgnoreCase("success")) {
-
-
+                if (response.getResp().getCode() == 1 &&
+                        response.getResp().getSuccess().equalsIgnoreCase("success")) {
+                    uiHelper.showLongToastInCenter(ChangePasswordActivity.this, response.getResp().getMessage());
                 } else {
                     uiHelper.showLongToastInCenter(ChangePasswordActivity.this, response.getResp().getMessage());
-                    finish();
                 }
             }
         });

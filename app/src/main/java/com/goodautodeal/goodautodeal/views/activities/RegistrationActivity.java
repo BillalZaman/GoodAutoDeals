@@ -95,11 +95,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     if (response.getResp().getDataObject().equals("")) {
                         uiHelper.openActivity(RegistrationActivity.this, LoginActivity.class);
                         finish();
-                    } else {
-                        uiHelper.showLongToastInCenter(RegistrationActivity.this, response.getResp().getMessage());
-                        finish();
                     }
-
                 } else {
                     uiHelper.showLongToastInCenter(RegistrationActivity.this, response.getResp().getMessage());
                     finish();

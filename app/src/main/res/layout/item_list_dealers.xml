@@ -7,6 +7,9 @@
         <variable
             name="onModel"
             type="com.goodautodeal.goodautodeal.views.models.DealersModel" />
+        <variable
+            name="onDealerModel"
+            type="com.goodautodeal.goodautodeal.views.models.DealerPersonalModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -29,45 +32,27 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_bold"
             android:hint="Good Auto Cars"
-            android:text="@{onModel.dealerName}"
+            android:text="@{onModel.companyName}"
             android:textColor="@color/colorLightBlack"
             android:textSize="@dimen/textnormallarge"
-            app:layout_constraintEnd_toStartOf="@+id/txtTotalCarAds"
             app:layout_constraintStart_toEndOf="@+id/imgDealer"
             app:layout_constraintTop_toTopOf="@+id/imgDealer" />
-
-        <TextView
-            android:id="@+id/txtTotalCarAds"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/poppins_semibold"
-            android:gravity="end"
-            android:hint="8 Cars"
-            android:text="@{onModel.dealerTotalCars}"
-            android:textAllCaps="true"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/textnormal"
-            app:layout_constraintBottom_toBottomOf="@+id/txtDealerName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/txtDealerName"
-            app:layout_constraintTop_toTopOf="@+id/txtDealerName" />
 
         <TextView
             android:id="@+id/txtAddress"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/avenir_book"
             android:hint="34 Cliveland Street, Birmingham, B19 3SH"
-            android:text="@{onModel.dealerAddress}"
             android:textColor="@color/colorLightBlack"
+            android:text="@{onDealerModel.address}"
             android:textSize="@dimen/textsmall"
-            app:layout_constraintEnd_toEndOf="@+id/txtTotalCarAds"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/txtDealerName"
             app:layout_constraintTop_toBottomOf="@+id/txtDealerName" />
 
@@ -75,12 +60,69 @@
             android:id="@+id/view6"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:background="@color/barcolor"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgDealer" />
+            app:layout_constraintTop_toBottomOf="@+id/txtReadMore" />
 
+        <TextView
+            android:id="@+id/dealerDesc"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{onModel.description}"
+            android:textSize="@dimen/textsmall"
+            android:textColor="@color/colorLightBlack"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="3"
+            app:layout_constraintEnd_toEndOf="@+id/txtAddress"
+            app:layout_constraintStart_toStartOf="@+id/txtAddress"
+            app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+
+        <TextView
+            android:id="@+id/txtContactNo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center|end"
+            android:text="@{onModel.businessNo}"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textsmall"
+            app:layout_constraintBottom_toBottomOf="@+id/txtDealerName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtDealerName"
+            app:layout_constraintTop_toTopOf="@+id/txtDealerName" />
+
+        <TextView
+            android:id="@+id/txtReadMore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/read_more"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textsmall"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/dealerDesc"
+            app:layout_constraintTop_toBottomOf="@+id/dealerDesc" />
+
+        <TextView
+            android:id="@+id/txtShowLess"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="@string/read_less"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/textsmall"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/dealerDesc"
+            app:layout_constraintTop_toBottomOf="@+id/dealerDesc" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -174,7 +174,95 @@ public class UserRepository {
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
                 (new JSONObject(jsonParams)).toString());
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        mainResponseObservable = apiInterface.getChangePassword(uiHelper.getAuthKey(),body);
+        mainResponseObservable = apiInterface.getChangePassword("Bearer" + " " +
+                        ConstUtils.APIAccessToken
+                ,body);
+
+        mainResponseLifeData = new MutableLiveData<>();
+        compositeDisposable.add(mainResponseObservable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Response>() {
+                    @Override
+                    public void onNext(Response _response) {
+                        response = _response;
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        if (response.getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        } else {
+                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+//                        Toast.makeText(application, "Success" + response.getMessage(), Toast.LENGTH_SHORT).show();
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        mainResponseLifeData.setValue(response);
+
+                    }
+                }));
+
+        return Observable.just(response);
+    }
+
+    public Observable<Response> getUser() {
+        dataStatus.isLoadingList = true;
+        status.setValue(dataStatus);
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.getUser("Bearer" + " " +
+                ConstUtils.APIAccessToken
+        );
+
+        mainResponseLifeData = new MutableLiveData<>();
+        compositeDisposable.add(mainResponseObservable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Response>() {
+                    @Override
+                    public void onNext(Response _response) {
+                        response = _response;
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        if (response.getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        } else {
+                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+//                        Toast.makeText(application, "Success" + response.getMessage(), Toast.LENGTH_SHORT).show();
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        mainResponseLifeData.setValue(response);
+
+                    }
+                }));
+
+        return Observable.just(response);
+    }
+
+    public Observable<Response> getDealerList() {
+        dataStatus.isLoadingList = true;
+        status.setValue(dataStatus);
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.GetDealerList();
 
         mainResponseLifeData = new MutableLiveData<>();
         compositeDisposable.add(mainResponseObservable

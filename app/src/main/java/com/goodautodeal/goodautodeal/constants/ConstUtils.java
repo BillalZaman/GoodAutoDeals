@@ -7,7 +7,7 @@ import android.content.Context;
  */
 public class ConstUtils {
 
-    public static final String APIAccessToken ="";
+    public static final String APIAccessToken ="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiY2FjMzZjMjg1Nzk3OGNlMjVjMDFkMmZlYTMwYTRjMzM4NzAyYzFlMmMyZTJiOWNjM2YzN2QxZTY5MjQyMTA4ZTQ3YTQxN2RhYzZkMDgzNmIiLCJpYXQiOjE2MTg4MTQxNzYuMDE1MDcsIm5iZiI6MTYxODgxNDE3Ni4wMTUwNzUsImV4cCI6MTY1MDM1MDE3NS45ODA0NTcsInN1YiI6IjciLCJzY29wZXMiOltdfQ.lBXzB6aO46Hxbn5wWLa1nKnNUpxFIPX5cAegsVvmIvaMdl6PMeYbiX7XiKGdja-iB52ThDEuRksyM_Qwlqh-tqzg7plHD35qnzWObZ-lqE7ohm76gFP0aDKU9lKFVBFHKKvjfpPBdZmzDEpD_io_S3bpwkZLpi5Daq0w_NfADFOVLv9jOUadzEy_pnHaPQ6e7-1YE20UsYbFOlgncQOJgr8yNqkMLaDXV0XSWmWHpB1HH0FBJrOqKVQrfC8GtEBfkLOw5mLt8Zx0xAawNIpY493QWvRm5Rq4bnkUh60Tzzi3hkEaTdvWYgkYvJPCOXiRljOQNrkSC_W7MTVcxMWcbS560LaS3Aum_wXHlb5pp5FIrEroy1sYB0CJKCfUWOmbeO-U4tY4MZOhwXqtvEojCUvdCmjj_W3JqtqO1RAO1y1XSBFwQYGs4DULF8n3pjDpomwnE3hOKzRKB0KW1CVdevUNtd_f-4gcv6IFyfdQIoCNcGkxyQtX_Dm5zDfOvuM6HTPIu2d9kUDfsArZOXWre9x3DewP1uKIY-KPt4S6RONW1jgMT1dikhFKrwTJws9B1X3rfCGZc3x1CdOIw1y75Plir6YViUbjRKD8ytPerPCMNKWycf2TT19FgT8rcWcXVfHFcIr7eMvUMFggt2WXSYTAohTfKDT13zPQ5rSidWo";
     public static final String APITokenType ="Bearer";
     public static final String USER_INFO = "userinfo";
     public static final String USER_NAME = "userinfo";
@@ -31,7 +31,7 @@ public class ConstUtils {
 
     public static int SUCCESS_CODE = 200;
     public static int CREATE_CODE = 201;
-    public static int FAILURE = 404;
+    public static int FAILURE = 0;
 
     public static final String isLogin ="isLogin";
     public static final String yes = "yes";

@@ -70,4 +70,7 @@ dependencies {
     implementation 'com.paypal.sdk:paypal-android-sdk:2.16.0'
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
 
+    implementation 'com.borjabravo:readmoretextview:2.1.0'
+    implementation 'com.ms-square:expandableTextView:0.1.4'
+
 }

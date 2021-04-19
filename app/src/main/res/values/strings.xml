@@ -92,4 +92,6 @@
     <string name="hint_city">Enter your city</string>
     <string name="hint_address">Enter your Address</string>
     <string name="hint_post_code">Enter your post code</string>
+    <string name="read_more">Read More</string>
+    <string name="read_less">Read Less</string>
 </resources>

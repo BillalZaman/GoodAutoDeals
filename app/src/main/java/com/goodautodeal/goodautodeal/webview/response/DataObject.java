@@ -3,6 +3,8 @@ package com.goodautodeal.goodautodeal.webview.response;
 import com.goodautodeal.goodautodeal.views.models.AdFeatureModel;
 import com.goodautodeal.goodautodeal.views.models.AdGeneralViewModel;
 import com.goodautodeal.goodautodeal.views.models.AdPremiumsModel;
+import com.goodautodeal.goodautodeal.views.models.DealerPersonalModel;
+import com.goodautodeal.goodautodeal.views.models.DealersModel;
 import com.goodautodeal.goodautodeal.views.models.SliderModel;
 import com.goodautodeal.goodautodeal.views.models.UserInfoModel;
 import com.goodautodeal.goodautodeal.views.models.ValueYourCarModel;
@@ -38,6 +40,9 @@ public class DataObject implements Serializable {
     @SerializedName("FeaturedAd")
     @Expose
     private ArrayList<AdFeatureModel> featureAd = null;
+    @SerializedName("DealersList")
+    @Expose
+    private ArrayList<DealerPersonalModel> dealersModels = null;
     @SerializedName("DataItems")
     @Expose
     private ValueYourCarModel valueYourCarModel;
@@ -104,5 +109,13 @@ public class DataObject implements Serializable {
 
     public void setFeatureAd(ArrayList<AdFeatureModel> featureAd) {
         this.featureAd = featureAd;
+    }
+
+    public ArrayList<DealerPersonalModel> getDealersModels() {
+        return dealersModels;
+    }
+
+    public void setDealersModels(ArrayList<DealerPersonalModel> dealersModels) {
+        this.dealersModels = dealersModels;
     }
 }
