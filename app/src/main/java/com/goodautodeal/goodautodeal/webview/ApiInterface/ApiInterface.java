@@ -53,6 +53,9 @@ public interface ApiInterface {
     @GET(Request.DEALER_LIST)
     Observable<Response> GetDealerList();
 
+    @POST(Request.Ad_view)
+    Observable<Response> getAdDetail(@Header("Authorization") String authkey, @Body RequestBody body);
+
     interface Request {
         String LOGIN = "login";
         String REGISTER = "register";
@@ -65,5 +68,6 @@ public interface ApiInterface {
         String USED_CAR = "used/cars";
         String CHANGE_PASSWORD = "user/change_password";
         String DEALER_LIST = "dealers/list";
+        String Ad_view = "ad/view";
     }
 }
