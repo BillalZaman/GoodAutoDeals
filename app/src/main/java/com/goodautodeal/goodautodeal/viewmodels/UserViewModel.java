@@ -47,6 +47,10 @@ public class UserViewModel extends AndroidViewModel {
         userRepository.getDealerList();
     }
 
+    public void getAdDetail(String adID) {
+        userRepository.getAdDetail(adID);
+    }
+
     public LiveData<Response> getUserData() {
         return userRepository.getMainResponseLifeData();
     }

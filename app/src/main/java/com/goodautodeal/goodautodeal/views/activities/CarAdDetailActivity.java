@@ -1,19 +1,30 @@
 package com.goodautodeal.goodautodeal.views.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+
+import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.ActivityCarAdDetailBinding;
+import com.goodautodeal.goodautodeal.helpers.Internet;
+import com.goodautodeal.goodautodeal.helpers.UIHelper;
+import com.goodautodeal.goodautodeal.viewmodels.UserViewModel;
+import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
 import com.goodautodeal.goodautodeal.views.adapters.CarDetailAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.HomeSliderAdapter;
 import com.goodautodeal.goodautodeal.views.models.CarDetailModel;
 import com.goodautodeal.goodautodeal.views.models.SliderItem;
+import com.goodautodeal.goodautodeal.webview.response.Response;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
 import com.smarteist.autoimageslider.SliderAnimations;
@@ -22,28 +33,92 @@ import com.smarteist.autoimageslider.SliderView;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 public class CarAdDetailActivity extends AppCompatActivity {
+    private final ArrayList<CarDetailModel> dataCarDetailVRM = new ArrayList<>();
+    @Inject
+    Internet internet;
+    @Inject
+    UIHelper uiHelper;
+    ProgressDialog loading;
     private ActivityCarAdDetailBinding binding;
     private HomeSliderAdapter homeSliderAdapter;
-    private ArrayList<CarDetailModel> dataCarDetailVRM = new ArrayList<>();
     private CarDetailAdapter adapterCarDetailVRM;
+    private String isActivityName;
+    private UserViewModel adPostingViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_car_ad_detail);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_car_ad_detail);
+        ApplicationState.getApp().getApplicationComponent().injectInternet(this);
+        ApplicationState.getApp().getApplicationComponent().injectUIHelper(this);
+        adPostingViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
 
         init();
     }
 
     private void init() {
         setupSlider();
+        getLoadingStatus();
+        isActivityName = getIntent().getStringExtra(ConstUtils.ValueKey);
+
+        if (isActivityName != null) {
+            if (internet.isNetworkAvailable(this)) {
+                adPostingViewModel.getAdDetail(isActivityName);
+                getData();
+            } else {
+                uiHelper.showLongToastInCenter(this, getString(R.string.no_interrnet_connection));
+            }
+        }
         recyclerviewCarDetailVRM();
+    }
+
+    private void getLoadingStatus() {
+        adPostingViewModel.getIsLoading().observe(this, new Observer<ViewModelStatus>() {
+            @Override
+            public void onChanged(@Nullable ViewModelStatus viewModelStatus) {
+                if (viewModelStatus.isLoadingList) {
+                    showLoading();
+                } else {
+                    hideLoading();
+                }
+            }
+        });
+    }
+
+    public void showLoading() {
+        loading = ProgressDialog.show(this, getString(R.string.loading), "", true, false);
+    }
+
+    public void hideLoading() {
+        loading.cancel();
+    }
+
+    private void getData() {
+        adPostingViewModel.getUserData().observe(this, new Observer<Response>() {
+            @Override
+            public void onChanged(@Nullable Response response) {
+                if (response.getCode() == 1) {
+
+                    if (response.getDataObject().getAdDetailModels()!=null){
+
+                        binding.setOnAddetailModel(response.getDataObject().getAdDetailModels());
+
+                    }
+
+                    uiHelper.showLongToastInCenter(CarAdDetailActivity.this, "hi");
+                } else {
+                    uiHelper.showLongToastInCenter(CarAdDetailActivity.this, "getMessage()");
+                }
+            }
+        });
     }
 
     private void recyclerviewCarDetailVRM() {
         adapterCarDetailVRM = new CarDetailAdapter(this);
-        for (int i=0; i<=8; i++) {
+        for (int i = 0; i <= 8; i++) {
             dataCarDetailVRM.add(new CarDetailModel("Engine", "2.0 L"));
         }
         adapterCarDetailVRM.setData(dataCarDetailVRM);
@@ -89,21 +164,21 @@ public class CarAdDetailActivity extends AppCompatActivity {
         homeSliderAdapter.renewItems(sliderItemList);
     }
 
-    public void onClick(View view){
-        switch (view.getId()){
-            case R.id.imgBack:{
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.imgBack: {
                 finish();
                 break;
             }
-            case R.id.btnPublishedNow:{
+            case R.id.btnPublishedNow: {
 
                 break;
             }
-            case R.id.btn_pending:{
+            case R.id.btn_pending: {
 
                 break;
             }
-            case R.id.btn_rejected:{
+            case R.id.btn_rejected: {
 
                 break;
             }

@@ -2,6 +2,7 @@ package com.goodautodeal.goodautodeal.webview.response;
 
 import com.goodautodeal.goodautodeal.views.models.AdDataItemsModel;
 import com.goodautodeal.goodautodeal.views.models.UserInfoModel;
+import com.goodautodeal.goodautodeal.views.models.ValueYourCarModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

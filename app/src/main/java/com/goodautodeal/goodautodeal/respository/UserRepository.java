@@ -93,16 +93,16 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getCode() == ConstUtils.FAILURE) {
-                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         } else {
-                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         }
                     }
 
                     @Override
                     public void onComplete() {
-//                        Toast.makeText(application, "Success" + response.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(application, "Success" + response.getResp().getMessage(), Toast.LENGTH_SHORT).show();
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
                         mainResponseLifeData.setValue(response);
@@ -142,16 +142,16 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getCode() == ConstUtils.FAILURE) {
-                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         } else {
-                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         }
                     }
 
                     @Override
                     public void onComplete() {
-//                        Toast.makeText(application, "Success" + response.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(application, "Success" + response.getResp().getMessage(), Toast.LENGTH_SHORT).show();
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
                         mainResponseLifeData.setValue(response);
@@ -193,16 +193,16 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getCode() == ConstUtils.FAILURE) {
-                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         } else {
-                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         }
                     }
 
                     @Override
                     public void onComplete() {
-//                        Toast.makeText(application, "Success" + response.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(application, "Success" + response.getResp().getMessage(), Toast.LENGTH_SHORT).show();
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
                         mainResponseLifeData.setValue(response);
@@ -237,16 +237,16 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getCode() == ConstUtils.FAILURE) {
-                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         } else {
-                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         }
                     }
 
                     @Override
                     public void onComplete() {
-//                        Toast.makeText(application, "Success" + response.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(application, "Success" + response.getResp().getMessage(), Toast.LENGTH_SHORT).show();
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
                         mainResponseLifeData.setValue(response);
@@ -279,16 +279,65 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getCode() == ConstUtils.FAILURE) {
-                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         } else {
-                            uiHelper.showLongToastInCenter(application, response.getMessage());
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         }
                     }
 
                     @Override
                     public void onComplete() {
-//                        Toast.makeText(application, "Success" + response.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(application, "Success" + response.getResp().getMessage(), Toast.LENGTH_SHORT).show();
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        mainResponseLifeData.setValue(response);
+
+                    }
+                }));
+
+        return Observable.just(response);
+    }
+
+    public Observable<Response> getAdDetail(String ad_id) {
+        dataStatus.isLoadingList = true;
+        status.setValue(dataStatus);
+
+        Map<String, Object> jsonParams = null;
+        jsonParams = new ArrayMap<String, Object>();
+        jsonParams.put("ad_id", ad_id);
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
+                (new JSONObject(jsonParams)).toString());
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.getAdDetail("Bearer" + " " +
+                ConstUtils.APIAccessToken , body);
+
+        mainResponseLifeData = new MutableLiveData<>();
+        compositeDisposable.add(mainResponseObservable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Response>() {
+                    @Override
+                    public void onNext(Response _response) {
+                        response = _response;
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        if (response.getResp().getCode() == 400) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        } else {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+//                        Toast.makeText(application, "Success" + response.getResp().getMessage(), Toast.LENGTH_SHORT).show();
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
                         mainResponseLifeData.setValue(response);

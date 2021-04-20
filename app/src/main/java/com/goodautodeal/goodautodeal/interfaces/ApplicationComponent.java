@@ -3,6 +3,7 @@ package com.goodautodeal.goodautodeal.interfaces;
 import com.goodautodeal.goodautodeal.respository.AdPostingRepository;
 import com.goodautodeal.goodautodeal.respository.UserRepository;
 import com.goodautodeal.goodautodeal.views.activities.AdsManagementActivity;
+import com.goodautodeal.goodautodeal.views.activities.CarAdDetailActivity;
 import com.goodautodeal.goodautodeal.views.activities.CarViewAdListingActivity;
 import com.goodautodeal.goodautodeal.views.activities.ChangePasswordActivity;
 import com.goodautodeal.goodautodeal.views.activities.DealerMainActivity;
@@ -37,6 +38,8 @@ import dagger.Component;
 @Singleton
 @Component(modules = {InternetModule.class, UIHelperModule.class})
 public interface ApplicationComponent {
+
+    void injectInternet(CarAdDetailActivity loginActivity);
 
     void injectInternet(DealersActivity loginActivity);
 
@@ -113,4 +116,6 @@ public interface ApplicationComponent {
     void injectUIHelper(ProfileActivity adPostingRepository);
 
     void injectUIHelper(DealersActivity adPostingRepository);
+
+    void injectUIHelper(CarAdDetailActivity adPostingRepository);
 }

@@ -5,6 +5,15 @@
 
     <data>
         <variable
+            name="onAdUserModel"
+            type="com.goodautodeal.goodautodeal.views.models.AdUsersModel" />
+        <variable
+            name="onAdDealerModel"
+            type="com.goodautodeal.goodautodeal.views.models.AdDealerModel" />
+        <variable
+            name="onAddetailModel"
+            type="com.goodautodeal.goodautodeal.views.models.AdDetailModel" />
+        <variable
             name="activity"
             type="com.goodautodeal.goodautodeal.views.activities.CarAdDetailActivity" />
     </data>
@@ -80,7 +89,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:text="Honda Civic Reborn"
+            android:hint="Honda Civic Reborn"
+            android:text="@{onAddetailModel.title}"
             android:textSize="@dimen/large"
             android:textColor="@color/colorLightBlack"
             android:fontFamily="@font/poppins_semibold"
@@ -93,7 +103,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="£ 6000"
+            android:hint="£ 6000"
+            android:text="@{onAddetailModel.price}"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/textnormallarge"
             android:fontFamily="@font/poppins_semibold"
@@ -116,12 +127,13 @@
                 android:layout_height="wrap_content">
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/layoutDetail"
+                    android:id="@+id/dealerLayoutDetail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:layout_marginEnd="24dp"
                     android:elevation="6dp"
+                    android:visibility="visible"
                     app:cardCornerRadius="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -133,17 +145,18 @@
                         android:background="#f6f6f6">
 
                         <TextView
-                            android:id="@+id/txtUserName"
+                            android:id="@+id/txtDealerName"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="24dp"
                             android:layout_marginEnd="8dp"
                             android:fontFamily="@font/poppins_semibold"
-                            android:text="Good Auto Car"
+                            android:hint="Good Auto Car"
+                            android:text="@{onAdDealerModel.companyName}"
                             android:textColor="@color/colorLightBlack"
                             android:textSize="@dimen/large"
-                            app:layout_constraintEnd_toStartOf="@+id/imgUser"
+                            app:layout_constraintEnd_toStartOf="@+id/imgDealer"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
@@ -155,11 +168,11 @@
                             android:text="@string/address"
                             android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/textnormallarge"
-                            app:layout_constraintStart_toStartOf="@+id/txtUserName"
-                            app:layout_constraintTop_toTopOf="@+id/txtAddress" />
+                            app:layout_constraintStart_toStartOf="@+id/txtDealerName"
+                            app:layout_constraintTop_toTopOf="@+id/txtAddressDealer" />
 
                         <TextView
-                            android:id="@+id/txtAddress"
+                            android:id="@+id/txtAddressDealer"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -169,9 +182,9 @@
                             android:text="34 Cliveland Street, Birmingham, B19 3SH"
                             android:textColor="@color/colorLightBlack"
                             android:textSize="@dimen/textnormal"
-                            app:layout_constraintEnd_toStartOf="@+id/imgUser"
+                            app:layout_constraintEnd_toStartOf="@+id/imgDealer"
                             app:layout_constraintStart_toEndOf="@+id/textView32"
-                            app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
+                            app:layout_constraintTop_toBottomOf="@+id/txtDealerName" />
 
                         <TextView
                             android:id="@+id/textView34"
@@ -183,10 +196,10 @@
                             android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/textnormallarge"
                             app:layout_constraintStart_toStartOf="@+id/textView32"
-                            app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+                            app:layout_constraintTop_toBottomOf="@+id/txtAddressDealer" />
 
                         <TextView
-                            android:id="@+id/txtPhoneNumber"
+                            android:id="@+id/txtPhoneNumberDealer"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
@@ -195,7 +208,7 @@
                             android:textColor="@color/colorLightBlack"
                             android:textSize="@dimen/textnormal"
                             app:layout_constraintBottom_toBottomOf="@+id/textView34"
-                            app:layout_constraintEnd_toEndOf="@+id/txtAddress"
+                            app:layout_constraintEnd_toEndOf="@+id/txtAddressDealer"
                             app:layout_constraintStart_toEndOf="@+id/textView34"
                             app:layout_constraintTop_toTopOf="@+id/textView34" />
 
@@ -222,7 +235,7 @@
                             android:textColor="@color/colorLightBlack"
                             android:textSize="@dimen/textnormal"
                             app:layout_constraintBottom_toBottomOf="@+id/textView36"
-                            app:layout_constraintEnd_toEndOf="@+id/txtPhoneNumber"
+                            app:layout_constraintEnd_toEndOf="@+id/txtPhoneNumberDealer"
                             app:layout_constraintStart_toEndOf="@+id/textView36"
                             app:layout_constraintTop_toTopOf="@+id/textView36" />
 
@@ -265,6 +278,136 @@
                             app:layout_constraintTop_toTopOf="@+id/txtWebsite" />
 
                         <ImageView
+                            android:id="@+id/imgDealer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/user_profile_demo" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/userLayoutDetail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:elevation="6dp"
+                    app:cardCornerRadius="8dp"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#f6f6f6">
+
+                        <TextView
+                            android:id="@+id/txtUserName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:hint="Good Auto Car"
+                            android:text="@{onAdUserModel.name}"
+                            android:textColor="@color/colorLightBlack"
+                            android:textSize="@dimen/large"
+                            app:layout_constraintEnd_toStartOf="@+id/imgUser"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/textView320"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/address"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/textnormallarge"
+                            app:layout_constraintStart_toStartOf="@+id/txtUserName"
+                            app:layout_constraintTop_toTopOf="@+id/txtAddress" />
+
+                        <TextView
+                            android:id="@+id/txtAddress"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:hint="34 Cliveland Street, Birmingham, B19 3SH"
+                            android:text="@{onAdUserModel.address}"
+                            android:textColor="@color/colorLightBlack"
+                            android:textSize="@dimen/textnormal"
+                            app:layout_constraintEnd_toStartOf="@+id/imgUser"
+                            app:layout_constraintStart_toEndOf="@+id/textView320"
+                            app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
+
+                        <TextView
+                            android:id="@+id/textView340"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/contact"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/textnormallarge"
+                            app:layout_constraintStart_toStartOf="@+id/textView320"
+                            app:layout_constraintTop_toBottomOf="@+id/txtAddress" />
+
+                        <TextView
+                            android:id="@+id/txtPhoneNumber"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:hint="+xx xx xxx xxxx"
+                            android:text="@{onAdDealerModel.businessNo}"
+                            android:textColor="@color/colorLightBlack"
+                            android:textSize="@dimen/textnormal"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView340"
+                            app:layout_constraintEnd_toEndOf="@+id/txtAddress"
+                            app:layout_constraintStart_toEndOf="@+id/textView340"
+                            app:layout_constraintTop_toTopOf="@+id/textView340" />
+
+                        <TextView
+                            android:id="@+id/textView360"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/poppins_semibold"
+                            android:text="@string/email"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/textnormallarge"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/textView340"
+                            app:layout_constraintStart_toStartOf="@+id/textView340"
+                            app:layout_constraintTop_toBottomOf="@+id/textView340" />
+
+                        <TextView
+                            android:id="@+id/txtEmailUser"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:fontFamily="@font/poppins_medium"
+                            android:hint="xxxx@gmail.com"
+                            android:text="@{onAdUserModel.email}"
+                            android:textColor="@color/colorLightBlack"
+                            android:textSize="@dimen/textnormal"
+                            app:layout_constraintBottom_toBottomOf="@+id/textView360"
+                            app:layout_constraintEnd_toEndOf="@+id/txtPhoneNumber"
+                            app:layout_constraintStart_toEndOf="@+id/textView360"
+                            app:layout_constraintTop_toTopOf="@+id/textView360" />
+
+                        <ImageView
                             android:id="@+id/imgUser"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -285,9 +428,9 @@
                     android:text="Specification"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormallarge"
-                    app:layout_constraintEnd_toEndOf="@+id/layoutDetail"
-                    app:layout_constraintStart_toStartOf="@+id/layoutDetail"
-                    app:layout_constraintTop_toBottomOf="@+id/layoutDetail" />
+                    app:layout_constraintEnd_toEndOf="@+id/dealerLayoutDetail"
+                    app:layout_constraintStart_toStartOf="@+id/dealerLayoutDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/dealerLayoutDetail" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycler_specific"
@@ -297,7 +440,7 @@
                     android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="@+id/textView18"
-                    app:layout_constraintStart_toStartOf="@+id/layoutDetail"
+                    app:layout_constraintStart_toStartOf="@+id/dealerLayoutDetail"
                     app:layout_constraintTop_toBottomOf="@+id/textView18"
                     tools:itemCount="10"
                     tools:listitem="@layout/item_list_car_detail_vrm" />
@@ -323,7 +466,7 @@
                     android:nestedScrollingEnabled="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="@+id/textView18"
-                    app:layout_constraintStart_toStartOf="@+id/layoutDetail"
+                    app:layout_constraintStart_toStartOf="@+id/dealerLayoutDetail"
                     app:layout_constraintTop_toBottomOf="@+id/textView19"
                     tools:itemCount="10"
                     tools:listitem="@layout/item_list_car_detail_vrm" />
@@ -348,7 +491,8 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available"
+                    android:text="@{onAdDealerModel.description}"
+                    android:hint="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormallarge"
                     app:layout_constraintBottom_toBottomOf="parent"

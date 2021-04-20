@@ -79,15 +79,15 @@ public class ProfileActivity extends AppCompatActivity {
     private void getData() {
         userViewModel.getUserData().observe(this, new Observer<Response>() {
             @Override
-            public void onChanged(@Nullable Response response) {
-                if (response.getResp().getCode() == 1 &&
-                        response.getResp().getSuccess().equalsIgnoreCase("success")) {
-                    if (response.getResp().getDataObject().getUserInfo() != null) {
-                        uiHelper.showLongToastInCenter(ProfileActivity.this, response.getResp().getMessage());
-                        binding.setOnProfileModel(response.getResp().getDataObject().getUserInfo());
+            public void onChanged(@Nullable Response responsee) {
+                if (responsee.getResp().getCode() == 1 &&
+                        responsee.getResp().getSuccess().equalsIgnoreCase("success")) {
+                    if (responsee.getResp().getDataObject().getUserInfo() != null) {
+                        uiHelper.showLongToastInCenter(ProfileActivity.this, responsee.getResp().getMessage());
+                        binding.setOnProfileModel(responsee.getResp().getDataObject().getUserInfo());
                     }
                 } else {
-                    uiHelper.showLongToastInCenter(ProfileActivity.this, response.getResp().getMessage());
+                    uiHelper.showLongToastInCenter(ProfileActivity.this, responsee.getResp().getMessage());
                 }
             }
         });
