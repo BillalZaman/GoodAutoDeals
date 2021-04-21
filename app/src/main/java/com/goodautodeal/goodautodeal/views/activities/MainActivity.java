@@ -209,14 +209,15 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             }
             case 1: {
                 // profile
-                uiHelper.openActivity(this, ProfileActivity.class);
-//                if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin,
-//                        "").equalsIgnoreCase(ConstUtils.yes)) {
-//                    uiHelper.openActivity(this, ProfileActivity.class);
-//                } else {
-//                    uiHelper.openActivityAndSendValue(this, WelcomeActivity.class, "user");
-//                    binding.drawerLayout.closeDrawer(GravityCompat.START);
-//                }
+//                uiHelper.openActivity(this, ProfileActivity.class);
+                if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin,
+                        "").equalsIgnoreCase(ConstUtils.yes)) {
+                    uiHelper.openActivity(this, ProfileActivity.class);
+                } else {
+                    uiHelper.openActivityAndSendValue(this, WelcomeActivity.class, "user");
+                    binding.drawerLayout.closeDrawer(GravityCompat.START);
+                    finish();
+                }
                 break;
             }
             case 2: {

@@ -56,6 +56,12 @@ public interface ApiInterface {
     @POST(Request.Ad_view)
     Observable<Response> getAdDetail(@Header("Authorization") String authkey, @Body RequestBody body);
 
+    @POST(Request.GET_FORGOT_PASSWORD)
+    Observable<Response> getForgotPassword(@Body RequestBody body);
+
+    @POST(Request.OTP_verification)
+    Observable<Response> getOTPVerification(@Header("Authorization") String authkey, @Body RequestBody body);
+
     interface Request {
         String LOGIN = "login";
         String REGISTER = "register";
@@ -69,5 +75,7 @@ public interface ApiInterface {
         String CHANGE_PASSWORD = "user/change_password";
         String DEALER_LIST = "dealers/list";
         String Ad_view = "ad/view";
+        String GET_FORGOT_PASSWORD = "user/forgot/password";
+        String OTP_verification = "user/email/verification_otp";
     }
 }

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="onClick"
+            type="com.goodautodeal.goodautodeal.views.activities.OtpVerificationActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/group_235"
+        tools:context=".views.activities.OtpVerificationActivity">
+
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:padding="10dp"
+            android:onClick="@{(view)->onClick.onClick(view)}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_ios_24" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="80dp"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgBack"
+            app:srcCompat="@drawable/gad_logo_without_shadow" />
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:text="Please Enter the verification code send to your registered email"
+            android:textAlignment="center"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/large"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+        <EditText
+            android:id="@+id/edtOne"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/circle"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="1"
+            android:textAlignment="center"
+            android:textSize="@dimen/large"
+            app:layout_constraintEnd_toStartOf="@+id/edtTwo"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView35" />
+
+        <EditText
+            android:id="@+id/edtTwo"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/circle"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="1"
+            android:textAlignment="center"
+            android:textSize="@dimen/large"
+            app:layout_constraintBottom_toBottomOf="@+id/edtOne"
+            app:layout_constraintEnd_toStartOf="@+id/edtThree"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/edtOne" />
+
+        <EditText
+            android:id="@+id/edtThree"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/circle"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="1"
+            android:textAlignment="center"
+            android:textSize="@dimen/large"
+            app:layout_constraintBottom_toBottomOf="@+id/edtTwo"
+            app:layout_constraintEnd_toStartOf="@+id/edtFour"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/edtTwo" />
+
+        <EditText
+            android:id="@+id/edtFour"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:background="@drawable/circle"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="1"
+            android:textAlignment="center"
+            android:textSize="@dimen/large"
+            app:layout_constraintBottom_toBottomOf="@+id/edtThree"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/edtThree" />
+
+        <TextView
+            android:id="@+id/btnVerifyotp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Verify OTP"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:background="@drawable/gradient_button"
+            android:textSize="@dimen/textnormal"
+            android:onClick="@{(view)->onClick.onClick(view)}"
+            android:textColor="@color/colorWhite"
+            android:fontFamily="@font/poppins_semibold"
+            app:layout_constraintEnd_toEndOf="@+id/edtFour"
+            app:layout_constraintStart_toStartOf="@+id/edtOne"
+            app:layout_constraintTop_toBottomOf="@+id/edtTwo" />
+
+        <TextView
+            android:id="@+id/txtResendOtp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:text="Resend OTP Again"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textnormallarge"
+            android:onClick="@{(view)->onClick.onClick(view)}"
+            android:fontFamily="@font/poppins_bold"
+            app:layout_constraintEnd_toEndOf="@+id/btnVerifyotp"
+            app:layout_constraintStart_toStartOf="@+id/btnVerifyotp"
+            app:layout_constraintTop_toBottomOf="@+id/btnVerifyotp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

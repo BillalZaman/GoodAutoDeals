@@ -54,10 +54,13 @@ public class GeneralAdViewAdapter extends RecyclerView.Adapter<GeneralAdViewAdap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.binding.setModel(data.get(position));
-        Glide.with(context)
-                .load("https://goodautodeals.com" + data.get(position).getAdimage().get(0).getPath())
-                .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
 
+        if (data.get(position).getAdimage().get(0).getPath()!=null) {
+            Glide.with(context)
+                    .load("https://goodautodeals.com" + data.get(position).getAdimage().get(0).getPath())
+                    .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
+
+        }
         holder.binding.txtYear.setText(data.get(position).getYear() + " | " + data.get(position).getEngine() +
                 " | " + data.get(position).getMileage());
 

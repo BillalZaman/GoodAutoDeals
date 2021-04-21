@@ -55,12 +55,12 @@ public class AdFeaturedAdapter extends RecyclerView.Adapter<AdFeaturedAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.binding.setModel(data.get(position));
-
-        if (data.get(position).getAdimage() != null) {
-            Glide.with(context)
-                    .load("https://goodautodeals.com" + data.get(position).getAdimage().get(0).getPath())
-                    .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
-
+        if (data.get(position).getAdimage().get(0).getPath() != null) {
+            if (data.get(position).getAdimage() != null) {
+                Glide.with(context)
+                        .load("https://goodautodeals.com" + data.get(position).getAdimage().get(0).getPath())
+                        .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
+            }
         }
         holder.binding.txtYear.setText(data.get(position).getYear() + " | " + data.get(position).getEngine() +
                 " | " + data.get(position).getMileage());

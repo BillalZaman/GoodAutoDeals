@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
 import com.goodautodeal.goodautodeal.views.models.UserInfoModel;
@@ -219,7 +220,7 @@ public class UserRepository {
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mainResponseObservable = apiInterface.getUser("Bearer" + " " +
-                ConstUtils.APIAccessToken
+                PreferenceHelper.getInstance().getString(ConstUtils.APIAccessToken,"")
         );
 
         mainResponseLifeData = new MutableLiveData<>();
@@ -237,8 +238,8 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
-                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        if (0 == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, "response.getResp().getMessage()");
                         } else {
                             uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         }
@@ -329,6 +330,103 @@ public class UserRepository {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
                         if (response.getResp().getCode() == 400) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        } else {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+//                        Toast.makeText(application, "Success" + response.getResp().getMessage(), Toast.LENGTH_SHORT).show();
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        mainResponseLifeData.setValue(response);
+
+                    }
+                }));
+
+        return Observable.just(response);
+    }
+
+    public Observable<Response> getForgotPassword(String email) {
+        dataStatus.isLoadingList = true;
+        status.setValue(dataStatus);
+
+        Map<String, Object> jsonParams = null;
+        jsonParams = new ArrayMap<String, Object>();
+        jsonParams.put("email", email);
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
+                (new JSONObject(jsonParams)).toString());
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.getForgotPassword(body);
+
+        mainResponseLifeData = new MutableLiveData<>();
+        compositeDisposable.add(mainResponseObservable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Response>() {
+                    @Override
+                    public void onNext(Response _response) {
+                        response = _response;
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        if (response.getResp().getCode() == 400) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        } else {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+//                        Toast.makeText(application, "Success" + response.getResp().getMessage(), Toast.LENGTH_SHORT).show();
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        mainResponseLifeData.setValue(response);
+
+                    }
+                }));
+
+        return Observable.just(response);
+    }
+
+    public Observable<Response> getOTPVerification(String OTP) {
+        dataStatus.isLoadingList = true;
+        status.setValue(dataStatus);
+
+        Map<String, Object> jsonParams = null;
+        jsonParams = new ArrayMap<String, Object>();
+        jsonParams.put("otp", OTP);
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
+                (new JSONObject(jsonParams)).toString());
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.getOTPVerification("Bearer" + " " +
+                PreferenceHelper.getInstance().getString(ConstUtils.APIAccessToken,""), body);
+
+        mainResponseLifeData = new MutableLiveData<>();
+        compositeDisposable.add(mainResponseObservable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Response>() {
+                    @Override
+                    public void onNext(Response _response) {
+                        response = _response;
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
                             uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         } else {
                             uiHelper.showLongToastInCenter(application, response.getResp().getMessage());

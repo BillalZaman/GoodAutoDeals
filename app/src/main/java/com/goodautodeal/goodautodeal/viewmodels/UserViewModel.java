@@ -51,6 +51,14 @@ public class UserViewModel extends AndroidViewModel {
         userRepository.getAdDetail(adID);
     }
 
+    public void getForgotPassword(String email) {
+        userRepository.getForgotPassword(email);
+    }
+
+    public void getOtpVerification(String otp) {
+        userRepository.getOTPVerification(otp);
+    }
+
     public LiveData<Response> getUserData() {
         return userRepository.getMainResponseLifeData();
     }

@@ -130,6 +130,7 @@ public class FragmentNavigationDrawer extends Fragment {
             Glide.with(context).load(R.drawable.ic_baseline_person_24).into(binding.imgUser);
         } else {
             binding.txtUser.setText(R.string.guest_user);
+            Glide.with(context).load(R.drawable.ic_baseline_person_24).into(binding.imgUser);
         }
     }
 

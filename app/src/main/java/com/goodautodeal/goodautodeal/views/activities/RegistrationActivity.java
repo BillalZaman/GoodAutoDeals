@@ -91,11 +91,11 @@ public class RegistrationActivity extends AppCompatActivity {
         userViewModel.getUserData().observe(this, new Observer<Response>() {
             @Override
             public void onChanged(@Nullable Response response) {
-                if (response.getResp().getCode() == 1 && response.getResp().getMessage().equalsIgnoreCase("success")) {
-                    if (response.getResp().getDataObject().equals("")) {
-                        uiHelper.openActivity(RegistrationActivity.this, LoginActivity.class);
-                        finish();
-                    }
+                if (response.getResp().getCode() == 1 && response.getResp().getSuccess().equalsIgnoreCase("success")) {
+
+                    uiHelper.openActivity(RegistrationActivity.this, LoginActivity.class);
+                    finish();
+
                 } else {
                     uiHelper.showLongToastInCenter(RegistrationActivity.this, response.getResp().getMessage());
                     finish();

@@ -13,8 +13,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.ActivityProfileBinding;
 import com.goodautodeal.goodautodeal.helpers.Internet;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.UserViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;

@@ -40,6 +40,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 break;
             }
             case R.id.btnSignup:{
+//                uiHelper.openActivity(this, RegistrationActivity.class);
                 if (isActivityName.equalsIgnoreCase("user")){
                     uiHelper.openActivityAndSendValue(this, RegistrationActivity.class,"user");
                     finish();
@@ -47,6 +48,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 break;
             }
             case R.id.btnLogin:{
+//                uiHelper.openActivity(this, LoginActivity.class);
                 if (isActivityName.equalsIgnoreCase("user")){
                     uiHelper.openActivityAndSendValue(this, LoginActivity.class,"user");
                     finish();

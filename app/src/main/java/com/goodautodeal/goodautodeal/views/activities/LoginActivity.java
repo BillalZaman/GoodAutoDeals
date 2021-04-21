@@ -112,6 +112,16 @@ public class LoginActivity extends AppCompatActivity {
                         uiHelper.showLongToastInCenter(this, getString(R.string.no_interrnet_connection));
                     }
                 }
+
+//                if (internet.isNetworkAvailable(this)) {
+//                    if (validation()) {
+//                        userViewModel.getLogin(binding.edtEmail.getText().toString()
+//                                , binding.edtPassword.getText().toString());
+//                        getData();
+//                    }
+//                } else {
+//                    uiHelper.showLongToastInCenter(this, getString(R.string.no_interrnet_connection));
+//                }
                 break;
             }
             case R.id.btnFacebook: {
@@ -134,16 +144,20 @@ public class LoginActivity extends AppCompatActivity {
         userViewModel.getUserData().observe(this, new Observer<Response>() {
             @Override
             public void onChanged(@Nullable Response response) {
-                if (response.getResp().getCode() == 1 && response.getResp().getMessage().equalsIgnoreCase("success")) {
+                if (response.getResp().getCode() == 1 &&
+                        response.getResp().getSuccess().equalsIgnoreCase("success")) {
+//                    PreferenceHelper.getInstance().setString(ConstUtils.USER_INFO, "bilalzaman");
                     PreferenceHelper.getInstance().setString(ConstUtils.APIAccessToken, response.getResp().getDataObject().getToken());
+                    Log.d("apiaccesstokenbilal",PreferenceHelper.getInstance().getString(ConstUtils.APIAccessToken,""));
                     if (response.getResp().getDataObject().getUserInfo() != null) {
                         PreferenceHelper.getInstance().setString(ConstUtils.USER_NAME, response.getResp().getDataObject().getUserInfo().getName());
-                        uiHelper.openActivity(LoginActivity.this, MainActivity.class);
+                        uiHelper.openAndClearActivity(LoginActivity.this, MainActivity.class);
                         PreferenceHelper.getInstance().setString(ConstUtils.isLogin, ConstUtils.yes);
                     }
                 } else {
                     uiHelper.showLongToastInCenter(LoginActivity.this, response.getResp().getMessage());
-                    finish();
+                    PreferenceHelper.getInstance().setString(ConstUtils.APIAccessToken, response.getResp().getDataObject().getToken());
+                    uiHelper.openAndClearActivity(LoginActivity.this, OtpVerificationActivity.class);
                 }
             }
         });
