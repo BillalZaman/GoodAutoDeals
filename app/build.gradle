@@ -73,4 +73,10 @@ dependencies {
     implementation 'com.borjabravo:readmoretextview:2.1.0'
     implementation 'com.ms-square:expandableTextView:0.1.4'
 
+    // room db
+    implementation 'androidx.room:room-runtime:2.2.6'
+    annotationProcessor 'androidx.room:room-compiler:2.2.6'
+    //stetho
+    implementation 'com.facebook.stetho:stetho:1.5.0'
+
 }

@@ -8,6 +8,7 @@ import android.content.pm.Signature;
 import android.util.Base64;
 import android.util.Log;
 
+import com.facebook.stetho.Stetho;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.interfaces.ApplicationComponent;
 import com.goodautodeal.goodautodeal.interfaces.DaggerApplicationComponent;
@@ -57,6 +58,7 @@ public class ApplicationState extends Application {
         super.onCreate();
         ConstUtils.CONTEXT = getApplicationContext();
 //        Fabric.with(this, new Crashlytics());
+        Stetho.initializeWithDefaults(this);
         applicationComponent = DaggerApplicationComponent.builder()
                 .internetModule(new InternetModule())
                 .build();

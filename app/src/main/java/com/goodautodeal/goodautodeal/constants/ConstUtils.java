@@ -10,6 +10,7 @@ public class ConstUtils {
     public static final String APIAccessToken = "";
     public static final String APITokenType ="Bearer";
     public static final String USER_INFO = "userinfo";
+    public static final String FAV = "fav";
     public static final String USER_NAME = "userinfo";
 
     public static Context CONTEXT = null;

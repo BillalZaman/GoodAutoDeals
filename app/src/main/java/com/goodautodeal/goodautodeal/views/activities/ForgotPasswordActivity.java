@@ -90,6 +90,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 if (response.getResp().getCode() == 1 &&
                         response.getResp().getSuccess().equalsIgnoreCase("success")) {
                     uiHelper.showLongToastInCenter(ForgotPasswordActivity.this, response.getResp().getMessage());
+
                     uiHelper.openActivity(ForgotPasswordActivity.this, OtpVerificationActivity.class);
                 } else {
                     uiHelper.showLongToastInCenter(ForgotPasswordActivity.this, response.getResp().getMessage());

@@ -13,12 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
+import com.goodautodeal.goodautodeal.database.DatabaseHelper;
+import com.goodautodeal.goodautodeal.database.table.FavouriteModel;
 import com.goodautodeal.goodautodeal.databinding.ItemListGeneralAdViewBinding;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.views.activities.CarAdDetailActivity;
 import com.goodautodeal.goodautodeal.views.models.AdGeneralViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -31,6 +36,8 @@ public class GeneralAdViewAdapter extends RecyclerView.Adapter<GeneralAdViewAdap
     int widthdp, heightdp;
     private final Context context;
     private ArrayList<AdGeneralViewModel> data;
+    private List<FavouriteModel> saveFavouriteAd = new ArrayList<>();
+    private FavouriteModel favouriteModel = new FavouriteModel();
 
     public GeneralAdViewAdapter(Context context) {
         this.context = context;
@@ -52,7 +59,7 @@ public class GeneralAdViewAdapter extends RecyclerView.Adapter<GeneralAdViewAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.binding.setModel(data.get(position));
 
         if (data.get(position).getAdimage().get(0).getPath()!=null) {
@@ -68,6 +75,28 @@ public class GeneralAdViewAdapter extends RecyclerView.Adapter<GeneralAdViewAdap
             @Override
             public void onClick(View v) {
                 uiHelper.openActivity((Activity) context, CarAdDetailActivity.class);
+            }
+        });
+
+        if (PreferenceHelper.getInstance().getString(ConstUtils.FAV, "0").equalsIgnoreCase("1")){
+            holder.binding.imgHeart.setImageResource(R.drawable.fav);
+        }else {
+            holder.binding.imgHeart.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+        }
+
+        holder.binding.imgHeart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PreferenceHelper.getInstance().setString(ConstUtils.FAV,"1");
+                holder.binding.imgHeart.setImageResource(R.drawable.fav);
+                favouriteModel = new FavouriteModel(data.get(position).getTitle(), data.get(position).getPrice().toString(),
+                        data.get(position).getAdimage().get(0).getPath(),
+                        data.get(position).getYear()+ " | " + data.get(position).getEngine() + " | " +
+                                data.get(position).getMileage());
+                saveFavouriteAd.add(favouriteModel);
+
+                DatabaseHelper.getInstance(context).gadDao().insertFavouriteAd(favouriteModel);
+
             }
         });
     }
