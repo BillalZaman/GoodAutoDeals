@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 
 import javax.inject.Inject;
@@ -30,7 +32,11 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                uiHelper.openAndClearActivity(SplashActivity.this, MainActivity.class);
+                if ((PreferenceHelper.getInstance().getString(ConstUtils.isDealerLogin, "").equalsIgnoreCase("yes"))) {
+                    uiHelper.openAndClearActivity(SplashActivity.this, DealerMainActivity.class);
+                } else {
+                    uiHelper.openAndClearActivity(SplashActivity.this, MainActivity.class);
+                }
             }
         }, 1000);
     }

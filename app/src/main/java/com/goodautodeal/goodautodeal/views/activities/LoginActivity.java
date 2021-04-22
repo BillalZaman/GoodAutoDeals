@@ -98,7 +98,16 @@ public class LoginActivity extends AppCompatActivity {
             case R.id.btnLogin: {
                 if (isActivityName.equalsIgnoreCase("dealer")) {
 
-                    uiHelper.openActivity(this, DealerMainActivity.class);
+                    if (internet.isNetworkAvailable(this)) {
+                        if (validation()) {
+                            userViewModel.getLogin(binding.edtEmail.getText().toString()
+                                    , binding.edtPassword.getText().toString());
+                            getData();
+                        }
+                    } else {
+                        uiHelper.showLongToastInCenter(this, getString(R.string.no_interrnet_connection));
+                    }
+
 
                 } else {
 
@@ -146,13 +155,21 @@ public class LoginActivity extends AppCompatActivity {
             public void onChanged(@Nullable Response response) {
                 if (response.getResp().getCode() == 1 &&
                         response.getResp().getSuccess().equalsIgnoreCase("success")) {
-//                    PreferenceHelper.getInstance().setString(ConstUtils.USER_INFO, "bilalzaman");
+
                     PreferenceHelper.getInstance().setString(ConstUtils.APIAccessToken, response.getResp().getDataObject().getToken());
                     Log.d("apiaccesstokenbilal",PreferenceHelper.getInstance().getString(ConstUtils.APIAccessToken,""));
                     if (response.getResp().getDataObject().getUserInfo() != null) {
-                        PreferenceHelper.getInstance().setString(ConstUtils.USER_NAME, response.getResp().getDataObject().getUserInfo().getName());
-                        uiHelper.openAndClearActivity(LoginActivity.this, MainActivity.class);
-                        PreferenceHelper.getInstance().setString(ConstUtils.isLogin, ConstUtils.yes);
+
+                        if (isActivityName.equalsIgnoreCase("dealer")){
+                            PreferenceHelper.getInstance().setString(ConstUtils.USER_NAME, response.getResp().getDataObject().getUserInfo().getName());
+                            uiHelper.openActivity(LoginActivity.this, DealerMainActivity.class);
+                            PreferenceHelper.getInstance().setString(ConstUtils.isLogin, ConstUtils.yes);
+                            
+                        } else {
+                            PreferenceHelper.getInstance().setString(ConstUtils.USER_NAME, response.getResp().getDataObject().getUserInfo().getName());
+                            uiHelper.openAndClearActivity(LoginActivity.this, MainActivity.class);
+                            PreferenceHelper.getInstance().setString(ConstUtils.isDealerLogin, ConstUtils.yes);
+                        }
                     }
                 } else {
                     uiHelper.showLongToastInCenter(LoginActivity.this, response.getResp().getMessage());

@@ -1,6 +1,8 @@
 package com.goodautodeal.goodautodeal.interfaces;
 
+import com.goodautodeal.goodautodeal.fragments.ProfileFragment;
 import com.goodautodeal.goodautodeal.respository.AdPostingRepository;
+import com.goodautodeal.goodautodeal.respository.DealerViewRepository;
 import com.goodautodeal.goodautodeal.respository.UserRepository;
 import com.goodautodeal.goodautodeal.views.activities.AdsManagementActivity;
 import com.goodautodeal.goodautodeal.views.activities.CarAdDetailActivity;
@@ -40,6 +42,8 @@ import dagger.Component;
 @Singleton
 @Component(modules = {InternetModule.class, UIHelperModule.class})
 public interface ApplicationComponent {
+
+    void injectInternet(ProfileFragment loginActivity);
 
     void injectInternet(OtpVerificationActivity loginActivity);
 
@@ -128,5 +132,9 @@ public interface ApplicationComponent {
     void injectUIHelper(ForgotPasswordActivity adPostingRepository);
 
     void injectUIHelper(OtpVerificationActivity adPostingRepository);
+
+    void injectUIHelper(ProfileFragment adPostingRepository);
+
+    void injectUIHelper(DealerViewRepository loginActivity);
 
 }

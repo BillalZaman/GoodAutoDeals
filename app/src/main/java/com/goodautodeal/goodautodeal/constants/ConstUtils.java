@@ -35,6 +35,7 @@ public class ConstUtils {
     public static int FAILURE = 0;
 
     public static final String isLogin ="isLogin";
+    public static final String isDealerLogin ="isLogin";
     public static final String yes = "yes";
     public static final String no = "no";
     public static final String MSG_KEY = "msgKey";

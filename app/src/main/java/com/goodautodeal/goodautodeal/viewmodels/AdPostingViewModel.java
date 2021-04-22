@@ -50,6 +50,10 @@ public class AdPostingViewModel extends AndroidViewModel {
         adPostingRepository.getUsedCar();
     }
 
+    public void getLogout() {
+        adPostingRepository.getLogout();
+    }
+
     public LiveData<Response> getUserData() {
         return adPostingRepository.getMainResponseLifeData();
     }

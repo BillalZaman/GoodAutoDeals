@@ -59,6 +59,10 @@ public class UserViewModel extends AndroidViewModel {
         userRepository.getOTPVerification(otp);
     }
 
+    public void getUpdatedUser(UserInfoModel userInfoModel) {
+        userRepository.getUpdateUser(userInfoModel);
+    }
+
     public LiveData<Response> getUserData() {
         return userRepository.getMainResponseLifeData();
     }

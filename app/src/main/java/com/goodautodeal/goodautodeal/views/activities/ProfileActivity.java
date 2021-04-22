@@ -33,7 +33,7 @@ public class ProfileActivity extends AppCompatActivity {
     ProgressDialog loading;
     private ActivityProfileBinding binding;
     private UserViewModel userViewModel;
-    private UserInfoModel userInfoModels;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +85,6 @@ public class ProfileActivity extends AppCompatActivity {
                 if (responsee.getResp().getCode() == 1 &&
                         responsee.getResp().getSuccess().equalsIgnoreCase("success")) {
                     if (responsee.getResp().getDataObject().getUserInfo() != null) {
-                        uiHelper.showLongToastInCenter(ProfileActivity.this, responsee.getResp().getMessage());
                         binding.setOnProfileModel(responsee.getResp().getDataObject().getUserInfo());
                     }
                 } else {
@@ -101,11 +100,56 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
                 break;
             }
-            case R.id.editProfile: {
-                Toast.makeText(this, "Profile Edit", Toast.LENGTH_SHORT).show();
+            case R.id.imgEditProfile: {
+                focusFields();
+                break;
+            }
+            case R.id.editProfile:{
+                if (internet.isNetworkAvailable(this)) {
+                    userViewModel.getUpdatedUser(binding.getOnProfileModel());
+                    getData();
+                } else {
+                    uiHelper.showLongToastInCenter(this, getString(R.string.no_interrnet_connection));
+                }
                 break;
             }
         }
+    }
+
+    public void focusFields(){
+        binding.txtUserName.setFocusable(true);
+        binding.txtUserName.setClickable(true);
+
+        binding.txtNumber.setFocusable(true);
+        binding.txtNumber.setClickable(true);
+
+        binding.txtAddress.setFocusable(true);
+        binding.txtAddress.setClickable(true);
+
+        binding.txtCity.setFocusable(true);
+        binding.txtCity.setClickable(true);
+
+        binding.txtPostCode.setFocusable(true);
+        binding.txtPostCode.setClickable(true);
+
+        binding.editProfile.setText("Update Profile");
+    }
+
+    public void unFocusFields(){
+        binding.txtUserName.setFocusable(false);
+        binding.txtUserName.setClickable(false);
+
+        binding.txtNumber.setFocusable(false);
+        binding.txtNumber.setClickable(false);
+
+        binding.txtAddress.setFocusable(false);
+        binding.txtAddress.setClickable(false);
+
+        binding.txtCity.setFocusable(false);
+        binding.txtCity.setClickable(false);
+
+        binding.txtPostCode.setFocusable(false);
+        binding.txtPostCode.setClickable(false);
     }
 
     @Override

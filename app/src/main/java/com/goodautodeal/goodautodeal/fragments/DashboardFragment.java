@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.FragmentDashboardBinding;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.views.adapters.DealerDashboardAdapter;
 import com.goodautodeal.goodautodeal.views.models.DealerDashboardModel;
 
@@ -36,6 +38,9 @@ public class DashboardFragment extends Fragment {
 
     private void init() {
         setRecyclerView();
+        if (PreferenceHelper.getInstance().getString(ConstUtils.USER_NAME,"") != null) {
+            binding.textView33.setText(PreferenceHelper.getInstance().getString(ConstUtils.USER_NAME, ""));
+        }
     }
 
     private void setRecyclerView() {

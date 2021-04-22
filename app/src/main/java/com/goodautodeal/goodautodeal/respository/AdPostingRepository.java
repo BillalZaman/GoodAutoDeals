@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
 import com.goodautodeal.goodautodeal.webview.ApiClient;
@@ -360,6 +361,49 @@ public class AdPostingRepository {
                     @Override
                     public void onComplete() {
 //                        Toast.makeText(application, "Success" + response.getMessage(), Toast.LENGTH_SHORT).show();
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        mainResponseLifeData.setValue(response);
+
+                    }
+                }));
+
+        return Observable.just(response);
+    }
+
+    public Observable<Response> getLogout() {
+        dataStatus.isLoadingList = true;
+        status.setValue(dataStatus);
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.getLogout("Bearer" + " " +
+                PreferenceHelper.getInstance().getString(ConstUtils.APIAccessToken,""));
+
+        mainResponseLifeData = new MutableLiveData<>();
+        compositeDisposable.add(mainResponseObservable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Response>() {
+                    @Override
+                    public void onNext(Response _response) {
+                        response = _response;
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        } else {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        }
+                    }
+
+                    @Override
+                    public void onComplete() {
+//                        Toast.makeText(application, "Success" + response.getResp().getMessage(), Toast.LENGTH_SHORT).show();
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
                         mainResponseLifeData.setValue(response);

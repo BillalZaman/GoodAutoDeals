@@ -62,6 +62,11 @@ public class UserInfoModel {
     @Expose
     private String password;
 
+    @SerializedName("dealer")
+    @Expose
+    private DealersModel dealerPersonalModel;
+
+
     public Integer getId() {
         return id;
     }
@@ -204,5 +209,13 @@ public class UserInfoModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public DealersModel getDealerPersonalModel() {
+        return dealerPersonalModel;
+    }
+
+    public void setDealerPersonalModel(DealersModel dealerPersonalModel) {
+        this.dealerPersonalModel = dealerPersonalModel;
     }
 }

@@ -74,9 +74,6 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         premiumAdapter = new PremiumAdapter(this);
         displayView(0);
 
-        Log.d("token",PreferenceHelper.getInstance().getAppString(ConstUtils.APIAccessToken,""));
-        Log.d("token",ConstUtils.APIAccessToken);
-
         if (internet.isNetworkAvailable(this)) {
             viewModel.getSliderBanner();
             viewModel.getPremiumAds();
@@ -109,16 +106,6 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         loading.cancel();
     }
 
-    private void setRecyclerView() {
-        premiumAdapter = new PremiumAdapter(this);
-//        for (int i = 0; i <= 10; i++) {
-//            data.add(new PremiumAdsModel(
-//                    "BMW 520D M SPORT AUTO", "£900", "2020", "1000cc", "500cc"));
-//        }
-//        premiumAdapter.setData(data);
-        binding.recyclerview.setAdapter(premiumAdapter);
-    }
-
     private void getData() {
         viewModel.getUserData().observe(this, new Observer<Response>() {
             @Override
@@ -140,7 +127,8 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
 
                     }
                 } else {
-                    uiHelper.showLongToastInCenter(MainActivity.this, response.getResp().getMessage());
+                    uiHelper.showLongToastInCenter(MainActivity.this, "Logout Successfully");
+                    PreferenceHelper.getInstance().clearAllPreferences();
                 }
             }
         });
@@ -287,11 +275,16 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 break;
             }
             case 13: {
-                // contact us
-                uiHelper.showLongToastInCenter(this, "User Logout Successfully");
-                PreferenceHelper.getInstance().clearAllPreferences();
-                Log.d("logout", PreferenceHelper.getInstance().getAppString(ConstUtils.APIAccessToken,"")
-                + ConstUtils.APIAccessToken);
+                // logout
+                if (internet.isNetworkAvailable(this)) {
+                    if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin, "").equalsIgnoreCase("yes")) {
+                        uiHelper.showLongToastInCenter(MainActivity.this, "Please Logged in first to perform this action");
+                        viewModel.getLogout();
+                        getData();
+                    }
+                } else {
+                    uiHelper.showLongToastInCenter(this, getString(R.string.no_interrnet_connection));
+                }
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }

@@ -1,5 +1,6 @@
 package com.goodautodeal.goodautodeal.fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.GestureDetector;
@@ -86,7 +87,7 @@ public class FragmentNavigationDrawer extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_navigation_drawer, container, false);
@@ -100,7 +101,12 @@ public class FragmentNavigationDrawer extends Fragment {
         binding.btnLoginAsDealer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uiHelper.openActivityAndSendValue(getActivity(), LoginActivity.class, "dealer");
+
+                if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin,"").equalsIgnoreCase("yes")){
+                    uiHelper.showLongToastInCenter((Activity) context, "Please Logout First For Logged In to Dealer Portal");
+                } else {
+                    uiHelper.openActivityAndSendValue(getActivity(), LoginActivity.class, "dealer");
+                }
             }
         });
 

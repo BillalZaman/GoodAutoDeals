@@ -32,7 +32,7 @@ public class DealersModel implements Serializable {
     private String tradeName;
     @SerializedName("website")
     @Expose
-    private Object website;
+    private String website;
     @SerializedName("company_reg_no")
     @Expose
     private String companyRegNo;
@@ -123,11 +123,11 @@ public class DealersModel implements Serializable {
         this.tradeName = tradeName;
     }
 
-    public Object getWebsite() {
+    public String getWebsite() {
         return website;
     }
 
-    public void setWebsite(Object website) {
+    public void setWebsite(String website) {
         this.website = website;
     }
 

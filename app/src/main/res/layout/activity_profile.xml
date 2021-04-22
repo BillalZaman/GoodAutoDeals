@@ -44,15 +44,27 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:text="Profile"
                 android:textAllCaps="true"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/textnormallarge"
                 app:layout_constraintBottom_toBottomOf="@+id/imgBack"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgEditProfile"
                 app:layout_constraintStart_toEndOf="@+id/imgBack"
                 app:layout_constraintTop_toTopOf="@+id/imgBack" />
+
+            <ImageView
+                android:id="@+id/imgEditProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_baseline_edit_24" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ScrollView
@@ -80,7 +92,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
+                <EditText
                     android:id="@+id/txtUserName"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -92,7 +104,12 @@
                     android:text="@={onProfileModel.name}"
                     android:textAlignment="center"
                     android:textColor="@android:color/black"
-                    android:textSize="28sp"
+                    android:textSize="22sp"
+                    android:focusable="false"
+                    android:editable="false"
+                    android:clickable="false"
+                    android:hint="Guest User"
+                    android:backgroundTint="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/profile_img" />
@@ -112,7 +129,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txtUserName" />
 
-                <TextView
+                <EditText
                     android:id="@+id/txtEmail"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -123,6 +140,10 @@
                     android:text="@={onProfileModel.email}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormallarge"
+                    android:focusable="false"
+                    android:editable="false"
+                    android:clickable="false"
+                    android:backgroundTint="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textView19" />
@@ -132,7 +153,7 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:background="@color/barcolor"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -155,7 +176,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/view7" />
 
-                <TextView
+                <EditText
                     android:id="@+id/txtNumber"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -163,9 +184,13 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="@{onProfileModel.cellNo}"
+                    android:text="@={onProfileModel.cellNo}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormallarge"
+                    android:focusable="false"
+                    android:editable="false"
+                    android:clickable="false"
+                    android:backgroundTint="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textView20" />
@@ -175,7 +200,7 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:background="@color/barcolor"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -198,7 +223,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/view8" />
 
-                <TextView
+                <EditText
                     android:id="@+id/txtAddress"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -206,9 +231,13 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="@{onProfileModel.address}"
+                    android:text="@={onProfileModel.address}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormallarge"
+                    android:focusable="false"
+                    android:editable="false"
+                    android:clickable="false"
+                    android:backgroundTint="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textView23" />
@@ -218,7 +247,7 @@
                     android:layout_width="0dp"
                     android:layout_height="1dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:background="@color/barcolor"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -241,7 +270,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/view11" />
 
-                <TextView
+                <EditText
                     android:id="@+id/txtCity"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -249,9 +278,13 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="@{onProfileModel.city}"
+                    android:text="@={onProfileModel.city}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormallarge"
+                    android:focusable="false"
+                    android:editable="false"
+                    android:clickable="false"
+                    android:backgroundTint="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textView24" />
@@ -274,7 +307,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Post Code:"
@@ -284,7 +317,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/view12" />
 
-                <TextView
+                <EditText
                     android:id="@+id/txtPostCode"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -292,9 +325,13 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="@{onProfileModel.postCode}"
+                    android:text="@={onProfileModel.postCode}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormallarge"
+                    android:focusable="false"
+                    android:editable="false"
+                    android:clickable="false"
+                    android:backgroundTint="@android:color/transparent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/textView28" />
@@ -317,14 +354,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="24dp"
                     android:background="@drawable/gradient_button"
                     android:fontFamily="@font/poppins_medium"
                     android:gravity="center"
                     android:onClick="@{(view)->onClick.onClick(view)}"
-                    android:text="@string/edit_profile"
+                    android:text="@string/update_profile"
                     android:textAlignment="center"
                     android:textColor="@color/colorWhite"
                     android:textSize="@dimen/textnormallarge"
@@ -334,6 +371,5 @@
                     app:layout_constraintTop_toBottomOf="@id/view16" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
