@@ -10,6 +10,7 @@ import com.goodautodeal.goodautodeal.views.activities.CarViewAdListingActivity;
 import com.goodautodeal.goodautodeal.views.activities.ChangePasswordActivity;
 import com.goodautodeal.goodautodeal.views.activities.DealerMainActivity;
 import com.goodautodeal.goodautodeal.views.activities.DealersActivity;
+import com.goodautodeal.goodautodeal.views.activities.FilterActivity;
 import com.goodautodeal.goodautodeal.views.activities.ForgotPasswordActivity;
 import com.goodautodeal.goodautodeal.views.activities.LoginActivity;
 import com.goodautodeal.goodautodeal.views.activities.OtpVerificationActivity;
@@ -42,6 +43,10 @@ import dagger.Component;
 @Singleton
 @Component(modules = {InternetModule.class, UIHelperModule.class})
 public interface ApplicationComponent {
+
+    void injectInternet(FilterActivity loginActivity);
+
+    void injectInternet(DealerMainActivity loginActivity);
 
     void injectInternet(ProfileFragment loginActivity);
 
@@ -136,5 +141,7 @@ public interface ApplicationComponent {
     void injectUIHelper(ProfileFragment adPostingRepository);
 
     void injectUIHelper(DealerViewRepository loginActivity);
+
+    void injectUIHelper(FilterActivity loginActivity);
 
 }

@@ -65,7 +65,7 @@ public interface ApiInterface {
     @POST(Request.UPDATE_USER)
     Observable<Response> getUpdateUser(@Header("Authorization") String authkey, @Body UserInfoModel userInfoModel);
 
-    @POST(Request.LOGOUT)
+    @GET(Request.LOGOUT)
     Observable<Response> getLogout(@Header("Authorization") String authkey);
 
     @GET(Request.DEALER_PROFILE)

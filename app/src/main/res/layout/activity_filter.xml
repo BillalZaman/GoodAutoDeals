@@ -80,6 +80,38 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/txtSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/search"
+                    android:drawableStart="@drawable/ic_baseline_search_24"
+                    android:drawablePadding="4dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center|start"
+                    android:hint="Enter your post code"
+                    android:paddingStart="12dp"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"  />
+
+                <View
+                    android:id="@+id/view190"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtSearch" />
+
+                <TextView
                     android:id="@+id/txtCarMake"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -92,13 +124,15 @@
                     android:textSize="@dimen/textnormallarge"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/view190" />
 
                 <View
                     android:id="@+id/view19"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
                     android:background="@color/barcolor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -123,11 +157,40 @@
                     android:id="@+id/view20"
                     android:layout_width="0dp"
                     android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
                     android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
                     android:background="@color/barcolor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/txtCarModel" />
+
+                <TextView
+                    android:id="@+id/txtCarVariant"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Car Model"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view20" />
+
+                <View
+                    android:id="@+id/view200"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@color/barcolor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/txtCarVariant" />
 
                 <TextView
                     android:id="@+id/textView38"
@@ -142,7 +205,7 @@
                     android:textSize="@dimen/textnormallarge"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view20" />
+                    app:layout_constraintTop_toBottomOf="@id/view200" />
 
                 <EditText
                     android:id="@+id/edtPriceto"
@@ -261,6 +324,20 @@
                     app:layout_constraintStart_toEndOf="@+id/textView41"
                     app:layout_constraintTop_toTopOf="@+id/edtMileageto" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/edtMileageto"
+                    tools:itemCount="8"
+                    tools:listitem="@layout/item_list_filteration" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

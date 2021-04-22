@@ -164,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                             PreferenceHelper.getInstance().setString(ConstUtils.USER_NAME, response.getResp().getDataObject().getUserInfo().getName());
                             uiHelper.openActivity(LoginActivity.this, DealerMainActivity.class);
                             PreferenceHelper.getInstance().setString(ConstUtils.isLogin, ConstUtils.yes);
+                            finish();
                             
                         } else {
                             PreferenceHelper.getInstance().setString(ConstUtils.USER_NAME, response.getResp().getDataObject().getUserInfo().getName());

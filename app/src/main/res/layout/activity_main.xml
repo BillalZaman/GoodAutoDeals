@@ -79,17 +79,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="12dp"
-                android:layout_marginEnd="24dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/search"
                 android:drawableStart="@drawable/ic_baseline_search_24"
                 android:drawablePadding="4dp"
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="center|start"
+                android:hint="Enter your post code"
                 android:paddingStart="12dp"
-                android:text="@string/search"
                 android:textColor="@color/colorLightBlack"
                 android:textSize="@dimen/textnormallarge"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgFilter"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageSlider" />
 
@@ -107,6 +107,17 @@
                 app:spanCount="2"
                 tools:itemCount="8"
                 tools:listitem="@layout/item_list_premiumads" />
+
+            <ImageView
+                android:id="@+id/imgFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:padding="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtSearch"
+                app:layout_constraintEnd_toEndOf="@+id/view"
+                app:layout_constraintTop_toTopOf="@+id/txtSearch"
+                app:srcCompat="@drawable/ic_baseline_filter_alt_24" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <fragment
