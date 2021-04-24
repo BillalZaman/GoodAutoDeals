@@ -223,7 +223,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:hint="@string/enter_your_description"
+                    android:hint="@string/enter_your_message"
                     android:textColorHint="@color/colorLightBlack"
                     app:boxCornerRadiusBottomEnd="50dp"
                     app:boxCornerRadiusBottomStart="50dp"

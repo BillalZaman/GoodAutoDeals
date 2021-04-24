@@ -856,7 +856,7 @@ public class UIHelper {
 
     public void openJobDetailActivity(Activity activity, Class<?> calledActivity,int orderServiceId, int position) {
         Intent myIntent = new Intent(activity, calledActivity);
-        myIntent.putExtra(ConstUtils.ORDER_SERVICE_ID, orderServiceId);
+        myIntent.putExtra(ConstUtils.Data, orderServiceId);
         myIntent.putExtra(ConstUtils.CLASS_NAME, position);
         activity.startActivity(myIntent);
     }
@@ -864,6 +864,13 @@ public class UIHelper {
     public void openActivityAndSendValue(Activity activity, Class<?> calledActivity, String value) {
         Intent myIntent = new Intent(activity, calledActivity);
         myIntent.putExtra(ConstUtils.ValueKey, value);
+        activity.startActivity(myIntent);
+    }
+
+    public void openActivityAndSendValuewithData(Activity activity, Class<?> calledActivity, String _activity, String value) {
+        Intent myIntent = new Intent(activity, calledActivity);
+        myIntent.putExtra(ConstUtils.ValueKey, _activity);
+        myIntent.putExtra(ConstUtils.Data, value);
         activity.startActivity(myIntent);
     }
 

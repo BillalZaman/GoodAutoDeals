@@ -30,6 +30,14 @@ public class DealerViewModel extends AndroidViewModel {
         dealerViewRepository.getDealerProfile();
     }
 
+    public void getDealerDashboard() {
+        dealerViewRepository.getDealerDashboard();
+    }
+
+    public void getContactUs(String name, String email, String num, String message) {
+        dealerViewRepository.getContactUs(name, email, num, message);
+    }
+
     public LiveData<Response> getUserData() {
         return dealerViewRepository.getMainResponseLifeData();
     }

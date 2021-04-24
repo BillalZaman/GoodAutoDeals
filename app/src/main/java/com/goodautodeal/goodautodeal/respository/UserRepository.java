@@ -94,11 +94,7 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
-                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
-                        } else {
-                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
-                        }
+                        uiHelper.showLongToastInCenter(application, "Email already Exist");
                     }
 
                     @Override

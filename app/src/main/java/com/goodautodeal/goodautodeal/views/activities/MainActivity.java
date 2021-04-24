@@ -300,6 +300,11 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 binding.drawerLayout.openDrawer(GravityCompat.START);
                 break;
             }
+            case R.id.imgFilter: {
+                uiHelper.openActivity(MainActivity.this, FilterActivity.class);
+                binding.drawerLayout.closeDrawer(GravityCompat.END);
+                break;
+            }
         }
     }
 

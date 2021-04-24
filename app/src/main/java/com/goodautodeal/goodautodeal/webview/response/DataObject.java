@@ -26,6 +26,9 @@ public class DataObject implements Serializable {
     @SerializedName("tokenType")
     @Expose
     private String tokenType;
+    @SerializedName("verify")
+    @Expose
+    private int verify;
     @SerializedName("UserInfo")
     @Expose
     private UserInfoModel userInfo;
@@ -50,6 +53,21 @@ public class DataObject implements Serializable {
     @SerializedName("DataItems")
     @Expose
     private ValueYourCarModel valueYourCarModel;
+    @SerializedName("liveAds")
+    @Expose
+    private Integer liveAds;
+    @SerializedName("pendingAds")
+    @Expose
+    private Integer pendingAds;
+    @SerializedName("soldAds")
+    @Expose
+    private Integer soldAds;
+    @SerializedName("rejectedAds")
+    @Expose
+    private Integer rejectedAds;
+    @SerializedName("totalAds")
+    @Expose
+    private Integer totalAds;
 
     public String getToken() {
         return token;
@@ -129,5 +147,53 @@ public class DataObject implements Serializable {
 
     public void setAdDetailModels(AdDetailModel adDetailModels) {
         this.adDetailModels = adDetailModels;
+    }
+
+    public int getVerify() {
+        return verify;
+    }
+
+    public void setVerify(int verify) {
+        this.verify = verify;
+    }
+
+    public Integer getLiveAds() {
+        return liveAds;
+    }
+
+    public void setLiveAds(Integer liveAds) {
+        this.liveAds = liveAds;
+    }
+
+    public Integer getPendingAds() {
+        return pendingAds;
+    }
+
+    public void setPendingAds(Integer pendingAds) {
+        this.pendingAds = pendingAds;
+    }
+
+    public Integer getSoldAds() {
+        return soldAds;
+    }
+
+    public void setSoldAds(Integer soldAds) {
+        this.soldAds = soldAds;
+    }
+
+    public Integer getRejectedAds() {
+        return rejectedAds;
+    }
+
+    public void setRejectedAds(Integer rejectedAds) {
+        this.rejectedAds = rejectedAds;
+    }
+
+    public Integer getTotalAds() {
+        return totalAds;
+    }
+
+    public void setTotalAds(Integer totalAds) {
+        this.totalAds = totalAds;
     }
 }

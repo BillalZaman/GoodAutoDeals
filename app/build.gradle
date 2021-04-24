@@ -5,8 +5,8 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.goodautodeal.goodautodeal"
-        minSdkVersion 21
+        applicationId "com.goodautodeals.carsearch"
+        minSdkVersion 24
         targetSdkVersion 30
         versionCode 1
         multiDexEnabled = true
@@ -23,6 +23,10 @@ android {
     }
     dataBinding {
         enabled = true
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 

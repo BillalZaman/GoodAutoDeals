@@ -24,6 +24,7 @@ import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.interfaces.DealerMoreInterface;
 import com.goodautodeal.goodautodeal.viewmodels.AdPostingViewModel;
+import com.goodautodeal.goodautodeal.viewmodels.DealerViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
 import com.goodautodeal.goodautodeal.webview.response.Response;
 
@@ -45,6 +46,7 @@ public class DealerMainActivity extends AppCompatActivity implements DealerMoreI
         ApplicationState.getApp().getApplicationComponent().injectUIHelper(this);
         ApplicationState.getApp().getApplicationComponent().injectInternet(this);
         viewModel = ViewModelProviders.of(this).get(AdPostingViewModel.class);
+
 
         init();
     }

@@ -17,7 +17,7 @@ public class ConstUtils {
     public static final String PREF_NAMES = "user_preferences";
 
     public static String CLASS_NAME = "className";
-    public static String ORDER_SERVICE_ID = "orderServiceId";
+    public static String Data = "data";
     public static String ValueKey = "valueKey";
     public static String LIST_POSITION = "listPosition";
 

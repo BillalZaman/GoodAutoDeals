@@ -95,4 +95,17 @@
     <string name="read_more">Read More</string>
     <string name="read_less">Read Less</string>
     <string name="update_profile">Update Profile</string>
+    <string name="body_">Body</string>
+    <string name="transmission_">Transmission</string>
+    <string name="emission_">C02 Emission</string>
+    <string name="colors_">Colours</string>
+    <string name="numdoors_">Number of doors</string>
+    <string name="numseats_">Number of seats</string>
+    <string name="fuel_">Fuel Type</string>
+    <string name="capacity_engine">Engine Capacity</string>
+    <string name="fuel_tank">Fuel Tank Capacity</string>
+    <string name="bhp">BHP</string>
+    <string name="axele_">Driving Axele</string>
+    <string name="tax_">Road Tax</string>
+    <string name="enter_your_message">Enter your Message</string>
 </resources>

@@ -30,7 +30,7 @@ public class ValueYourCarActivity extends AppCompatActivity {
     ProgressDialog loading;
     AdPostingViewModel viewModel;
     private ActivityValueYourCarBinding binding;
-    private String isActivityName;
+    private String isActivityName, data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,7 @@ public class ValueYourCarActivity extends AppCompatActivity {
     private void init() {
         binding.setOnClick(this);
         isActivityName = getIntent().getStringExtra(ConstUtils.ValueKey);
+        data = getIntent().getStringExtra(ConstUtils.Data);
 
         getLoadingStatus();
 
@@ -64,6 +65,7 @@ public class ValueYourCarActivity extends AppCompatActivity {
             binding.txtTradePoorPrice.setVisibility(View.VISIBLE);
         }
 
+        getValueYourCar(data);
     }
 
     private void getLoadingStatus() {
@@ -94,12 +96,12 @@ public class ValueYourCarActivity extends AppCompatActivity {
                 break;
             }
             case R.id.btnViewDetail: {
-                getValueYourCar();
+
             }
         }
     }
 
-    private void getValueYourCar() {
+    private void getValueYourCar(String data) {
         if (internet.isNetworkAvailable(this)) {
             viewModel.getValueYourCar();
             getData();

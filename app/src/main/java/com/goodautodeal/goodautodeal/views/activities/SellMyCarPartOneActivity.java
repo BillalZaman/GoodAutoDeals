@@ -53,9 +53,11 @@ public class SellMyCarPartOneActivity extends AppCompatActivity {
                 if (isActivityName.equalsIgnoreCase("sell my car")){
                     uiHelper.openActivity(this, SellMyCarPartTwoActivity.class);
                 } else if (isActivityName.equalsIgnoreCase("value your car")){
-                    uiHelper.openActivityAndSendValue(this, ValueYourCarActivity.class,"user");
+                    uiHelper.openActivityAndSendValuewithData(this, ValueYourCarActivity.class,
+                            "user",binding.edtVRM.getText().toString());
                 } else if (isActivityName.equalsIgnoreCase("dealervalue")){
-                    uiHelper.openActivityAndSendValue(this, ValueYourCarActivity.class,"dealer");
+                    uiHelper.openActivityAndSendValuewithData(this, ValueYourCarActivity.class,
+                            "dealer", binding.edtVRM.getText().toString());
                 } else {
                     uiHelper.openActivity(this, SellMyCarPartTwoActivity.class);
                 }

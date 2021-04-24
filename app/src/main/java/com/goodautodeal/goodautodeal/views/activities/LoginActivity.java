@@ -173,9 +173,13 @@ public class LoginActivity extends AppCompatActivity {
                         }
                     }
                 } else {
-                    uiHelper.showLongToastInCenter(LoginActivity.this, response.getResp().getMessage());
-                    PreferenceHelper.getInstance().setString(ConstUtils.APIAccessToken, response.getResp().getDataObject().getToken());
-                    uiHelper.openAndClearActivity(LoginActivity.this, OtpVerificationActivity.class);
+                    if (response.getResp().getDataObject().getVerify() == 0) {
+                        uiHelper.showLongToastInCenter(LoginActivity.this, response.getResp().getMessage());
+                        PreferenceHelper.getInstance().setString(ConstUtils.APIAccessToken, response.getResp().getDataObject().getToken());
+                        uiHelper.openAndClearActivity(LoginActivity.this, OtpVerificationActivity.class);
+                    } else {
+                        uiHelper.showLongToastInCenter(LoginActivity.this, response.getResp().getMessage());
+                    }
                 }
             }
         });

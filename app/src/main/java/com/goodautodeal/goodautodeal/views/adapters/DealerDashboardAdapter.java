@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
 import com.goodautodeal.goodautodeal.databinding.ProviderHomeDashboardViewholderBinding;
@@ -25,7 +24,7 @@ import javax.inject.Inject;
 /**
  * Created by Bilal Zaman on 25/02/21.
  */
-public class DealerDashboardAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class DealerDashboardAdapter extends RecyclerView.Adapter<DealerDashboardAdapter.ViewHolder> {
     ArrayList<DealerDashboardModel> arrayList;
     Context context;
     int dpSize;
@@ -51,10 +50,12 @@ public class DealerDashboardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @NonNull
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
-        ProviderHomeDashboardViewholderBinding binding = DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()), R.layout.provider_home_dashboard_viewholder, viewGroup, false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int position) {
+        ProviderHomeDashboardViewholderBinding binding =
+                DataBindingUtil.inflate(LayoutInflater.from(viewGroup.getContext()),
+                        R.layout.provider_home_dashboard_viewholder, viewGroup, false);
         binding.setAdapter(this);
-        return new DashboardViewholder(binding);
+        return new ViewHolder(binding);
     }
 
     public void onClick(int position) {
@@ -64,8 +65,7 @@ public class DealerDashboardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
-        DashboardViewholder holder = (DashboardViewholder) viewHolder;
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.binding.setModel(arrayList.get(position));
         holder.binding.executePendingBindings();
         holder.binding.setPosition(position);
@@ -79,10 +79,10 @@ public class DealerDashboardAdapter extends RecyclerView.Adapter<RecyclerView.Vi
         return arrayList.size();
     }
 
-    public class DashboardViewholder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         ProviderHomeDashboardViewholderBinding binding;
 
-        public DashboardViewholder(@NonNull ProviderHomeDashboardViewholderBinding binding) {
+        public ViewHolder(@NonNull ProviderHomeDashboardViewholderBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

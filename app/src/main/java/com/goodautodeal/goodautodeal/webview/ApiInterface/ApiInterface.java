@@ -71,6 +71,12 @@ public interface ApiInterface {
     @GET(Request.DEALER_PROFILE)
     Observable<Response> getDealerProfile(@Header("Authorization") String authkey);
 
+    @GET(Request.DEALER_DASHBOARD)
+    Observable<Response> getDealerDashboardData(@Header("Authorization") String authkey);
+
+    @POST(Request.CONTACT_US)
+    Observable<Response> getContactUs(@Header("Authorization") String authkey, @Body RequestBody body);
+
     interface Request {
         String LOGIN = "login";
         String REGISTER = "register";
@@ -89,5 +95,7 @@ public interface ApiInterface {
         String UPDATE_USER = "user/update";
         String LOGOUT = "logout";
         String DEALER_PROFILE = "dealer";
+        String DEALER_DASHBOARD = "dealer/dashboard";
+        String CONTACT_US = "contact";
     }
 }

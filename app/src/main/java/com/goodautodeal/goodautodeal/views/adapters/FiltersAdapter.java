@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.goodautodeal.goodautodeal.R;
 import com.goodautodeal.goodautodeal.databinding.ItemListFilterationBinding;
+import com.goodautodeal.goodautodeal.interfaces.FilterClickInterface;
 import com.goodautodeal.goodautodeal.views.models.FiltersModel;
 
 import java.util.ArrayList;
@@ -21,10 +22,12 @@ import java.util.ArrayList;
 public class FiltersAdapter extends RecyclerView.Adapter<FiltersAdapter.ViewHolder> {
     private Context context;
     private ArrayList<FiltersModel> data;
+    private FilterClickInterface filterClickInterface;
 
     public FiltersAdapter(Context context) {
         this.context = context;
         this.data = new ArrayList<>();
+        filterClickInterface = (FilterClickInterface) context;
     }
 
     public void setData(ArrayList<FiltersModel> _data){
@@ -41,8 +44,14 @@ public class FiltersAdapter extends RecyclerView.Adapter<FiltersAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.binding.setOnModel(data.get(position));
+        holder.binding.parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterClickInterface.filterClick(data.get(position).getFilterHeading());
+            }
+        });
     }
 
     @Override

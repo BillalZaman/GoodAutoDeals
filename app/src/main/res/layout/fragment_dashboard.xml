@@ -40,12 +40,246 @@
             tools:listitem="@layout/provider_home_dashboard_viewholder"
             tools:itemCount="4"
             android:layout_height="0dp"
+            android:visibility="gone"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView5"
             app:spanCount="2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5">
+
+
+            <ImageView
+                android:id="@+id/imgLiveAds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/total_jobs" />
+
+            <TextView
+                android:id="@+id/txtLiveAdsCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="123"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@+id/imgLiveAds"
+                app:layout_constraintStart_toStartOf="@+id/imgLiveAds"
+                app:layout_constraintTop_toBottomOf="@+id/imgLiveAds" />
+
+            <TextView
+                android:id="@+id/liveads"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Total Live"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imgLiveAds"
+                app:layout_constraintStart_toStartOf="@+id/imgLiveAds"
+                app:layout_constraintTop_toBottomOf="@+id/txtLiveAdsCount" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/imageView5">
+
+
+            <ImageView
+                android:id="@+id/imgPendingAds"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/total_jobs" />
+
+            <TextView
+                android:id="@+id/txtPendingCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="123"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@+id/imgPendingAds"
+                app:layout_constraintStart_toStartOf="@+id/imgPendingAds"
+                app:layout_constraintTop_toBottomOf="@+id/imgPendingAds" />
+
+            <TextView
+                android:id="@+id/txtPending"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Pending Ads"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imgPendingAds"
+                app:layout_constraintStart_toStartOf="@+id/imgPendingAds"
+                app:layout_constraintTop_toBottomOf="@+id/txtPendingCount" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+
+            <ImageView
+                android:id="@+id/imgRejected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/total_jobs" />
+
+            <TextView
+                android:id="@+id/txtRejectedCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="123"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@+id/imgRejected"
+                app:layout_constraintStart_toStartOf="@+id/imgRejected"
+                app:layout_constraintTop_toBottomOf="@+id/imgRejected" />
+
+            <TextView
+                android:id="@+id/txtRejected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Rejected Ads"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imgRejected"
+                app:layout_constraintStart_toStartOf="@+id/imgRejected"
+                app:layout_constraintTop_toBottomOf="@+id/txtRejectedCount" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/constraintLayout4"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+
+            <ImageView
+                android:id="@+id/imgSold"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:scaleType="fitXY"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/total_jobs" />
+
+            <TextView
+                android:id="@+id/txtSoldCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="123"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="@+id/imgSold"
+                app:layout_constraintStart_toStartOf="@+id/imgSold"
+                app:layout_constraintTop_toBottomOf="@+id/imgSold" />
+
+            <TextView
+                android:id="@+id/txtSOld"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Sold Ads"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imgSold"
+                app:layout_constraintStart_toStartOf="@+id/imgSold"
+                app:layout_constraintTop_toBottomOf="@+id/txtSoldCount" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
             android:id="@+id/textView33"
@@ -57,6 +291,7 @@
             android:gravity="center"
             android:textColor="@color/colorWhite"
             android:textSize="@dimen/large"
+            android:textAllCaps="true"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
             app:layout_constraintEnd_toEndOf="@+id/imageView5"
             app:layout_constraintStart_toStartOf="parent"
