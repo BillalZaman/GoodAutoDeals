@@ -77,6 +77,21 @@ public interface ApiInterface {
     @POST(Request.CONTACT_US)
     Observable<Response> getContactUs(@Header("Authorization") String authkey, @Body RequestBody body);
 
+    @GET(Request.DEALER_PUBLISHED_AD)
+    Observable<Response> getDealerPublishedAds(@Header("Authorization") String authkey);
+
+    @GET(Request.DEALER_PENDING_AD)
+    Observable<Response> getDealerPendingAds(@Header("Authorization") String authkey);
+
+    @GET(Request.DEALER_REJECTED_AD)
+    Observable<Response> getDealerRejectedAds(@Header("Authorization") String authkey);
+
+    @GET(Request.DEALER_SOLD_AD)
+    Observable<Response> getDealerSoldAds(@Header("Authorization") String authkey);
+
+    @GET(Request.DEALER_DRAFT_AD)
+    Observable<Response> getDealerDraftAds(@Header("Authorization") String authkey);
+
     interface Request {
         String LOGIN = "login";
         String REGISTER = "register";
@@ -97,5 +112,10 @@ public interface ApiInterface {
         String DEALER_PROFILE = "dealer";
         String DEALER_DASHBOARD = "dealer/dashboard";
         String CONTACT_US = "contact";
+        String DEALER_PUBLISHED_AD = "dealer/published/ads";
+        String DEALER_PENDING_AD = "dealer/pending/ads";
+        String DEALER_REJECTED_AD = "dealer/rejected/ads";
+        String DEALER_SOLD_AD = "dealer/sold/ads";
+        String DEALER_DRAFT_AD = "dealer/draft/ads";
     }
 }

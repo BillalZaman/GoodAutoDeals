@@ -1,25 +1,45 @@
 package com.goodautodeal.goodautodeal.fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
 import com.goodautodeal.goodautodeal.databinding.FragmentPendingBinding;
+import com.goodautodeal.goodautodeal.helpers.Internet;
+import com.goodautodeal.goodautodeal.helpers.UIHelper;
+import com.goodautodeal.goodautodeal.viewmodels.DealerAdListViewModel;
+import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
+import com.goodautodeal.goodautodeal.views.adapters.GeneralAdViewAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.PremiumAdapter;
+import com.goodautodeal.goodautodeal.views.models.AdGeneralViewModel;
 import com.goodautodeal.goodautodeal.views.models.PremiumAdsModel;
+import com.goodautodeal.goodautodeal.webview.response.Response;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 
 public class PendingFragment extends Fragment {
-    private ArrayList<PremiumAdsModel> data = new ArrayList<>();
-    private PremiumAdapter premiumAdapter;
+    @Inject
+    UIHelper uiHelper;
+    @Inject
+    Internet internet;
+    ProgressDialog loading;
+    DealerAdListViewModel viewModel;
+    private ArrayList<AdGeneralViewModel> data = new ArrayList<>();
+    private GeneralAdViewAdapter generalAdViewAdapter;
     private FragmentPendingBinding binding;
 
     public PendingFragment() {
@@ -31,20 +51,71 @@ public class PendingFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_pending, container, false);
+        ApplicationState.getApp().getApplicationComponent().injectUIHelper(this);
+        ApplicationState.getApp().getApplicationComponent().injectInternet(this);
+        viewModel = ViewModelProviders.of(this).get(DealerAdListViewModel.class);
         init();
         return binding.getRoot();
     }
 
     private void init() {
-        setRecyclerView();
+        getLoadingStatus();
+        generalAdViewAdapter = new GeneralAdViewAdapter(getContext());
+        if (internet.isNetworkAvailable(getContext())) {
+            viewModel.getPendingAd();
+            getDataList();
+
+        } else {
+            uiHelper.showLongToastInCenter(getContext(), getString(R.string.no_interrnet_connection));
+        }
+
+    }
+    private void getDataList() {
+        viewModel.getUserData().observe(this, new Observer<Response>() {
+            @Override
+            public void onChanged(@Nullable Response response) {
+                if (response.getResp().getCode() == 1 &&
+                        response.getResp().getSuccess().equalsIgnoreCase("success")) {
+
+                    if (response.getResp().getDataObject().getPendingAdList()!=null) {
+                        data = response.getResp().getDataObject().getPendingAdList();
+                        generalAdViewAdapter.setData(data);
+                        binding.recyclerview.setAdapter(generalAdViewAdapter);
+
+                    } else {
+                        uiHelper.showLongToastInCenter(getContext(), "oh now");
+                    }
+                } else {
+                    uiHelper.showLongToastInCenter(getActivity(), response.getResp().getMessage());
+                }
+            }
+        });
     }
 
-    private void setRecyclerView() {
-        premiumAdapter = new PremiumAdapter(getContext());
-        for (int i=0; i<=10; i++){
-            data.add(new PremiumAdsModel("BMW 520D M SPORT AUTO", "£900", "2020","1000cc", "500cc"));
-        }
-//        premiumAdapter.setData(data);
-        binding.recyclerview.setAdapter(premiumAdapter);
+    private void getLoadingStatus() {
+        viewModel.getIsLoading().observe(this, new Observer<ViewModelStatus>() {
+            @Override
+            public void onChanged(@Nullable ViewModelStatus viewModelStatus) {
+                if (viewModelStatus.isLoadingList) {
+                    showLoading();
+                } else {
+                    hideLoading();
+                }
+            }
+        });
+    }
+
+    public void showLoading() {
+        loading = ProgressDialog.show(getContext(), getString(R.string.loading), "", true, false);
+    }
+
+    public void hideLoading() {
+        loading.cancel();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        viewModel.clear();
     }
 }

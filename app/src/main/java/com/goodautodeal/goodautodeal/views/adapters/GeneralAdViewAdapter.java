@@ -62,7 +62,7 @@ public class GeneralAdViewAdapter extends RecyclerView.Adapter<GeneralAdViewAdap
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.binding.setModel(data.get(position));
 
-        if (data.get(position).getAdimage().get(0).getPath()!=null) {
+        if (data.get(position).getAdimage()!=null) {
             Glide.with(context)
                     .load("https://goodautodeals.com" + data.get(position).getAdimage().get(0).getPath())
                     .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);

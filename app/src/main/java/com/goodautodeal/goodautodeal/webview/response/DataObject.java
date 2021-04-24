@@ -68,6 +68,21 @@ public class DataObject implements Serializable {
     @SerializedName("totalAds")
     @Expose
     private Integer totalAds;
+    @SerializedName("PublisedAdsList")
+    @Expose
+    private ArrayList<AdGeneralViewModel> publishedAdList = null;
+    @SerializedName("PendingAdsList")
+    @Expose
+    private ArrayList<AdGeneralViewModel> pendingAdList = null;
+    @SerializedName("RejectedAdsList")
+    @Expose
+    private ArrayList<AdGeneralViewModel> rejectedAdList = null;
+    @SerializedName("SoldAdsList")
+    @Expose
+    private ArrayList<AdGeneralViewModel> soldAdList = null;
+    @SerializedName("DraftAdsList")
+    @Expose
+    private ArrayList<AdGeneralViewModel> draftAdList = null;
 
     public String getToken() {
         return token;
@@ -195,5 +210,45 @@ public class DataObject implements Serializable {
 
     public void setTotalAds(Integer totalAds) {
         this.totalAds = totalAds;
+    }
+
+    public ArrayList<AdGeneralViewModel> getPublishedAdList() {
+        return publishedAdList;
+    }
+
+    public void setPublishedAdList(ArrayList<AdGeneralViewModel> publishedAdList) {
+        this.publishedAdList = publishedAdList;
+    }
+
+    public ArrayList<AdGeneralViewModel> getPendingAdList() {
+        return pendingAdList;
+    }
+
+    public void setPendingAdList(ArrayList<AdGeneralViewModel> pendingAdList) {
+        this.pendingAdList = pendingAdList;
+    }
+
+    public ArrayList<AdGeneralViewModel> getRejectedAdList() {
+        return rejectedAdList;
+    }
+
+    public void setRejectedAdList(ArrayList<AdGeneralViewModel> rejectedAdList) {
+        this.rejectedAdList = rejectedAdList;
+    }
+
+    public ArrayList<AdGeneralViewModel> getSoldAdList() {
+        return soldAdList;
+    }
+
+    public void setSoldAdList(ArrayList<AdGeneralViewModel> soldAdList) {
+        this.soldAdList = soldAdList;
+    }
+
+    public ArrayList<AdGeneralViewModel> getDraftAdList() {
+        return draftAdList;
+    }
+
+    public void setDraftAdList(ArrayList<AdGeneralViewModel> draftAdList) {
+        this.draftAdList = draftAdList;
     }
 }

@@ -1,8 +1,17 @@
 package com.goodautodeal.goodautodeal.interfaces;
 
 import com.goodautodeal.goodautodeal.fragments.DashboardFragment;
+import com.goodautodeal.goodautodeal.fragments.DraftFragment;
+import com.goodautodeal.goodautodeal.fragments.FragmentNavigationDrawer;
+import com.goodautodeal.goodautodeal.fragments.PendingFragment;
 import com.goodautodeal.goodautodeal.fragments.ProfileFragment;
+import com.goodautodeal.goodautodeal.fragments.PublishedFragment;
+import com.goodautodeal.goodautodeal.fragments.RejectedFragment;
+import com.goodautodeal.goodautodeal.fragments.SoldVehicleFragment;
+import com.goodautodeal.goodautodeal.modules.internetModule.InternetModule;
+import com.goodautodeal.goodautodeal.modules.uiHelperModule.UIHelperModule;
 import com.goodautodeal.goodautodeal.respository.AdPostingRepository;
+import com.goodautodeal.goodautodeal.respository.DealerAdListViewRepository;
 import com.goodautodeal.goodautodeal.respository.DealerViewRepository;
 import com.goodautodeal.goodautodeal.respository.UserRepository;
 import com.goodautodeal.goodautodeal.views.activities.AdsManagementActivity;
@@ -15,19 +24,16 @@ import com.goodautodeal.goodautodeal.views.activities.DealersActivity;
 import com.goodautodeal.goodautodeal.views.activities.FilterActivity;
 import com.goodautodeal.goodautodeal.views.activities.ForgotPasswordActivity;
 import com.goodautodeal.goodautodeal.views.activities.LoginActivity;
+import com.goodautodeal.goodautodeal.views.activities.MainActivity;
 import com.goodautodeal.goodautodeal.views.activities.OtpVerificationActivity;
 import com.goodautodeal.goodautodeal.views.activities.PackagesActivity;
 import com.goodautodeal.goodautodeal.views.activities.PostAdSucesssActivity;
 import com.goodautodeal.goodautodeal.views.activities.ProfileActivity;
 import com.goodautodeal.goodautodeal.views.activities.RegistrationActivity;
-import com.goodautodeal.goodautodeal.views.activities.SellMyCarPartThreeActivity;
-import com.goodautodeal.goodautodeal.fragments.FragmentNavigationDrawer;
-import com.goodautodeal.goodautodeal.modules.internetModule.InternetModule;
-import com.goodautodeal.goodautodeal.modules.uiHelperModule.UIHelperModule;
-import com.goodautodeal.goodautodeal.views.activities.MainActivity;
 import com.goodautodeal.goodautodeal.views.activities.SellMyCarPartFiveActivity;
 import com.goodautodeal.goodautodeal.views.activities.SellMyCarPartFourActivity;
 import com.goodautodeal.goodautodeal.views.activities.SellMyCarPartOneActivity;
+import com.goodautodeal.goodautodeal.views.activities.SellMyCarPartThreeActivity;
 import com.goodautodeal.goodautodeal.views.activities.SellMyCarPartTwoActivity;
 import com.goodautodeal.goodautodeal.views.activities.SplashActivity;
 import com.goodautodeal.goodautodeal.views.activities.ValueYourCarActivity;
@@ -45,6 +51,16 @@ import dagger.Component;
 @Singleton
 @Component(modules = {InternetModule.class, UIHelperModule.class})
 public interface ApplicationComponent {
+
+    void injectInternet(DraftFragment dashboardFragment);
+
+    void injectInternet(SoldVehicleFragment dashboardFragment);
+
+    void injectInternet(RejectedFragment dashboardFragment);
+
+    void injectInternet(PendingFragment dashboardFragment);
+
+    void injectInternet(PublishedFragment dashboardFragment);
 
     void injectInternet(ContactUsActivity dashboardFragment);
 
@@ -153,4 +169,16 @@ public interface ApplicationComponent {
     void injectUIHelper(DashboardFragment dashboardFragment);
 
     void injectUIHelper(ContactUsActivity dashboardFragment);
+
+    void injectUIHelper(DealerAdListViewRepository dashboardFragment);
+
+    void injectUIHelper(PublishedFragment dashboardFragment);
+
+    void injectUIHelper(DraftFragment dashboardFragment);
+
+    void injectUIHelper(SoldVehicleFragment dashboardFragment);
+
+    void injectUIHelper(RejectedFragment dashboardFragment);
+
+    void injectUIHelper(PendingFragment dashboardFragment);
 }

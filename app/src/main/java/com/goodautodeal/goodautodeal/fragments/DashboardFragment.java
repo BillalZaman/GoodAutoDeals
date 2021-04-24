@@ -21,6 +21,7 @@ import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.DealerViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
+import com.goodautodeal.goodautodeal.views.activities.AdsManagementActivity;
 import com.goodautodeal.goodautodeal.webview.response.Response;
 
 import javax.inject.Inject;
@@ -65,6 +66,12 @@ public class DashboardFragment extends Fragment {
         }
 
 
+        binding.constraintLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uiHelper.openActivity(getActivity(), AdsManagementActivity.class);
+            }
+        });
     }
 
     private void getLoadingStatus() {
