@@ -80,7 +80,21 @@
             app:sliderStartAutoCycle="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.smarteist.autoimageslider.SliderView>
+
+        <com.goodautodeal.goodautodeal.helpers.CircleImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/gradient_circle"
+            android:padding="20dp"
+            android:src="@drawable/ic_video_play"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tab" />
 
         <TextView
             android:id="@+id/txtCarTitle"
@@ -104,7 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:hint="£ 6000"
-            android:text="@{onAddetailModel.price}"
+            android:text="@{'£' + String.valueOf(onAddetailModel.price)}"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/textnormallarge"
             android:fontFamily="@font/poppins_semibold"
@@ -179,7 +193,7 @@
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="34 Cliveland Street, Birmingham, B19 3SH"
+                            android:text="@{onAdUserModel.address}"
                             android:textColor="@color/colorLightBlack"
                             android:textSize="@dimen/textnormal"
                             app:layout_constraintEnd_toStartOf="@+id/imgDealer"
@@ -204,7 +218,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="+xx xx xxx xxxx"
+                            android:text="@{onAdDealerModel.businessNo}"
                             android:textColor="@color/colorLightBlack"
                             android:textSize="@dimen/textnormal"
                             app:layout_constraintBottom_toBottomOf="@+id/textView34"
@@ -231,11 +245,11 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/poppins_medium"
-                            android:text="xxxx@gmail.com"
+                            android:text="@{onAdUserModel.email}"
                             android:textColor="@color/colorLightBlack"
                             android:textSize="@dimen/textnormal"
                             app:layout_constraintBottom_toBottomOf="@+id/textView36"
-                            app:layout_constraintEnd_toEndOf="@+id/txtPhoneNumberDealer"
+                            app:layout_constraintEnd_toEndOf="@+id/imgDealer"
                             app:layout_constraintStart_toEndOf="@+id/textView36"
                             app:layout_constraintTop_toTopOf="@+id/textView36" />
 
@@ -254,6 +268,7 @@
                             android:textAlignment="center"
                             android:textColor="@color/colorWhite"
                             android:textSize="@dimen/textnormallarge"
+                            android:onClick="@{(view)->activity.onClick(view)}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toStartOf="@+id/txtContactDealer"
                             app:layout_constraintStart_toStartOf="parent"
@@ -272,21 +287,23 @@
                             android:textAlignment="center"
                             android:textColor="@color/colorWhite"
                             android:textSize="@dimen/textnormallarge"
+                            android:onClick="@{(view)->activity.onClick(view)}"
                             app:layout_constraintBottom_toBottomOf="@+id/txtWebsite"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/txtWebsite"
                             app:layout_constraintTop_toTopOf="@+id/txtWebsite" />
 
-                        <ImageView
+                        <com.goodautodeal.goodautodeal.helpers.CircleImageView
                             android:id="@+id/imgDealer"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
                             android:layout_marginTop="16dp"
                             android:layout_marginEnd="16dp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:srcCompat="@drawable/user_profile_demo" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
+
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
@@ -297,7 +314,7 @@
                     android:layout_marginEnd="24dp"
                     android:elevation="6dp"
                     app:cardCornerRadius="8dp"
-                    android:visibility="invisible"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -343,9 +360,9 @@
                             android:layout_marginEnd="8dp"
                             android:fontFamily="@font/poppins_medium"
                             android:hint="34 Cliveland Street, Birmingham, B19 3SH"
-                            android:text="@{onAdUserModel.address}"
                             android:textColor="@color/colorLightBlack"
                             android:textSize="@dimen/textnormal"
+                            android:text="@{onAdUserModel.address}"
                             app:layout_constraintEnd_toStartOf="@+id/imgUser"
                             app:layout_constraintStart_toEndOf="@+id/textView320"
                             app:layout_constraintTop_toBottomOf="@+id/txtUserName" />
@@ -369,7 +386,7 @@
                             android:layout_marginStart="8dp"
                             android:fontFamily="@font/poppins_medium"
                             android:hint="+xx xx xxx xxxx"
-                            android:text="@{onAdDealerModel.businessNo}"
+                            android:text="@{onAdUserModel.cellNo}"
                             android:textColor="@color/colorLightBlack"
                             android:textSize="@dimen/textnormal"
                             app:layout_constraintBottom_toBottomOf="@+id/textView340"
@@ -407,7 +424,7 @@
                             app:layout_constraintStart_toEndOf="@+id/textView360"
                             app:layout_constraintTop_toTopOf="@+id/textView360" />
 
-                        <ImageView
+                        <com.goodautodeal.goodautodeal.helpers.CircleImageView
                             android:id="@+id/imgUser"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -438,12 +455,213 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:nestedScrollingEnabled="false"
+                    android:visibility="gone"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="@+id/textView18"
                     app:layout_constraintStart_toStartOf="@+id/dealerLayoutDetail"
                     app:layout_constraintTop_toBottomOf="@+id/textView18"
                     tools:itemCount="10"
                     tools:listitem="@layout/item_list_car_detail_vrm" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/const_spec"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textView18"
+                    app:layout_constraintStart_toStartOf="@+id/dealerLayoutDetail"
+                    app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+
+                    <TextView
+                        android:id="@+id/textView37"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Registration:"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintEnd_toStartOf="@+id/textView43"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/txtRegistration"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="2016 (Reg 65)"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintEnd_toEndOf="@+id/textView37"
+                        app:layout_constraintStart_toStartOf="@+id/textView37"
+                        app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+                    <TextView
+                        android:id="@+id/textView43"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Mileage:"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView37"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/textView37"
+                        app:layout_constraintTop_toTopOf="@+id/textView37" />
+
+                    <TextView
+                        android:id="@+id/txtMileage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@{String.valueOf(onAddetailModel.mileage)}"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/txtRegistration"
+                        app:layout_constraintTop_toTopOf="@+id/txtRegistration" />
+
+                    <TextView
+                        android:id="@+id/textView38"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Colour:"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtRegistration" />
+
+                    <TextView
+                        android:id="@+id/txtColor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@{onAddetailModel.colour}"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintStart_toStartOf="@+id/textView38"
+                        app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+                    <TextView
+                        android:id="@+id/textView44"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Body Style:"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView43"
+                        app:layout_constraintTop_toTopOf="@+id/textView38" />
+
+                    <TextView
+                        android:id="@+id/txtBodystyle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@{onAddetailModel.bodyStyle}"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtColor"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView44"
+                        app:layout_constraintTop_toTopOf="@+id/txtColor" />
+
+                    <TextView
+                        android:id="@+id/textView39"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="Engine:"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtColor" />
+
+                    <TextView
+                        android:id="@+id/txtEngine"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@{onAddetailModel.nominalEngineCapacity}"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintEnd_toEndOf="@+id/textView39"
+                        app:layout_constraintStart_toStartOf="@+id/textView39"
+                        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+                    <TextView
+                        android:id="@+id/textView45"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="No of Doors"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView43"
+                        app:layout_constraintTop_toBottomOf="@+id/txtBodystyle" />
+
+                    <TextView
+                        android:id="@+id/txtNoOfDoors"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@{onAddetailModel.numberofdoors}"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintBottom_toBottomOf="@+id/txtEngine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView45"
+                        app:layout_constraintTop_toTopOf="@+id/txtEngine" />
+
+                    <TextView
+                        android:id="@+id/textView40"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/transmission_"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/txtEngine" />
+
+                    <TextView
+                        android:id="@+id/txtTransmission"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@{onAddetailModel.transmission}"
+                        android:textColor="@color/colorLightBlack"
+                        android:textSize="@dimen/textnormallarge"
+                        app:layout_constraintEnd_toEndOf="@+id/textView40"
+                        app:layout_constraintStart_toStartOf="@+id/textView40"
+                        app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/textView19"
@@ -454,51 +672,51 @@
                     android:text="Accessories"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormallarge"
-                    app:layout_constraintEnd_toEndOf="@+id/recycler_specific"
-                    app:layout_constraintStart_toStartOf="@+id/recycler_specific"
-                    app:layout_constraintTop_toBottomOf="@+id/recycler_specific" />
+                    app:layout_constraintEnd_toEndOf="@+id/const_spec"
+                    app:layout_constraintStart_toStartOf="@+id/const_spec"
+                    app:layout_constraintTop_toBottomOf="@+id/const_spec" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_comfort"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:nestedScrollingEnabled="false"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="@+id/textView18"
-                    app:layout_constraintStart_toStartOf="@+id/dealerLayoutDetail"
-                    app:layout_constraintTop_toBottomOf="@+id/textView19"
-                    tools:itemCount="10"
-                    tools:listitem="@layout/item_list_car_detail_vrm" />
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/recycler_comfort"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:nestedScrollingEnabled="false"-->
+<!--                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/textView18"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/dealerLayoutDetail"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView19"-->
+<!--                    tools:itemCount="10"-->
+<!--                    tools:listitem="@layout/item_list_car_detail_vrm" />-->
 
-                <TextView
-                    android:id="@+id/textView190"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/poppins_semibold"
-                    android:text="Description"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="@dimen/textnormallarge"
-                    app:layout_constraintEnd_toEndOf="@+id/recycler_comfort"
-                    app:layout_constraintStart_toStartOf="@+id/recycler_comfort"
-                    app:layout_constraintTop_toBottomOf="@+id/recycler_comfort" />
+<!--                <TextView-->
+<!--                    android:id="@+id/textView190"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:fontFamily="@font/poppins_semibold"-->
+<!--                    android:text="Description"-->
+<!--                    android:textColor="@color/colorLightBlack"-->
+<!--                    android:textSize="@dimen/textnormallarge"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/recycler_comfort"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/recycler_comfort"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/recycler_comfort" />-->
 
-                <TextView
-                    android:id="@+id/txtDescrption"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="@{onAdDealerModel.description}"
-                    android:hint="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available"
-                    android:textColor="@color/colorLightBlack"
-                    android:textSize="@dimen/textnormallarge"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/textView190"
-                    app:layout_constraintStart_toStartOf="@+id/textView190"
-                    app:layout_constraintTop_toBottomOf="@+id/textView190" />
+<!--                <TextView-->
+<!--                    android:id="@+id/txtDescrption"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="16dp"-->
+<!--                    android:layout_marginBottom="16dp"-->
+<!--                    android:fontFamily="@font/poppins_regular"-->
+<!--                    android:hint="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available"-->
+<!--                    android:text="@{onAddetailModel.description}"-->
+<!--                    android:textColor="@color/colorLightBlack"-->
+<!--                    android:textSize="@dimen/textnormallarge"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintEnd_toEndOf="@+id/textView190"-->
+<!--                    app:layout_constraintStart_toStartOf="@+id/textView190"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/textView190" />-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

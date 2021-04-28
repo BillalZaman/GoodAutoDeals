@@ -126,7 +126,7 @@ public class AdDetailModel implements Serializable {
     private String scrapped;
     @SerializedName("WheelPlan")
     @Expose
-    private String wheelPlan;
+    private Object wheelPlan;
     @SerializedName("WheelBase")
     @Expose
     private String wheelBase;
@@ -183,19 +183,19 @@ public class AdDetailModel implements Serializable {
     private Object yearOfManufacture;
     @SerializedName("DateFirstRegisteredUk")
     @Expose
-    private Object dateFirstRegisteredUk;
+    private String dateFirstRegisteredUk;
     @SerializedName("MotExpires")
     @Expose
-    private Object motExpires;
+    private String motExpires;
     @SerializedName("RoadTax")
     @Expose
-    private Object roadTax;
+    private String roadTax;
     @SerializedName("RoadTaxExpires")
     @Expose
-    private Object roadTaxExpires;
+    private String roadTaxExpires;
     @SerializedName("BootCaicity")
     @Expose
-    private Object bootCaicity;
+    private String bootCaicity;
     @SerializedName("zipcode")
     @Expose
     private String zipcode;
@@ -234,7 +234,7 @@ public class AdDetailModel implements Serializable {
     private Object expiry;
     @SerializedName("adApproved_by")
     @Expose
-    private Object adApprovedBy;
+    private Integer adApprovedBy;
     @SerializedName("user_id")
     @Expose
     private Integer userId;
@@ -249,19 +249,19 @@ public class AdDetailModel implements Serializable {
     private String updatedAt;
     @SerializedName("features")
     @Expose
-    private List<AdCarFeatureModel> adCarFeatureModels = null;
+    private AdFeatureModel features;
     @SerializedName("adimage")
     @Expose
     private List<AdImagesModel> adimage = null;
     @SerializedName("advideo")
     @Expose
-    private Object advideo;
+    private AdVideoModel adVideoModel;
     @SerializedName("users")
     @Expose
-    private AdUsersModel adUsersModels;
-    @SerializedName("dealers")
+    private AdUsersModel users;
+    @SerializedName("dealer")
     @Expose
-    private AdDealerModel adDealerModels;
+    private AdDealerModel dealer;
 
     public Integer getId() {
         return id;
@@ -567,11 +567,11 @@ public class AdDetailModel implements Serializable {
         this.scrapped = scrapped;
     }
 
-    public String getWheelPlan() {
+    public Object getWheelPlan() {
         return wheelPlan;
     }
 
-    public void setWheelPlan(String wheelPlan) {
+    public void setWheelPlan(Object wheelPlan) {
         this.wheelPlan = wheelPlan;
     }
 
@@ -719,43 +719,43 @@ public class AdDetailModel implements Serializable {
         this.yearOfManufacture = yearOfManufacture;
     }
 
-    public Object getDateFirstRegisteredUk() {
+    public String getDateFirstRegisteredUk() {
         return dateFirstRegisteredUk;
     }
 
-    public void setDateFirstRegisteredUk(Object dateFirstRegisteredUk) {
+    public void setDateFirstRegisteredUk(String dateFirstRegisteredUk) {
         this.dateFirstRegisteredUk = dateFirstRegisteredUk;
     }
 
-    public Object getMotExpires() {
+    public String getMotExpires() {
         return motExpires;
     }
 
-    public void setMotExpires(Object motExpires) {
+    public void setMotExpires(String motExpires) {
         this.motExpires = motExpires;
     }
 
-    public Object getRoadTax() {
+    public String getRoadTax() {
         return roadTax;
     }
 
-    public void setRoadTax(Object roadTax) {
+    public void setRoadTax(String roadTax) {
         this.roadTax = roadTax;
     }
 
-    public Object getRoadTaxExpires() {
+    public String getRoadTaxExpires() {
         return roadTaxExpires;
     }
 
-    public void setRoadTaxExpires(Object roadTaxExpires) {
+    public void setRoadTaxExpires(String roadTaxExpires) {
         this.roadTaxExpires = roadTaxExpires;
     }
 
-    public Object getBootCaicity() {
+    public String getBootCaicity() {
         return bootCaicity;
     }
 
-    public void setBootCaicity(Object bootCaicity) {
+    public void setBootCaicity(String bootCaicity) {
         this.bootCaicity = bootCaicity;
     }
 
@@ -855,11 +855,11 @@ public class AdDetailModel implements Serializable {
         this.expiry = expiry;
     }
 
-    public Object getAdApprovedBy() {
+    public Integer getAdApprovedBy() {
         return adApprovedBy;
     }
 
-    public void setAdApprovedBy(Object adApprovedBy) {
+    public void setAdApprovedBy(Integer adApprovedBy) {
         this.adApprovedBy = adApprovedBy;
     }
 
@@ -895,12 +895,12 @@ public class AdDetailModel implements Serializable {
         this.updatedAt = updatedAt;
     }
 
-    public List<AdCarFeatureModel> getAdCarFeatureModels() {
-        return adCarFeatureModels;
+    public AdFeatureModel getFeatures() {
+        return features;
     }
 
-    public void setAdCarFeatureModels(List<AdCarFeatureModel> adCarFeatureModels) {
-        this.adCarFeatureModels = adCarFeatureModels;
+    public void setFeatures(AdFeatureModel features) {
+        this.features = features;
     }
 
     public List<AdImagesModel> getAdimage() {
@@ -911,27 +911,27 @@ public class AdDetailModel implements Serializable {
         this.adimage = adimage;
     }
 
-    public Object getAdvideo() {
-        return advideo;
+    public AdUsersModel getUsers() {
+        return users;
     }
 
-    public void setAdvideo(Object advideo) {
-        this.advideo = advideo;
+    public void setUsers(AdUsersModel users) {
+        this.users = users;
     }
 
-    public AdUsersModel getAdUsersModels() {
-        return adUsersModels;
+    public AdDealerModel getDealer() {
+        return dealer;
     }
 
-    public void setAdUsersModels(AdUsersModel adUsersModels) {
-        this.adUsersModels = adUsersModels;
+    public void setDealer(AdDealerModel dealer) {
+        this.dealer = dealer;
     }
 
-    public AdDealerModel getAdDealerModels() {
-        return adDealerModels;
+    public AdVideoModel getAdVideoModel() {
+        return adVideoModel;
     }
 
-    public void setAdDealerModels(AdDealerModel adDealerModels) {
-        this.adDealerModels = adDealerModels;
+    public void setAdVideoModel(AdVideoModel adVideoModel) {
+        this.adVideoModel = adVideoModel;
     }
 }

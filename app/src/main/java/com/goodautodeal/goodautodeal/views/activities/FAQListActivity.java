@@ -36,9 +36,13 @@ public class FAQListActivity extends AppCompatActivity {
         });
 
         adapter = new FaqListAdapter(this);
-        for (int i = 0; i <= 7; i++) {
-            data.add(new FaqListModel("Login and Registration"));
-        }
+
+        data.add(new FaqListModel("Login and Registration"));
+        data.add(new FaqListModel("Used Car Ads"));
+        data.add(new FaqListModel("Buying"));
+        data.add(new FaqListModel("Selling"));
+        data.add(new FaqListModel("Miscellaneous"));
+
         adapter.setList(data);
         binding.recyclerview.setAdapter(adapter);
     }

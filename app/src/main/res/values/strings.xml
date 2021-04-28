@@ -108,4 +108,10 @@
     <string name="axele_">Driving Axele</string>
     <string name="tax_">Road Tax</string>
     <string name="enter_your_message">Enter your Message</string>
+    <string name="title_activity_f_a_q_detail">FAQDetailActivity</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
 </resources>

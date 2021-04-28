@@ -48,7 +48,6 @@ public class UserRepository {
         status = new MutableLiveData<>();
         dataStatus = new ViewModelStatus();
         ApplicationState.getApp().getApplicationComponent().injectUIHelper(this);
-
         response = new Response();
     }
 
@@ -94,7 +93,11 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        uiHelper.showLongToastInCenter(application, "Email already Exist");
+                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        } else {
+                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                        }
                     }
 
                     @Override
@@ -308,8 +311,7 @@ public class UserRepository {
                 (new JSONObject(jsonParams)).toString());
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
-        mainResponseObservable = apiInterface.getAdDetail("Bearer" + " " +
-                ConstUtils.APIAccessToken , body);
+        mainResponseObservable = apiInterface.getAdDetail(body);
 
         mainResponseLifeData = new MutableLiveData<>();
         compositeDisposable.add(mainResponseObservable
@@ -325,11 +327,11 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getResp().getCode() == 400) {
-                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
-                        } else {
-                            uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
-                        }
+                            if (response.getResp().getCode() == 0) {
+                                uiHelper.showLongToastInCenter(application, "response.getResp().getMessage()");
+                            } else {
+                                uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
+                            }
                     }
 
                     @Override
@@ -373,7 +375,7 @@ public class UserRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                        if (response.getResp().getCode() == 400) {
+                        if (response.getResp().getCode() == ConstUtils.FAILURE) {
                             uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                         } else {
                             uiHelper.showLongToastInCenter(application, response.getResp().getMessage());

@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_circle"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".views.activities.FAQDetailActivity" />
         <activity android:name=".views.activities.OtpVerificationActivity" />
         <activity android:name=".views.activities.PackagesActivity" />
         <activity android:name=".views.activities.WelcomeActivity" />

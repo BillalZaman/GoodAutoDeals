@@ -12,6 +12,7 @@ public class ConstUtils {
     public static final String USER_INFO = "userinfo";
     public static final String FAV = "fav";
     public static final String USER_NAME = "userinfo";
+    public static final String USER_EMAIL = "userinfo";
 
     public static Context CONTEXT = null;
     public static final String PREF_NAMES = "user_preferences";

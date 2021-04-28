@@ -1,7 +1,9 @@
 package com.goodautodeal.goodautodeal.views.activities;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +14,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.bumptech.glide.Glide;
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
@@ -47,6 +50,7 @@ public class CarAdDetailActivity extends AppCompatActivity {
     private CarDetailAdapter adapterCarDetailVRM;
     private String isActivityName;
     private UserViewModel adPostingViewModel;
+    private String website, videoLink;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,8 +66,10 @@ public class CarAdDetailActivity extends AppCompatActivity {
     private void init() {
         setupSlider();
         getLoadingStatus();
-        isActivityName = getIntent().getStringExtra(ConstUtils.ValueKey);
-
+        binding.setActivity(this);
+//        isActivityName = getIntent().getStringExtra(ConstUtils.ValueKey);
+        isActivityName = "5";
+        Log.d("id:" ,""+ isActivityName);
         if (isActivityName != null) {
             if (internet.isNetworkAvailable(this)) {
                 adPostingViewModel.getAdDetail(isActivityName);
@@ -72,7 +78,7 @@ public class CarAdDetailActivity extends AppCompatActivity {
                 uiHelper.showLongToastInCenter(this, getString(R.string.no_interrnet_connection));
             }
         }
-        recyclerviewCarDetailVRM();
+//        recyclerviewCarDetailVRM();
     }
 
     private void getLoadingStatus() {
@@ -100,15 +106,30 @@ public class CarAdDetailActivity extends AppCompatActivity {
         adPostingViewModel.getUserData().observe(this, new Observer<Response>() {
             @Override
             public void onChanged(@Nullable Response response) {
-                if (response.getCode() == 1) {
 
-                    if (response.getDataObject().getAdDetailModels()!=null){
+                if (response.getResp().getCode() == 1 && response.getResp().getSuccess().equalsIgnoreCase("Success")) {
 
-                        binding.setOnAddetailModel(response.getDataObject().getAdDetailModels());
+                    if (response.getResp().getDataObject().getAdDetailModels()!=null){
+                        uiHelper.showLongToastInCenter(CarAdDetailActivity.this, "hi");
+//                        binding.setOnAddetailModel(response.getResp().getDataObject().getAdDetailModels());
+                        binding.setOnAddetailModel(response.getResp().getDataObject().getAdDetailModels());
+                        binding.setOnAdUserModel(response.getResp().getDataObject().getAdDetailModels().getUsers());
+                        binding.setOnAdDealerModel(response.getResp().getDataObject().getAdDetailModels().getDealer());
+                        Glide.with(CarAdDetailActivity.this).load("https://www.goodautodeals.com"+
+                                response.getResp().getDataObject().getAdDetailModels().getDealer().getCompanyLogo())
+                                .placeholder(R.drawable.user_profile_demo).into(binding.imgDealer);
+                        website = response.getResp().getDataObject().getAdDetailModels().getDealer().getWebsite();
+                        videoLink = response.getResp().getDataObject().getAdDetailModels().getAdVideoModel().getVideoId();
 
+                        if (response.getResp().getDataObject().getAdDetailModels().getFeatures()!=null){
+
+                        }
+
+                    } else {
+                        uiHelper.showLongToastInCenter(CarAdDetailActivity.this, "hi else");
                     }
 
-                    uiHelper.showLongToastInCenter(CarAdDetailActivity.this, "hi");
+
                 } else {
                     uiHelper.showLongToastInCenter(CarAdDetailActivity.this, "getMessage()");
                 }
@@ -116,16 +137,16 @@ public class CarAdDetailActivity extends AppCompatActivity {
         });
     }
 
-    private void recyclerviewCarDetailVRM() {
-        adapterCarDetailVRM = new CarDetailAdapter(this);
-        for (int i = 0; i <= 8; i++) {
-            dataCarDetailVRM.add(new CarDetailModel("Engine", "2.0 L"));
-        }
-        adapterCarDetailVRM.setData(dataCarDetailVRM);
-
-        binding.recyclerComfort.setAdapter(adapterCarDetailVRM);
-        binding.recyclerSpecific.setAdapter(adapterCarDetailVRM);
-    }
+//    private void recyclerviewCarDetailVRM() {
+//        adapterCarDetailVRM = new CarDetailAdapter(this);
+//        for (int i = 0; i <= 8; i++) {
+//            dataCarDetailVRM.add(new CarDetailModel("Engine", "2.0 L"));
+//        }
+//        adapterCarDetailVRM.setData(dataCarDetailVRM);
+//
+//        binding.recyclerComfort.setAdapter(adapterCarDetailVRM);
+//        binding.recyclerSpecific.setAdapter(adapterCarDetailVRM);
+//    }
 
     private void setupSlider() {
         homeSliderAdapter = new HomeSliderAdapter(this);
@@ -180,6 +201,18 @@ public class CarAdDetailActivity extends AppCompatActivity {
             }
             case R.id.btn_rejected: {
 
+                break;
+            }
+            case R.id.txtWebsite:{
+//                String url = "http://www.stackoverflow.com";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(website));
+                startActivity(i);
+                break;
+            }
+            case R.id.imageView6:{
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://youtu.be/"+videoLink)));
                 break;
             }
         }

@@ -25,6 +25,7 @@
             android:background="@drawable/circle"
             android:src="@drawable/ic_baseline_person_24"
             android:padding="10dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/recyclerview_navigation"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -34,27 +35,28 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins_medium"
-            android:text="John Doe"
+            android:text="@string/guest_user"
             android:textColor="@color/colorLightBlack"
-            android:textSize="@dimen/large"
-            app:layout_constraintBottom_toBottomOf="@+id/imgUser"
+            android:textSize="@dimen/eight_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imgUser"
-            app:layout_constraintTop_toTopOf="@+id/imgUser" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_navigation"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="24dp"
             android:background="@color/colorWhite"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/btnLoginAsDealer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgUser"
+            app:layout_constraintTop_toBottomOf="@+id/txtEmail"
             tools:itemCount="5"
             tools:listitem="@layout/nav_drawer_row" />
 
@@ -79,54 +81,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <!--        <ImageView-->
-<!--            android:id="@+id/imgLoginProvider"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="24dp"-->
-<!--            android:layout_marginBottom="36dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/recyclerview_navigation"-->
-<!--            app:srcCompat="@drawable/getstarted_bg" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imgCircleProvider"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="4dp"-->
-<!--            android:layout_marginRight="4dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/imgLoginProvider"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/imgLoginProvider"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/imgLoginProvider"-->
-<!--            app:srcCompat="@drawable/white_circle" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/txtLoginProvider"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="24dp"-->
-<!--            android:layout_marginLeft="24dp"-->
-<!--            android:layout_marginEnd="8dp"-->
-<!--            android:layout_marginRight="8dp"-->
-<!--            android:text="@string/login_provider"-->
-<!--            android:textColor="@color/colorWhite"-->
-<!--            android:textSize="@dimen/textnormal"-->
-<!--            android:fontFamily="@font/poppins_semibold"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/imgLoginProvider"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/imgCircleProvider"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/imgLoginProvider"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/imgLoginProvider" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView15"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:src="@drawable/right_arrow"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/imgCircleProvider"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/imgCircleProvider"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/imgCircleProvider"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/imgCircleProvider" />-->
+        <TextView
+            android:id="@+id/txtEmail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="John Doe"
+            android:visibility="invisible"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/eight_btn"
+            app:layout_constraintEnd_toEndOf="@+id/txtUser"
+            app:layout_constraintStart_toStartOf="@+id/txtUser"
+            app:layout_constraintTop_toBottomOf="@+id/txtUser" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

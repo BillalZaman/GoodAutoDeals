@@ -10,22 +10,20 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:drawableStart="@drawable/car_icon"
         android:drawablePadding="12dp"
         android:fontFamily="@font/poppins_regular"
         android:gravity="center|start"
         android:padding="20dp"
         android:paddingStart="16dp"
+        android:paddingLeft="16dp"
         android:text="@string/app_name"
         android:textAllCaps="false"
         android:textColor="@color/colorLightBlack"
         android:textSize="@dimen/textnormal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingLeft="16dp"
-        android:drawableLeft="@drawable/car_icon" />
+        app:layout_constraintStart_toEndOf="@+id/imgDrawerItem"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/view5"
@@ -36,6 +34,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgDrawerItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/menu_home"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

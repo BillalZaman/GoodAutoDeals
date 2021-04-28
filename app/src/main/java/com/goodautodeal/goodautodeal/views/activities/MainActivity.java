@@ -202,7 +202,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                         "").equalsIgnoreCase(ConstUtils.yes)) {
                     uiHelper.openActivity(this, ProfileActivity.class);
                 } else {
-                    uiHelper.openActivityAndSendValue(this, WelcomeActivity.class, "user");
+                    uiHelper.openActivityAndSendValue(this, LoginActivity.class, "user");
                     binding.drawerLayout.closeDrawer(GravityCompat.START);
                     finish();
                 }

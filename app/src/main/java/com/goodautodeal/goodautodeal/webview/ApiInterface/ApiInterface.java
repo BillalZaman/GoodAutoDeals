@@ -54,7 +54,7 @@ public interface ApiInterface {
     Observable<Response> GetDealerList();
 
     @POST(Request.Ad_view)
-    Observable<Response> getAdDetail(@Header("Authorization") String authkey, @Body RequestBody body);
+    Observable<Response> getAdDetail(@Body RequestBody body);
 
     @POST(Request.GET_FORGOT_PASSWORD)
     Observable<Response> getForgotPassword(@Body RequestBody body);

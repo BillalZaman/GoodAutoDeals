@@ -36,9 +36,10 @@ import javax.inject.Inject;
  * Created by Bilal Zaman on 18/02/21.
  */
 public class FragmentNavigationDrawer extends Fragment {
-    private static final Integer[] imgDrawer = {R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon,
-            R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon,
-            R.drawable.car_icon, R.drawable.car_icon, R.drawable.car_icon,  R.drawable.car_icon};
+    private static final Integer[] imgDrawer = {R.drawable.menu_home, R.drawable.menu_profile, R.drawable.menu_sellcar,
+            R.drawable.menu_car, R.drawable.menu_car, R.drawable.menu_fav, R.drawable.menu_sellcar,
+            R.drawable.menu_dealer, R.drawable.menu_insurance, R.drawable.menu_finance,
+            R.drawable.menu_password, R.drawable.menu_help, R.drawable.menu_contact,  R.drawable.menu_logout};
     private static String[] titles = null;
     @Inject
     UIHelper uiHelper;
@@ -110,33 +111,16 @@ public class FragmentNavigationDrawer extends Fragment {
             }
         });
 
-//        binding.imgLoginProvider.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin, ConstUtils.no).equalsIgnoreCase(ConstUtils.yes)) {
-//                    Toast.makeText(context, getResources().getString(R.string.currently_login_as_user),
-//                            Toast.LENGTH_SHORT).show();
-////                    uiHelper.openActivity(getActivity(), ProviderMainActivity.class);
-//                } else {
-//                    uiHelper.openActivityAndSendValue(getActivity(), LoginActivity.class, "mapActivity");
-//                }
-//
-//                drawerLayout.closeDrawer(GravityCompat.START);
-////                 uiHelper.openActivity(getActivity(), ProviderMainActivity.class);
-//            }
-//        });
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        if (PreferenceHelper.getInstance().getString(ConstUtils.USER_NAME,"") != null) {
+        if (!PreferenceHelper.getInstance().getString(ConstUtils.USER_NAME,"").equals("")) {
+            binding.txtEmail.setVisibility(View.VISIBLE);
             binding.txtUser.setText(PreferenceHelper.getInstance().getString(ConstUtils.USER_NAME,""));
-            Glide.with(context).load(R.drawable.ic_baseline_person_24).into(binding.imgUser);
-        } else {
-            binding.txtUser.setText(R.string.guest_user);
-            Glide.with(context).load(R.drawable.ic_baseline_person_24).into(binding.imgUser);
+            binding.txtEmail.setText(PreferenceHelper.getInstance().getString(ConstUtils.USER_EMAIL, ""));
         }
     }
 
@@ -197,7 +181,6 @@ public class FragmentNavigationDrawer extends Fragment {
 
     public interface ClickListener {
         void onClick(View view, int position);
-
         void onLongClick(View view, int position);
     }
 
