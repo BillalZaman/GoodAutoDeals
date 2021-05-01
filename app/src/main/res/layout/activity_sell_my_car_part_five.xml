@@ -63,7 +63,7 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/eight_btn"
+            android:textSize="@dimen/textnormallarge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

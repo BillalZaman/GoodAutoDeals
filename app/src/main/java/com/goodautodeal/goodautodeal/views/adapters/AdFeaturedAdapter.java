@@ -2,6 +2,7 @@ package com.goodautodeal.goodautodeal.views.adapters;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +63,8 @@ public class AdFeaturedAdapter extends RecyclerView.Adapter<AdFeaturedAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.binding.setModel(data.get(position));
+
+        holder.binding.txtDescription.setText(Html.fromHtml(data.get(position).getDescription()).toString());
         if (data.get(position).getAdimage().get(0).getPath() != null) {
             if (data.get(position).getAdimage() != null) {
                 Glide.with(context)

@@ -137,7 +137,7 @@
             android:id="@+id/txtDemand"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
@@ -185,7 +185,7 @@
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/eight_btn"
+            android:textSize="@dimen/textnormallarge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

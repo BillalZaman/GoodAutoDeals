@@ -155,6 +155,7 @@ public class DealerMainActivity extends AppCompatActivity implements DealerMoreI
                     uiHelper.showLongToastInCenter(DealerMainActivity.this, "Logout Successfully");
                     PreferenceHelper.getInstance().clearAllPreferences();
                     PreferenceHelper.getInstance().setString(ConstUtils.isDealerLogin,"No");
+                    uiHelper.openAndClearActivity(DealerMainActivity.this, MainActivity.class);
                 }
             }
         });

@@ -32,10 +32,18 @@ public class SplashActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                if ((PreferenceHelper.getInstance().getString(ConstUtils.isDealerLogin, "").equalsIgnoreCase("yes"))) {
-                    uiHelper.openAndClearActivity(SplashActivity.this, DealerMainActivity.class);
+                if (!PreferenceHelper.getInstance().getBol(ConstUtils.IS_OPON_FIRST_TIME, false)) {
+                    uiHelper.openActivity(SplashActivity.this, MainActivity.class);
+                    finish();
+
                 } else {
-                    uiHelper.openAndClearActivity(SplashActivity.this, MainActivity.class);
+
+                    if ((PreferenceHelper.getInstance().getString(ConstUtils.isDealerLogin, ConstUtils.no)
+                            .equalsIgnoreCase("yes"))) {
+                        uiHelper.openAndClearActivity(SplashActivity.this, MainActivity.class);
+                    } else {
+                        uiHelper.openAndClearActivity(SplashActivity.this, DealerMainActivity.class);
+                    }
                 }
             }
         }, 1000);

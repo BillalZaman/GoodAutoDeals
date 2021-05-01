@@ -103,7 +103,7 @@ public class FragmentNavigationDrawer extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin,"").equalsIgnoreCase("yes")){
+                if (PreferenceHelper.getInstance().getString(ConstUtils.isDealerLogin,"").equalsIgnoreCase("yes")){
                     uiHelper.showLongToastInCenter((Activity) context, "Please Logout First For Logged In to Dealer Portal");
                 } else {
                     uiHelper.openActivityAndSendValue(getActivity(), LoginActivity.class, "dealer");
@@ -118,9 +118,8 @@ public class FragmentNavigationDrawer extends Fragment {
     public void onResume() {
         super.onResume();
         if (!PreferenceHelper.getInstance().getString(ConstUtils.USER_NAME,"").equals("")) {
-            binding.txtEmail.setVisibility(View.VISIBLE);
             binding.txtUser.setText(PreferenceHelper.getInstance().getString(ConstUtils.USER_NAME,""));
-            binding.txtEmail.setText(PreferenceHelper.getInstance().getString(ConstUtils.USER_EMAIL, ""));
+//            binding.txtEmail.setText(PreferenceHelper.getInstance().getString(ConstUtils.USER_EMAIL, ""));
         }
     }
 

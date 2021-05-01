@@ -17,6 +17,7 @@ import com.goodautodeal.goodautodeal.R;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.ActivityOtpVerficationBinding;
 import com.goodautodeal.goodautodeal.helpers.Internet;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.UserViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
@@ -180,6 +181,7 @@ public class OtpVerificationActivity extends AppCompatActivity {
                         response.getResp().getSuccess().equalsIgnoreCase("success")) {
                     uiHelper.showLongToastInCenter(OtpVerificationActivity.this, response.getResp().getMessage());
                     uiHelper.openAndClearActivity(OtpVerificationActivity.this, MainActivity.class);
+                    PreferenceHelper.getInstance().setString(ConstUtils.isUserLogin, ConstUtils.yes);
 
                 } else {
                     uiHelper.showLongToastInCenter(OtpVerificationActivity.this, response.getResp().getMessage());

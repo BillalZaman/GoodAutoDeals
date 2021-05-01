@@ -35,10 +35,11 @@ public class ConstUtils {
     public static int CREATE_CODE = 201;
     public static int FAILURE = 0;
 
-    public static final String isLogin ="isLogin";
+    public static final String isUserLogin ="isLogin";
     public static final String isDealerLogin ="isLogin";
     public static final String yes = "yes";
     public static final String no = "no";
+    public static final String IS_OPON_FIRST_TIME = "isOpenFirstTime";
     public static final String MSG_KEY = "msgKey";
 
     public static final String PAYPAL_CLIENT_ID = "AUiW09qON4_Fgl52AoncSzPi7buDE1HAJ5ZIcJJEYHStsTjJkmlYLsEh7B2u8LzMjMw_1n-7adtB3Y0c";

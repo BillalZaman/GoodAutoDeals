@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         fragmentNavigationDrawer.setDrawerListener(this);
         premiumAdapter = new PremiumAdapter(this);
         displayView(0);
+        PreferenceHelper.getInstance().setBol(ConstUtils.IS_OPON_FIRST_TIME, true);
 
         if (internet.isNetworkAvailable(this)) {
             viewModel.getSliderBanner();
@@ -198,7 +199,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             case 1: {
                 // profile
 //                uiHelper.openActivity(this, ProfileActivity.class);
-                if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin,
+                if (PreferenceHelper.getInstance().getString(ConstUtils.isUserLogin,
                         "").equalsIgnoreCase(ConstUtils.yes)) {
                     uiHelper.openActivity(this, ProfileActivity.class);
                 } else {
@@ -277,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             case 13: {
                 // logout
                 if (internet.isNetworkAvailable(this)) {
-                    if (PreferenceHelper.getInstance().getString(ConstUtils.isLogin, "").equalsIgnoreCase("yes")) {
+                    if (PreferenceHelper.getInstance().getString(ConstUtils.isUserLogin, "").equalsIgnoreCase("yes")) {
                         uiHelper.showLongToastInCenter(MainActivity.this, "Please Logged in first to perform this action");
                         viewModel.getLogout();
                         getData();

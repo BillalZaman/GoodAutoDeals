@@ -71,6 +71,7 @@ public class PreferenceHelper {
 
     public void clearAllPreferences() {
         sharedPreferences.edit().clear().apply();
+//        sharedPreferences.edit().clear().commit();
 
     }
 

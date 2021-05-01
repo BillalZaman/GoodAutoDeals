@@ -169,15 +169,16 @@ public class LoginActivity extends AppCompatActivity {
 
                         if (isActivityName.equalsIgnoreCase("dealer")){
                             PreferenceHelper.getInstance().setString(ConstUtils.USER_NAME, response.getResp().getDataObject().getUserInfo().getName());
-                            PreferenceHelper.getInstance().setString(ConstUtils.USER_EMAIL, response.getResp().getDataObject().getUserInfo().getEmail());
+//                            PreferenceHelper.getInstance().setString(ConstUtils.USER_EMAIL, response.getResp().getDataObject().getUserInfo().getEmail());
                             uiHelper.openActivity(LoginActivity.this, DealerMainActivity.class);
-                            PreferenceHelper.getInstance().setString(ConstUtils.isLogin, ConstUtils.yes);
+                            PreferenceHelper.getInstance().setString(ConstUtils.isDealerLogin, ConstUtils.yes);
                             finish();
                             
                         } else {
                             PreferenceHelper.getInstance().setString(ConstUtils.USER_NAME, response.getResp().getDataObject().getUserInfo().getName());
-                            uiHelper.openAndClearActivity(LoginActivity.this, MainActivity.class);
-                            PreferenceHelper.getInstance().setString(ConstUtils.isDealerLogin, ConstUtils.yes);
+//                            PreferenceHelper.getInstance().setString(ConstUtils.USER_EMAIL, response.getResp().getDataObject().getUserInfo().getEmail());
+                            uiHelper.openActivity(LoginActivity.this, MainActivity.class);
+                            PreferenceHelper.getInstance().setString(ConstUtils.isUserLogin, ConstUtils.yes);
                         }
                     }
                 } else {

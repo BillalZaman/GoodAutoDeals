@@ -69,7 +69,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/txtAdName" />
 
-
             <TextView
                 android:id="@+id/txtYear"
                 android:layout_width="0dp"
@@ -83,6 +82,24 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="@+id/txtAdName"
                 app:layout_constraintTop_toBottomOf="@+id/txtAdName" />
+
+            <TextView
+                android:id="@+id/txtDescription"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:gravity="center|start"
+                android:maxLines="3"
+                android:textSize="@dimen/textsmall"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/imgHeart"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/txtAdName"
+                app:layout_constraintTop_toBottomOf="@+id/txtYear" />
 
             <CheckBox
                 android:id="@+id/compare"

@@ -98,6 +98,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                 if (response.getResp().getCode() == 1 &&
                         response.getResp().getSuccess().equalsIgnoreCase("success")) {
                     uiHelper.showLongToastInCenter(ChangePasswordActivity.this, response.getResp().getMessage());
+                    finish();
                 } else {
                     uiHelper.showLongToastInCenter(ChangePasswordActivity.this, response.getResp().getMessage());
                 }

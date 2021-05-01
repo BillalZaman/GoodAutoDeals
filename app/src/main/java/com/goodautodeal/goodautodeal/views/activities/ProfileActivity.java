@@ -15,6 +15,7 @@ import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.ActivityProfileBinding;
+import com.goodautodeal.goodautodeal.fragments.ProfileFragment;
 import com.goodautodeal.goodautodeal.helpers.Internet;
 import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
@@ -48,6 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void init() {
         binding.setOnClick(this);
         getLoadingStatus();
+//        unFocusFields();
 
         if (internet.isNetworkAvailable(this)) {
             userViewModel.getUserProfile();
@@ -119,6 +121,8 @@ public class ProfileActivity extends AppCompatActivity {
     public void focusFields(){
         binding.txtUserName.setFocusable(true);
         binding.txtUserName.setClickable(true);
+        binding.txtUserName.setEnabled(true);
+//        binding.txtUserName.set
 
         binding.txtNumber.setFocusable(true);
         binding.txtNumber.setClickable(true);
@@ -132,6 +136,7 @@ public class ProfileActivity extends AppCompatActivity {
         binding.txtPostCode.setFocusable(true);
         binding.txtPostCode.setClickable(true);
 
+        binding.editProfile.setVisibility(View.VISIBLE);
         binding.editProfile.setText("Update Profile");
     }
 
