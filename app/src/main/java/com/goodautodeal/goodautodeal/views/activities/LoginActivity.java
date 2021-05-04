@@ -12,6 +12,11 @@ import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
 import com.goodautodeal.goodautodeal.constants.ConstUtils;
@@ -46,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     private String isActivityName;
     private GoogleSignInClient signInClient;
     private UserViewModel userViewModel;
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -141,7 +147,25 @@ public class LoginActivity extends AppCompatActivity {
                 break;
             }
             case R.id.btnFacebook: {
-                uiHelper.showLongToastInCenter(this, "In Progress");
+//                uiHelper.showLongToastInCenter(this, "In Progress");
+                callbackManager = CallbackManager.Factory.create();
+                LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        uiHelper.showLongToastInCenter(LoginActivity.this, "chaldi a faim aj kal");
+                    }
+
+                    @Override
+                    public void onCancel() {
+
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        uiHelper.showLongToastInCenter(LoginActivity.this, "Error");
+
+                    }
+                });
                 break;
             }
             case R.id.btnGoogle: {
@@ -197,6 +221,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+//        callbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);

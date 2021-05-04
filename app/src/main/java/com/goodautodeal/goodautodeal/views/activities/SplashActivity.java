@@ -38,7 +38,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 } else {
 
-                    if ((PreferenceHelper.getInstance().getString(ConstUtils.isDealerLogin, ConstUtils.no)
+                    if ((PreferenceHelper.getInstance().getString(ConstUtils.isUserLogin, "")
                             .equalsIgnoreCase("yes"))) {
                         uiHelper.openAndClearActivity(SplashActivity.this, MainActivity.class);
                     } else {
