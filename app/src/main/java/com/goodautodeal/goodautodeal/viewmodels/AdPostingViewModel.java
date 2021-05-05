@@ -26,14 +26,6 @@ public class AdPostingViewModel extends AndroidViewModel {
         return isLoading = adPostingRepository.getStatus();
     }
 
-    public void getCarDetail() {
-        adPostingRepository.getCarDetail();
-    }
-
-    public void getValueYourCar() {
-        adPostingRepository.valueYourCar();
-    }
-
     public void getSliderBanner() {
         adPostingRepository.getSliderBanner();
     }

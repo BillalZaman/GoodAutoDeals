@@ -47,4 +47,5 @@ public class ConstUtils {
 
     public static final String VRM = "AP10NBZ";
     public static final String Mileage = "30,000";
+    public static final String URL = "VehicleData?v=2&api_nullitems=1&auth_apikey=ac3f0001-4f94-4c53-987c-e481980d4bbd&user_tag=&key_VRM=";
 }

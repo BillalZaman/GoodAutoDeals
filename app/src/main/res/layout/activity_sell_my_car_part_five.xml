@@ -75,7 +75,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="16dp"
-            android:text="Upload Images"
+            android:text="Upload Images:"
             android:textColor="@color/colorLightBlack"
             android:textSize="@dimen/textnormallarge"
             android:fontFamily="@font/poppins_semibold"
@@ -93,5 +93,55 @@
             app:layout_constraintStart_toStartOf="@+id/textView31"
             app:layout_constraintTop_toBottomOf="@+id/textView31"
             tools:listitem="@layout/item_list_image_selection" />
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:text="Video:"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textnormallarge"
+            android:fontFamily="@font/poppins_semibold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/recyclerview"
+            app:layout_constraintTop_toBottomOf="@+id/recyclerview" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txtEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:hint="Add your youtube link here"
+            app:boxCornerRadiusBottomEnd="50dp"
+            app:boxCornerRadiusBottomStart="50dp"
+            app:boxCornerRadiusTopEnd="50dp"
+            app:boxCornerRadiusTopStart="50dp"
+            app:boxStrokeColor="@color/colorPrimary"
+            app:errorEnabled="true"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="@+id/textView46"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView46"
+            app:layout_constraintTop_toBottomOf="@+id/textView46">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:paddingStart="30dp"
+                android:paddingLeft="30dp"
+                android:paddingEnd="40dp"
+                android:paddingRight="40dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

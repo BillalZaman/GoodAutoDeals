@@ -16,6 +16,7 @@ import com.goodautodeal.goodautodeal.databinding.ActivitySellMyCarPartThreeBindi
 import com.goodautodeal.goodautodeal.helpers.Internet;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.AdPostingViewModel;
+import com.goodautodeal.goodautodeal.viewmodels.SellViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
 import com.goodautodeal.goodautodeal.webview.response.Response;
 
@@ -27,7 +28,7 @@ public class SellMyCarPartThreeActivity extends AppCompatActivity {
     @Inject
     Internet internet;
     ProgressDialog loading;
-    AdPostingViewModel viewModel;
+    SellViewModel viewModel;
     private ActivitySellMyCarPartThreeBinding binding;
 
     @Override
@@ -36,7 +37,7 @@ public class SellMyCarPartThreeActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sell_my_car_part_three);
         ApplicationState.getApp().getApplicationComponent().injectUIHelper(this);
         ApplicationState.getApp().getApplicationComponent().injectInternet(this);
-        viewModel = ViewModelProviders.of(this).get(AdPostingViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(SellViewModel.class);
 
         init();
     }

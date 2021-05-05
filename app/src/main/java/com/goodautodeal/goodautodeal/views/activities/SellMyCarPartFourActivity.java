@@ -52,7 +52,8 @@ public class SellMyCarPartFourActivity extends AppCompatActivity {
                 break;
             }
             case R.id.btnNext: {
-                uiHelper.openActivity(this, PackagesActivity.class);
+//                uiHelper.openActivity(this, PackagesActivity.class);
+                uiHelper.openActivity(this, SellMyCarPartFiveActivity.class);
                 break;
             }
             case R.id.btnComfort: {

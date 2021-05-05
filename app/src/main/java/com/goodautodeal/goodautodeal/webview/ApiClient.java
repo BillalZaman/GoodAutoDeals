@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ApiClient implements Interceptor {
 
     public static String BASE_URL = "https://www.goodautodeals.com/api/";
-    public static String VALUE_YOUR_CAR_URL = "https://uk1.ukvehicledata.co.uk/api/datapackage/";
+//    public static String VALUE_YOUR_CAR_URL = "https://uk1.ukvehicledata.co.uk/api/datapackage/";
 
     private static Retrofit retrofit = null;
 
@@ -49,28 +49,28 @@ public class ApiClient implements Interceptor {
         return retrofit;
     }
 
-    public static Retrofit getValueYourCarClient() {
-        if (retrofit == null) {
-            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-                    .connectTimeout(120, TimeUnit.SECONDS)
-                    .readTimeout(120, TimeUnit.SECONDS)
-                    .writeTimeout(120, TimeUnit.SECONDS)
-                    .addInterceptor(interceptor)
-                    .build();
-
-            Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();
-            retrofit = new Retrofit.Builder()
-                    .baseUrl(VALUE_YOUR_CAR_URL)
-                    .addConverterFactory(GsonConverterFactory.create(gson)).client(okHttpClient)
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                    .build();
-        }
-        return retrofit;
-    }
+//    public static Retrofit getValueYourCarClient() {
+//        if (retrofit == null) {
+//            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+//            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+//            OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
+//                    .connectTimeout(120, TimeUnit.SECONDS)
+//                    .readTimeout(120, TimeUnit.SECONDS)
+//                    .writeTimeout(120, TimeUnit.SECONDS)
+//                    .addInterceptor(interceptor)
+//                    .build();
+//
+//            Gson gson = new GsonBuilder()
+//                    .setLenient()
+//                    .create();
+//            retrofit = new Retrofit.Builder()
+//                    .baseUrl(VALUE_YOUR_CAR_URL)
+//                    .addConverterFactory(GsonConverterFactory.create(gson)).client(okHttpClient)
+//                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//                    .build();
+//        }
+//        return retrofit;
+//    }
 
     @Override
     public Response intercept(Chain chain) throws IOException {

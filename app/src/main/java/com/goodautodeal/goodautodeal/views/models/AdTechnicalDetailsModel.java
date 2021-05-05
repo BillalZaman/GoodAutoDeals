@@ -14,6 +14,12 @@ public class AdTechnicalDetailsModel {
     @SerializedName("Dimensions")
     @Expose
     private AdDimensionsModel adDimensionsModel;
+    @SerializedName("Performance")
+    @Expose
+    private AdPerfomanceModel adPerfomanceModel;
+    @SerializedName("Consumption")
+    @Expose
+    private AdConsumptionModel adConsumptionModel;
 
     public AdGeneralModel getAdGeneralModel() {
         return adGeneralModel;
@@ -29,5 +35,21 @@ public class AdTechnicalDetailsModel {
 
     public void setAdDimensionsModel(AdDimensionsModel adDimensionsModel) {
         this.adDimensionsModel = adDimensionsModel;
+    }
+
+    public AdPerfomanceModel getAdPerfomanceModel() {
+        return adPerfomanceModel;
+    }
+
+    public void setAdPerfomanceModel(AdPerfomanceModel adPerfomanceModel) {
+        this.adPerfomanceModel = adPerfomanceModel;
+    }
+
+    public AdConsumptionModel getAdConsumptionModel() {
+        return adConsumptionModel;
+    }
+
+    public void setAdConsumptionModel(AdConsumptionModel adConsumptionModel) {
+        this.adConsumptionModel = adConsumptionModel;
     }
 }

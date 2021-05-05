@@ -17,6 +17,7 @@ import com.goodautodeal.goodautodeal.databinding.ActivityValueYourCarBinding;
 import com.goodautodeal.goodautodeal.helpers.Internet;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.AdPostingViewModel;
+import com.goodautodeal.goodautodeal.viewmodels.SellViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
 import com.goodautodeal.goodautodeal.webview.response.Response;
 
@@ -28,7 +29,7 @@ public class ValueYourCarActivity extends AppCompatActivity {
     @Inject
     UIHelper uiHelper;
     ProgressDialog loading;
-    AdPostingViewModel viewModel;
+    SellViewModel viewModel;
     private ActivityValueYourCarBinding binding;
     private String isActivityName, data;
 
@@ -38,7 +39,7 @@ public class ValueYourCarActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_value_your_car);
         ApplicationState.getApp().getApplicationComponent().injectInternet(this);
         ApplicationState.getApp().getApplicationComponent().injectUIHelper(this);
-        viewModel = ViewModelProviders.of(this).get(AdPostingViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(SellViewModel.class);
         init();
     }
 

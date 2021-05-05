@@ -12,12 +12,15 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
+import com.goodautodeal.goodautodeal.database.DatabaseHelper;
 import com.goodautodeal.goodautodeal.databinding.ActivitySellMyCarPartTwoBinding;
 import com.goodautodeal.goodautodeal.helpers.Internet;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
-import com.goodautodeal.goodautodeal.viewmodels.AdPostingViewModel;
+import com.goodautodeal.goodautodeal.viewmodels.SellViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
 import com.goodautodeal.goodautodeal.views.adapters.CarDetailAdapter;
+import com.goodautodeal.goodautodeal.views.models.AdSmmtDetailsModel;
 import com.goodautodeal.goodautodeal.views.models.CarDetailModel;
 import com.goodautodeal.goodautodeal.webview.response.Response;
 
@@ -30,11 +33,12 @@ public class SellMyCarPartTwoActivity extends AppCompatActivity {
     @Inject
     UIHelper uiHelper;
     ProgressDialog loading;
-    AdPostingViewModel viewModel;
+    SellViewModel viewModel;
     @Inject
     Internet internet;
     private ActivitySellMyCarPartTwoBinding binding;
     private CarDetailAdapter adapter;
+    private String dynamicVRM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,7 @@ public class SellMyCarPartTwoActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sell_my_car_part_two);
         ApplicationState.getApp().getApplicationComponent().injectUIHelper(this);
         ApplicationState.getApp().getApplicationComponent().injectInternet(this);
-        viewModel = ViewModelProviders.of(this).get(AdPostingViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(SellViewModel.class);
         init();
     }
 
@@ -50,11 +54,12 @@ public class SellMyCarPartTwoActivity extends AppCompatActivity {
         binding.setOnClick(this);
         adapter = new CarDetailAdapter(this);
         getLoadingStatus();
+        dynamicVRM = getIntent().getStringExtra(ConstUtils.ValueKey);
         getCarDetail();
-        binding.recyclerview.setAdapter(adapter);
-        data.add(new CarDetailModel("Engine", "2.5L"));
 
-        adapter.setData(data);
+//        binding.recyclerview.setAdapter(adapter);
+//        data.add(new CarDetailModel("Engine", "2.5L"));
+//        adapter.setData(data);
     }
 
     private void getLoadingStatus() {
@@ -113,10 +118,27 @@ public class SellMyCarPartTwoActivity extends AppCompatActivity {
                     binding.setOnCarDimension(response.getResp().getDataItems().getAdTechnicalDetailsModel().getAdDimensionsModel());
                     binding.setOnCarGeneral(response.getResp().getDataItems().getAdTechnicalDetailsModel().getAdGeneralModel());
                     binding.setOnCarVehicleHistory(response.getResp().getDataItems().getAdVehicleHistoryModel());
-//                    binding.txtBHP.setText(Integer.toString(
-//                            response.getResp().getDataItems().getAdPerfomanceModel().getPower().getBhp()));
-//                    binding.setOnCarUrban(response.getResp().getDataItems().getAdConsumptionModel().getAdExtraUrbanModel());
-//                    binding.setOnCarUrbanCold(response.getResp().getDataItems().getAdConsumptionModel().getAdUrbanColdModel());
+                    binding.txtBHP.setText(Integer.toString(
+                            response.getResp().getDataItems().getAdTechnicalDetailsModel().getAdPerfomanceModel().getPower().getBhp()));
+                    binding.setOnCarUrban(response.getResp().getDataItems().getAdTechnicalDetailsModel().getAdConsumptionModel().getAdExtraUrbanModel());
+                    binding.setOnCarUrbanCold(response.getResp().getDataItems().getAdTechnicalDetailsModel().getAdConsumptionModel().getAdUrbanColdModel());
+
+                    AdSmmtDetailsModel adSmmtDetailsModel;
+                    adSmmtDetailsModel = new AdSmmtDetailsModel(
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getRange(),
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getMarque(),
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getFuelType(),
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getEngineCapacity(),
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getModelVariant(),
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getNumberOfGears(),
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getNominalEngineCapacity(),
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getTransmission(),
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getBodyStyle(),
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getNumberOfDoors());
+//                    adSmmtDetailsModel.add(favouriteModel);
+
+                    DatabaseHelper.getInstance(SellMyCarPartTwoActivity.this).gadDao().insertSmmtDetail(adSmmtDetailsModel);
+
                 } else {
                     uiHelper.showLongToastInCenter(SellMyCarPartTwoActivity.this, response.getResp().getMessage());
                 }

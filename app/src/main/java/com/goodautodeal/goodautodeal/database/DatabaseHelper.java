@@ -7,8 +7,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.goodautodeal.goodautodeal.database.table.FavouriteModel;
+import com.goodautodeal.goodautodeal.views.models.AdSmmtDetailsModel;
 
-@Database(entities = {FavouriteModel.class}, version = 1, exportSchema = false)
+@Database(entities = {FavouriteModel.class, AdSmmtDetailsModel.class}, version = 1, exportSchema = false)
 public abstract class DatabaseHelper extends RoomDatabase {
     public static DatabaseHelper databaseHelper;
 

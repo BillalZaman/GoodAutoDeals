@@ -1,75 +1,92 @@
 package com.goodautodeal.goodautodeal.views.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Bilal Zaman on 03/04/21.
  */
+@Entity(tableName = "AdSmmtDetail_table")
 public class AdSmmtDetailsModel {
+    @PrimaryKey(autoGenerate = true)
+    private int id;
+
+    @ColumnInfo(name = "range")
     @SerializedName("Range")
     @Expose
     private String range;
-    @SerializedName("FuelType")
-    @Expose
-    private String fuelType;
-    @SerializedName("EngineCapacity")
-    @Expose
-    private String engineCapacity;
-    @SerializedName("MarketSectorCode")
-    @Expose
-    private String marketSectorCode;
-    @SerializedName("CountryOfOrigin")
-    @Expose
-    private String countryOfOrigin;
-    @SerializedName("ModelCode")
-    @Expose
-    private String modelCode;
-    @SerializedName("ModelVariant")
-    @Expose
-    private String modelVariant;
-    @SerializedName("DataVersionNumber")
-    @Expose
-    private Object dataVersionNumber;
-    @SerializedName("NumberOfGears")
-    @Expose
-    private Integer numberOfGears;
-    @SerializedName("NominalEngineCapacity")
-    @Expose
-    private Double nominalEngineCapacity;
-    @SerializedName("MarqueCode")
-    @Expose
-    private String marqueCode;
-    @SerializedName("Transmission")
-    @Expose
-    private String transmission;
-    @SerializedName("BodyStyle")
-    @Expose
-    private String bodyStyle;
-    @SerializedName("VisibilityDate")
-    @Expose
-    private String visibilityDate;
-    @SerializedName("SysSetupDate")
-    @Expose
-    private String sysSetupDate;
+
+    @ColumnInfo(name = "marque")
     @SerializedName("Marque")
     @Expose
     private String marque;
-    @SerializedName("CabType")
+
+    @ColumnInfo(name = "fuelType")
+    @SerializedName("FuelType")
     @Expose
-    private String cabType;
-    @SerializedName("TerminateDate")
+    private String fuelType;
+
+    @ColumnInfo(name = "engineCapacity")
+    @SerializedName("EngineCapacity")
     @Expose
-    private Object terminateDate;
-    @SerializedName("Series")
+    private String engineCapacity;
+
+    @ColumnInfo(name = "modelVariant")
+    @SerializedName("ModelVariant")
     @Expose
-    private String series;
+    private String modelVariant;
+
+    @ColumnInfo(name = "noOfGears")
+    @SerializedName("NumberOfGears")
+    @Expose
+    private Integer numberOfGears;
+
+    @ColumnInfo(name = "nominalEngine")
+    @SerializedName("NominalEngineCapacity")
+    @Expose
+    private Double nominalEngineCapacity;
+
+    @ColumnInfo(name = "transmission")
+    @SerializedName("Transmission")
+    @Expose
+    private String transmission;
+
+    @ColumnInfo(name = "bodyStyle")
+    @SerializedName("BodyStyle")
+    @Expose
+    private String bodyStyle;
+
+    @ColumnInfo(name = "noOfDoors")
     @SerializedName("NumberOfDoors")
     @Expose
     private Integer numberOfDoors;
-    @SerializedName("DriveType")
-    @Expose
-    private String driveType;
+
+    public AdSmmtDetailsModel(String range, String marque, String fuelType, String engineCapacity, String modelVariant,
+                              Integer numberOfGears, Double nominalEngineCapacity, String transmission, String bodyStyle,
+                              Integer numberOfDoors) {
+        this.range = range;
+        this.marque = marque;
+        this.fuelType = fuelType;
+        this.engineCapacity = engineCapacity;
+        this.modelVariant = modelVariant;
+        this.numberOfGears = numberOfGears;
+        this.nominalEngineCapacity = nominalEngineCapacity;
+        this.transmission = transmission;
+        this.bodyStyle = bodyStyle;
+        this.numberOfDoors = numberOfDoors;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getRange() {
         return range;
@@ -77,6 +94,14 @@ public class AdSmmtDetailsModel {
 
     public void setRange(String range) {
         this.range = range;
+    }
+
+    public String getMarque() {
+        return marque;
+    }
+
+    public void setMarque(String marque) {
+        this.marque = marque;
     }
 
     public String getFuelType() {
@@ -95,44 +120,12 @@ public class AdSmmtDetailsModel {
         this.engineCapacity = engineCapacity;
     }
 
-    public String getMarketSectorCode() {
-        return marketSectorCode;
-    }
-
-    public void setMarketSectorCode(String marketSectorCode) {
-        this.marketSectorCode = marketSectorCode;
-    }
-
-    public String getCountryOfOrigin() {
-        return countryOfOrigin;
-    }
-
-    public void setCountryOfOrigin(String countryOfOrigin) {
-        this.countryOfOrigin = countryOfOrigin;
-    }
-
-    public String getModelCode() {
-        return modelCode;
-    }
-
-    public void setModelCode(String modelCode) {
-        this.modelCode = modelCode;
-    }
-
     public String getModelVariant() {
         return modelVariant;
     }
 
     public void setModelVariant(String modelVariant) {
         this.modelVariant = modelVariant;
-    }
-
-    public Object getDataVersionNumber() {
-        return dataVersionNumber;
-    }
-
-    public void setDataVersionNumber(Object dataVersionNumber) {
-        this.dataVersionNumber = dataVersionNumber;
     }
 
     public Integer getNumberOfGears() {
@@ -151,14 +144,6 @@ public class AdSmmtDetailsModel {
         this.nominalEngineCapacity = nominalEngineCapacity;
     }
 
-    public String getMarqueCode() {
-        return marqueCode;
-    }
-
-    public void setMarqueCode(String marqueCode) {
-        this.marqueCode = marqueCode;
-    }
-
     public String getTransmission() {
         return transmission;
     }
@@ -175,67 +160,11 @@ public class AdSmmtDetailsModel {
         this.bodyStyle = bodyStyle;
     }
 
-    public String getVisibilityDate() {
-        return visibilityDate;
-    }
-
-    public void setVisibilityDate(String visibilityDate) {
-        this.visibilityDate = visibilityDate;
-    }
-
-    public String getSysSetupDate() {
-        return sysSetupDate;
-    }
-
-    public void setSysSetupDate(String sysSetupDate) {
-        this.sysSetupDate = sysSetupDate;
-    }
-
-    public String getMarque() {
-        return marque;
-    }
-
-    public void setMarque(String marque) {
-        this.marque = marque;
-    }
-
-    public String getCabType() {
-        return cabType;
-    }
-
-    public void setCabType(String cabType) {
-        this.cabType = cabType;
-    }
-
-    public Object getTerminateDate() {
-        return terminateDate;
-    }
-
-    public void setTerminateDate(Object terminateDate) {
-        this.terminateDate = terminateDate;
-    }
-
-    public String getSeries() {
-        return series;
-    }
-
-    public void setSeries(String series) {
-        this.series = series;
-    }
-
     public Integer getNumberOfDoors() {
         return numberOfDoors;
     }
 
     public void setNumberOfDoors(Integer numberOfDoors) {
         this.numberOfDoors = numberOfDoors;
-    }
-
-    public String getDriveType() {
-        return driveType;
-    }
-
-    public void setDriveType(String driveType) {
-        this.driveType = driveType;
     }
 }

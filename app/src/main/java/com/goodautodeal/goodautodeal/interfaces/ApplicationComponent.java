@@ -13,6 +13,7 @@ import com.goodautodeal.goodautodeal.modules.uiHelperModule.UIHelperModule;
 import com.goodautodeal.goodautodeal.respository.AdPostingRepository;
 import com.goodautodeal.goodautodeal.respository.DealerAdListViewRepository;
 import com.goodautodeal.goodautodeal.respository.DealerViewRepository;
+import com.goodautodeal.goodautodeal.respository.SellAdPostingRepo;
 import com.goodautodeal.goodautodeal.respository.UserRepository;
 import com.goodautodeal.goodautodeal.views.activities.AdsManagementActivity;
 import com.goodautodeal.goodautodeal.views.activities.CarAdDetailActivity;
@@ -181,4 +182,6 @@ public interface ApplicationComponent {
     void injectUIHelper(RejectedFragment dashboardFragment);
 
     void injectUIHelper(PendingFragment dashboardFragment);
+
+    void injectUIHelper(SellAdPostingRepo dashboardFragment);
 }

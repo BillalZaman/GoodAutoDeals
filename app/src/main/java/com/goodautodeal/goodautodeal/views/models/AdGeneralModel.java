@@ -16,9 +16,6 @@ public class AdGeneralModel {
     @SerializedName("TypeApprovalCategory")
     @Expose
     private Object typeApprovalCategory;
-//    @SerializedName("ElectricVehicleBattery")
-//    @Expose
-//    private ElectricVehicleBattery electricVehicleBattery;
     @SerializedName("SeriesDescription")
     @Expose
     private String seriesDescription;
