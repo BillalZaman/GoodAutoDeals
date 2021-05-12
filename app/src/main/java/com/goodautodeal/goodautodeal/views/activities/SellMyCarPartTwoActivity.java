@@ -16,6 +16,7 @@ import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.database.DatabaseHelper;
 import com.goodautodeal.goodautodeal.databinding.ActivitySellMyCarPartTwoBinding;
 import com.goodautodeal.goodautodeal.helpers.Internet;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.SellViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
@@ -136,6 +137,11 @@ public class SellMyCarPartTwoActivity extends AppCompatActivity {
                             response.getResp().getDataItems().getAdSmmtDetailsModel().getBodyStyle(),
                             response.getResp().getDataItems().getAdSmmtDetailsModel().getNumberOfDoors());
 //                    adSmmtDetailsModel.add(favouriteModel);
+
+                    String adTitle = response.getResp().getDataItems().getAdSmmtDetailsModel().getMarque()+
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getRange()+
+                            response.getResp().getDataItems().getAdSmmtDetailsModel().getModelVariant();
+                    PreferenceHelper.getInstance().setString(ConstUtils.ADName, adTitle);
 
                     DatabaseHelper.getInstance(SellMyCarPartTwoActivity.this).gadDao().insertSmmtDetail(adSmmtDetailsModel);
 

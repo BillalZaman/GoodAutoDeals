@@ -49,20 +49,6 @@
                 app:layout_constraintTop_toTopOf="@+id/imgBack" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:layout_constraintBottom_toTopOf="@+id/btnSave"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tab"
-            app:spanCount="2"
-            tools:itemCount="10"
-            tools:listitem="@layout/item_list_car_features" />
-
         <TextView
             android:id="@+id/btnSave"
             android:layout_width="0dp"
@@ -70,16 +56,280 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="32dp"
-            android:text="Save"
             android:background="@drawable/gradient_button"
-            android:textAlignment="center"
-            android:gravity="center"
-            android:textSize="@dimen/textnormallarge"
-            android:textColor="@color/colorWhite"
             android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:text="Save"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/textnormallarge"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:buttonTint="@color/colorPrimary"
+            android:fontFamily="@font/poppins_medium"
+            android:padding="5dp"
+            android:text="If you have all these features in your car then Check All"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textnormallarge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tab" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/btnSave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox2"
+            app:spanCount="2"
+            tools:itemCount="10"
+            tools:listitem="@layout/item_list_car_features" />
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnSave"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/checkBox2">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/Safety"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="32dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:gravity="center"
+                    android:text="Safety"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <CheckBox
+                    android:id="@+id/chcParking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Parking Aid/Sensor"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toStartOf="@+id/chcAnti"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/Safety" />
+
+                <CheckBox
+                    android:id="@+id/chcAnti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Anti - Theft Alarm"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toEndOf="@+id/chcParking"
+                    app:layout_constraintTop_toTopOf="@+id/chcParking" />
+
+                <CheckBox
+                    android:id="@+id/chcSmart"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Rain sensor"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="@+id/chcParking"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/chcParking"
+                    app:layout_constraintTop_toBottomOf="@+id/chcParking" />
+
+                <CheckBox
+                    android:id="@+id/chcToolKit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Tool Kit"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintBottom_toBottomOf="@+id/chcSmart"
+                    app:layout_constraintEnd_toEndOf="@+id/chcAnti"
+                    app:layout_constraintStart_toStartOf="@+id/chcAnti"
+                    app:layout_constraintTop_toTopOf="@+id/chcSmart" />
+
+                <CheckBox
+                    android:id="@+id/chconBoard"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="on board diagnostic"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toStartOf="@+id/chcAnti"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/chcParking"
+                    app:layout_constraintTop_toBottomOf="@+id/chcSmart" />
+
+                <CheckBox
+                    android:id="@+id/chcClimate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Climate Control"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintBottom_toBottomOf="@+id/chconBoard"
+                    app:layout_constraintEnd_toEndOf="@+id/chcAnti"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/chcToolKit"
+                    app:layout_constraintTop_toTopOf="@+id/chconBoard" />
+
+                <CheckBox
+                    android:id="@+id/chcAuxiliary"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Auxiliary Point"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toStartOf="@+id/chcAnti"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/chcParking"
+                    app:layout_constraintTop_toBottomOf="@+id/chconBoard" />
+
+                <CheckBox
+                    android:id="@+id/chcCruise"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Cruise Control"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintBottom_toBottomOf="@+id/chcAuxiliary"
+                    app:layout_constraintEnd_toEndOf="@+id/chcAnti"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/chcClimate"
+                    app:layout_constraintTop_toBottomOf="@+id/chcClimate" />
+
+                <CheckBox
+                    android:id="@+id/chcPowerSocket"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="90dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="12v Power Socket in Center Console"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="@+id/chcCruise"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/chcParking"
+                    app:layout_constraintTop_toBottomOf="@+id/chcCruise" />
+
+                <CheckBox
+                    android:id="@+id/chcSteering"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="146dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Adjustable Steering Column"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/chcPowerSocket"
+                    app:layout_constraintTop_toBottomOf="@+id/chcPowerSocket" />
+
+                <CheckBox
+                    android:id="@+id/chcFrontCenter"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Front Center Armrest"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="@+id/chcSteering"
+                    app:layout_constraintStart_toStartOf="@+id/chcPowerSocket"
+                    app:layout_constraintTop_toBottomOf="@+id/chcSteering" />
+
+                <CheckBox
+                    android:id="@+id/chcUSBConnectivity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="224dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="USB Connectivity"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/chcFrontCenter"
+                    app:layout_constraintTop_toBottomOf="@+id/chcFrontCenter" />
+
+                <CheckBox
+                    android:id="@+id/chcRearEntertainment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Rear Entertainment System"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="@+id/chcPowerSocket"
+                    app:layout_constraintStart_toStartOf="@+id/chcUSBConnectivity"
+                    app:layout_constraintTop_toBottomOf="@+id/chcUSBConnectivity" />
+
+
+                <CheckBox
+                    android:id="@+id/chcWifi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Wifi Hotspot"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintStart_toStartOf="@+id/chcRearEntertainment"
+                    app:layout_constraintTop_toBottomOf="@+id/chcRearEntertainment" />
+
+                <CheckBox
+                    android:id="@+id/chcAirCondition"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:text="Air Condition"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="@+id/chcCruise"
+                    app:layout_constraintTop_toBottomOf="@+id/chcRearEntertainment" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

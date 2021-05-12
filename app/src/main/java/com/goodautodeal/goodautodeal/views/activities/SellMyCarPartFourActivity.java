@@ -10,7 +10,9 @@ import androidx.databinding.DataBindingUtil;
 
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.ActivitySellMyCarPartFourBinding;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 
 import java.util.ArrayList;
@@ -35,6 +37,12 @@ public class SellMyCarPartFourActivity extends AppCompatActivity {
 
     private void init() {
         binding.setOnClick(this);
+
+        if (PreferenceHelper.getInstance().getString(ConstUtils.ADName,"")!=null){
+            binding.txtDemand.setText(PreferenceHelper.getInstance().getString(ConstUtils.PRICE,""));
+            binding.Title.setText(PreferenceHelper.getInstance().getString(ConstUtils.ADName,""));
+        }
+
         conditionList.add("New");
         conditionList.add("Used");
         if (conditionList!=null) {
