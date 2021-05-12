@@ -20,7 +20,7 @@ import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.SellViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
 import com.goodautodeal.goodautodeal.views.adapters.CarDetailAdapter;
-import com.goodautodeal.goodautodeal.views.models.AdSmmtDetailsModel;
+import com.goodautodeal.goodautodeal.database.table.AdSmmtDetailsModel;
 import com.goodautodeal.goodautodeal.views.models.CarDetailModel;
 import com.goodautodeal.goodautodeal.webview.response.Response;
 
@@ -138,6 +138,14 @@ public class SellMyCarPartTwoActivity extends AppCompatActivity {
 //                    adSmmtDetailsModel.add(favouriteModel);
 
                     DatabaseHelper.getInstance(SellMyCarPartTwoActivity.this).gadDao().insertSmmtDetail(adSmmtDetailsModel);
+
+                    if (DatabaseHelper.getInstance(SellMyCarPartTwoActivity.this).gadDao().getSmmtDetal()!=null){
+                        uiHelper.showLongToastInCenter(SellMyCarPartTwoActivity.this, "test" +
+                                DatabaseHelper.getInstance(SellMyCarPartTwoActivity.this).gadDao().getSmmtDetal().get(0).getBodyStyle()
+                        );
+
+                    }
+
 
                 } else {
                     uiHelper.showLongToastInCenter(SellMyCarPartTwoActivity.this, response.getResp().getMessage());

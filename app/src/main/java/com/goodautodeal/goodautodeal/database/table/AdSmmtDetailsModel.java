@@ -1,4 +1,4 @@
-package com.goodautodeal.goodautodeal.views.models;
+package com.goodautodeal.goodautodeal.database.table;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;

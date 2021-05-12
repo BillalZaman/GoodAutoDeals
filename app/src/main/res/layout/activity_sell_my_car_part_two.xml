@@ -15,7 +15,7 @@
 
         <variable
             name="onCarSmmtDetail"
-            type="com.goodautodeal.goodautodeal.views.models.AdSmmtDetailsModel" />
+            type="com.goodautodeal.goodautodeal.database.table.AdSmmtDetailsModel" />
 
         <variable
             name="onCarVehicleRegistration"

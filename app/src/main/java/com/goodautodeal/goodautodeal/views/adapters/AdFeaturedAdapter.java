@@ -68,7 +68,7 @@ public class AdFeaturedAdapter extends RecyclerView.Adapter<AdFeaturedAdapter.Vi
         if (data.get(position).getAdimage().get(0).getPath() != null) {
             if (data.get(position).getAdimage() != null) {
                 Glide.with(context)
-                        .load("https://goodautodeals.com" + data.get(position).getAdimage().get(0).getPath())
+                        .load(ConstUtils.LocalBaseURL + data.get(position).getAdimage().get(0).getPath())
                         .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
             }
         }

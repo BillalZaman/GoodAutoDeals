@@ -65,7 +65,7 @@ public class GeneralAdViewAdapter extends RecyclerView.Adapter<GeneralAdViewAdap
         holder.binding.txtDescription.setText(Html.fromHtml(data.get(position).getDescription()).toString());
         if (data.get(position).getAdimage()!=null) {
             Glide.with(context)
-                    .load("https://goodautodeals.com" + data.get(position).getAdimage().get(0).getPath())
+                    .load(ConstUtils.LocalBaseURL + data.get(position).getAdimage().get(0).getPath())
                     .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
 
         }

@@ -46,6 +46,10 @@ public class AdPostingViewModel extends AndroidViewModel {
         adPostingRepository.getLogout();
     }
 
+    public void getCheckVRMDuplication(String vrm){
+        adPostingRepository.getCheckVRM(vrm);
+    }
+
     public LiveData<Response> getUserData() {
         return adPostingRepository.getMainResponseLifeData();
     }

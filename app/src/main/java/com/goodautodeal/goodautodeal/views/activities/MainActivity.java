@@ -114,8 +114,12 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 if (response.getResp().getCode() == 200 &&
                         response.getResp().getSuccess().equalsIgnoreCase("success")) {
                     if (response.getResp().getDataObject().getSlider() != null) {
-                        bannerURL = "https://www.goodautodeals.com" + response.getResp().getDataObject().getSlider().get(0).getImage();
-                        bannerURL1 = "https://www.goodautodeals.com" + response.getResp().getDataObject().getSlider().get(1).getImage();
+//                        bannerURL = "https://www.goodautodeals.com" + response.getResp().getDataObject().getSlider().get(0).getImage();
+//                        bannerURL1 = "https://www.goodautodeals.com" + response.getResp().getDataObject().getSlider().get(1).getImage();
+
+                        bannerURL = "https://app.goodautodeals.com/" + response.getResp().getDataObject().getSlider().get(0).getImage();
+//                        bannerURL1 = ConstUtils.LocalBaseURL + response.getResp().getDataObject().getSlider().get(1).getImage();
+
                         Log.d("banner", bannerURL);
                         setupSlider();
 

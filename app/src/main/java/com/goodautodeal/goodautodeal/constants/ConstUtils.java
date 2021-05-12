@@ -13,6 +13,10 @@ public class ConstUtils {
     public static final String FAV = "fav";
     public static final String USER_NAME = "userinfo";
     public static final String USER_EMAIL = "userinfo";
+    public static final String PRICE = "price";
+
+    public static final String LocalBaseURL = "https://app.goodautodeals.com";
+    public static final String BaseURL = "https://wwww.goodautodeals.com";
 
     public static Context CONTEXT = null;
     public static final String PREF_NAMES = "user_preferences";

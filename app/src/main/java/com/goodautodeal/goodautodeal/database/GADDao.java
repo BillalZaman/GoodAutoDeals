@@ -5,7 +5,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.goodautodeal.goodautodeal.database.table.FavouriteModel;
-import com.goodautodeal.goodautodeal.views.models.AdSmmtDetailsModel;
+import com.goodautodeal.goodautodeal.database.table.AdSmmtDetailsModel;
 
 import java.util.List;
 
@@ -20,5 +20,8 @@ public interface GADDao {
 
     @Query("SELECT * from favourite_table")
     List<FavouriteModel> getFavouriteModel();
+
+    @Query("SELECT * from adsmmtdetail_table")
+    List<AdSmmtDetailsModel> getSmmtDetal();
 }
 

@@ -1,5 +1,6 @@
 package com.goodautodeal.goodautodeal.views.models;
 
+import com.goodautodeal.goodautodeal.database.table.AdSmmtDetailsModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

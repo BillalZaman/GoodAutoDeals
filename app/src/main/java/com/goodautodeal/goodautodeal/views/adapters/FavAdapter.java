@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.database.table.FavouriteModel;
 import com.goodautodeal.goodautodeal.databinding.FavItemBinding;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
@@ -52,7 +53,7 @@ public class FavAdapter extends RecyclerView.Adapter<FavAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
         holder.binding.setModel(saveFavouriteAd.get(position));
         Glide.with(context)
-                .load("https://goodautodeals.com" + saveFavouriteAd.get(position).getAdImage())
+                .load(ConstUtils.LocalBaseURL + saveFavouriteAd.get(position).getAdImage())
                 .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
 
     }

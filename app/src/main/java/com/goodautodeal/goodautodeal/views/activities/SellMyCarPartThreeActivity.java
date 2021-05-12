@@ -12,8 +12,10 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.goodautodeal.goodautodeal.ApplicationState;
 import com.goodautodeal.goodautodeal.R;
+import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.databinding.ActivitySellMyCarPartThreeBinding;
 import com.goodautodeal.goodautodeal.helpers.Internet;
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.AdPostingViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.SellViewModel;
@@ -30,6 +32,7 @@ public class SellMyCarPartThreeActivity extends AppCompatActivity {
     ProgressDialog loading;
     SellViewModel viewModel;
     private ActivitySellMyCarPartThreeBinding binding;
+    private int price;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +89,7 @@ public class SellMyCarPartThreeActivity extends AppCompatActivity {
             public void onChanged(@Nullable Response response) {
                 if (response.getResp().getStatusCode().equalsIgnoreCase("success")) {
                     binding.setOnModel(response.getResp().getDataItems().getValuationList());
+
                 } else {
                     uiHelper.showLongToastInCenter(SellMyCarPartThreeActivity.this, response.getResp().getMessage());
                 }
@@ -100,10 +104,24 @@ public class SellMyCarPartThreeActivity extends AppCompatActivity {
                 break;
             }
             case R.id.btnNext: {
-                uiHelper.openActivity(this, SellMyCarPartFourActivity.class);
+                if (validation()) {
+                    uiHelper.openActivity(this, SellMyCarPartFourActivity.class);
+                    PreferenceHelper.getInstance().setString(ConstUtils.PRICE, binding.edtDemand.getText().toString());
+                }
                 break;
             }
         }
+    }
+
+    private boolean validation() {
+        boolean check = true;
+        binding.txtDemand.setError(null);
+
+        if (binding.edtDemand.getText().toString().isEmpty()) {
+            binding.txtDemand.setError("Price field cannot be empty");
+            check = false;
+        }
+        return check;
     }
 
     @Override
