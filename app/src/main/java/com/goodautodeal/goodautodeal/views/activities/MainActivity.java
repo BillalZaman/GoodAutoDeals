@@ -213,73 +213,73 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 }
                 break;
             }
+//            case 2: {
+//                // sell my car
+//                uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class, "sell my car");
+//                binding.drawerLayout.closeDrawer(GravityCompat.START);
+//                break;
+//            }
             case 2: {
-                // sell my car
-                uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class, "sell my car");
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-                break;
-            }
-            case 3: {
                 // new car
                 uiHelper.openActivityAndSendValue(this, CarViewAdListingActivity.class, "new car");
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 4: {
+            case 3: {
                 // used car
                 uiHelper.openActivityAndSendValue(this, CarViewAdListingActivity.class, "used car");
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 5: {
+            case 4: {
                 // fav
                 uiHelper.openActivity(this, FavouriteActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 6: {
+            case 5: {
                 // value your car
                 uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class, "value your car");
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 7: {
+            case 6: {
                 //dealer list
                 uiHelper.openActivity(this, DealersActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 8: {
+            case 7: {
                 //car insurance
                 uiHelper.openActivity(this, CarInsuranceActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 9: {
+            case 8: {
                 // car finance
                 uiHelper.openActivity(this, CarFinanceActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 10: {
+            case 9: {
                 // change password
                 uiHelper.openActivity(this, ChangePasswordActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 11: {
+            case 10: {
                 // FAQ
                 uiHelper.openActivity(this, FAQListActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 12: {
+            case 11: {
                 // contact us
                 uiHelper.openActivity(this, ContactUsActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 13: {
+            case 12: {
                 // logout
                 if (internet.isNetworkAvailable(this)) {
                     if (PreferenceHelper.getInstance().getString(ConstUtils.isUserLogin, "").equalsIgnoreCase("yes")) {

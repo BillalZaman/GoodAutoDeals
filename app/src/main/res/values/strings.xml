@@ -39,7 +39,6 @@
     <string-array name="nav_drawer_labels">
         <item>@string/home</item>
         <item>@string/profile</item>
-        <item>@string/sell_car</item>
         <item>@string/new_car</item>
         <item>@string/used_car</item>
         <item>@string/favourite</item>

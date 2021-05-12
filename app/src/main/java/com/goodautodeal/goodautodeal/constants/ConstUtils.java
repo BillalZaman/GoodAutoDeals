@@ -16,8 +16,8 @@ public class ConstUtils {
     public static final String PRICE = "price";
     public static final String ADName = "name";
 
-    public static final String LocalBaseURL = "https://app.goodautodeals.com";
-    public static final String BaseURL = "https://wwww.goodautodeals.com";
+    public static final String LocalBaseURL = "https://wwww.goodautodeals.com";
+    public static final String BaseURL = "https://app.goodautodeals.com";
 
     public static Context CONTEXT = null;
     public static final String PREF_NAMES = "user_preferences";
