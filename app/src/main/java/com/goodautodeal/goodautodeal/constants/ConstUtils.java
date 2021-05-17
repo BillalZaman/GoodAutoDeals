@@ -2,6 +2,8 @@ package com.goodautodeal.goodautodeal.constants;
 
 import android.content.Context;
 
+import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
+
 /**
  * Created by Bilal Zaman on 17/02/21.
  */
@@ -15,11 +17,12 @@ public class ConstUtils {
     public static final String USER_EMAIL = "userinfo";
     public static final String PRICE = "price";
     public static final String ADName = "name";
-
+    
 //    public static final String LocalBaseURL = "https://wwww.goodautodeals.com";
     public static final String LocalBaseURL = "https://app.goodautodeals.com";
     public static final String LIVE_API = "229D0629-E95B-4DF6-B5DE-C6E2BD15029A";
     public static final String STAGING_API = "ac3f0001-4f94-4c53-987c-e481980d4bbd";
+
 
     public static Context CONTEXT = null;
     public static final String PREF_NAMES = "user_preferences";
@@ -52,6 +55,11 @@ public class ConstUtils {
     public static final String PAYPAL_CLIENT_ID = "AUiW09qON4_Fgl52AoncSzPi7buDE1HAJ5ZIcJJEYHStsTjJkmlYLsEh7B2u8LzMjMw_1n-7adtB3Y0c";
 //    public static final String PAYPAL_
 
-    public static final String VRM = "AP10NBZ";
+//    static String vrm_ = ""+PreferenceHelper.getInstance().getString(ConstUtils.VRM,"");
+
+    public static final String LiveKey = "229D0629-E95B-4DF6-B5DE-C6E2BD15029A";
+    public static final String SANBOXKEY = "ac3f0001-4f94-4c53-987c-e481980d4bbd";
+    public static final String VRM = "vrm";
     public static final String Mileage = "30,000";
+
 }

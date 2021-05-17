@@ -61,28 +61,40 @@
                 app:layout_constraintTop_toTopOf="@+id/imgBack" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.smarteist.autoimageslider.SliderView
-            android:id="@+id/imageSlider"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:sliderAnimationDuration="600"
-            app:sliderAutoCycleDirection="back_and_forth"
-            app:sliderAutoCycleEnabled="true"
-            app:sliderIndicatorAnimationDuration="600"
-            app:sliderIndicatorGravity="center_horizontal|bottom"
-            app:sliderIndicatorMargin="15dp"
-            app:sliderIndicatorOrientation="horizontal"
-            app:sliderIndicatorPadding="3dp"
-            app:sliderIndicatorRadius="2dp"
-            app:sliderIndicatorSelectedColor="#5A5A5A"
-            app:sliderIndicatorUnselectedColor="#FFF"
-            app:sliderScrollTimeInSec="1"
-            app:sliderStartAutoCycle="true"
+        <ImageView
+            android:id="@+id/carImage"
+            android:layout_width="0dp"
+            android:layout_height="250dp"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            android:scaleType="fitXY"
+            android:src="@drawable/homebanner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/tab" />
 
-        </com.smarteist.autoimageslider.SliderView>
+<!--        <com.smarteist.autoimageslider.SliderView-->
+<!--            android:id="@+id/imageSlider"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="300dp"-->
+<!--            app:sliderAnimationDuration="600"-->
+<!--            app:sliderAutoCycleDirection="back_and_forth"-->
+<!--            app:sliderAutoCycleEnabled="true"-->
+<!--            app:sliderIndicatorAnimationDuration="600"-->
+<!--            app:sliderIndicatorGravity="center_horizontal|bottom"-->
+<!--            app:sliderIndicatorMargin="15dp"-->
+<!--            app:sliderIndicatorOrientation="horizontal"-->
+<!--            app:sliderIndicatorPadding="3dp"-->
+<!--            app:sliderIndicatorRadius="2dp"-->
+<!--            app:sliderIndicatorSelectedColor="#5A5A5A"-->
+<!--            app:sliderIndicatorUnselectedColor="#FFF"-->
+<!--            app:sliderScrollTimeInSec="1"-->
+<!--            app:sliderStartAutoCycle="true"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        </com.smarteist.autoimageslider.SliderView>-->
 
         <com.goodautodeal.goodautodeal.helpers.CircleImageView
             android:id="@+id/imageView6"
@@ -92,6 +104,7 @@
             android:layout_marginEnd="8dp"
             android:background="@drawable/gradient_circle"
             android:padding="20dp"
+            android:visibility="gone"
             android:src="@drawable/ic_video_play"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tab" />
@@ -110,7 +123,7 @@
             android:fontFamily="@font/poppins_semibold"
             app:layout_constraintEnd_toStartOf="@+id/txtCarPrice"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageSlider" />
+            app:layout_constraintTop_toBottomOf="@+id/carImage" />
 
         <TextView
             android:id="@+id/txtCarPrice"
@@ -670,6 +683,7 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/poppins_semibold"
                     android:text="Accessories"
+                    android:visibility="gone"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormallarge"
                     app:layout_constraintEnd_toEndOf="@+id/const_spec"
@@ -689,34 +703,33 @@
 <!--                    tools:itemCount="10"-->
 <!--                    tools:listitem="@layout/item_list_car_detail_vrm" />-->
 
-<!--                <TextView-->
-<!--                    android:id="@+id/textView190"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:fontFamily="@font/poppins_semibold"-->
-<!--                    android:text="Description"-->
-<!--                    android:textColor="@color/colorLightBlack"-->
-<!--                    android:textSize="@dimen/textnormallarge"-->
-<!--                    app:layout_constraintEnd_toEndOf="@+id/recycler_comfort"-->
-<!--                    app:layout_constraintStart_toStartOf="@+id/recycler_comfort"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/recycler_comfort" />-->
+                <TextView
+                    android:id="@+id/textView190"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Description"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="@+id/const_spec"
+                    app:layout_constraintStart_toStartOf="@+id/const_spec"
+                    app:layout_constraintTop_toBottomOf="@+id/const_spec"/>
 
-<!--                <TextView-->
-<!--                    android:id="@+id/txtDescrption"-->
-<!--                    android:layout_width="0dp"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginTop="16dp"-->
-<!--                    android:layout_marginBottom="16dp"-->
-<!--                    android:fontFamily="@font/poppins_regular"-->
-<!--                    android:hint="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available"-->
-<!--                    android:text="@{onAddetailModel.description}"-->
-<!--                    android:textColor="@color/colorLightBlack"-->
-<!--                    android:textSize="@dimen/textnormallarge"-->
-<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                    app:layout_constraintEnd_toEndOf="@+id/textView190"-->
-<!--                    app:layout_constraintStart_toStartOf="@+id/textView190"-->
-<!--                    app:layout_constraintTop_toBottomOf="@+id/textView190" />-->
+                <TextView
+                    android:id="@+id/txtDescrption"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:hint="In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textView190"
+                    app:layout_constraintStart_toStartOf="@+id/textView190"
+                    app:layout_constraintTop_toBottomOf="@+id/textView190" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

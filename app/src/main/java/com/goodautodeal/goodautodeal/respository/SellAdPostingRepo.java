@@ -10,11 +10,9 @@ import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.helpers.PreferenceHelper;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
-import com.goodautodeal.goodautodeal.webview.ApiClient;
 import com.goodautodeal.goodautodeal.webview.ApiInterface.AdApiInterface;
-import com.goodautodeal.goodautodeal.webview.ApiInterface.ApiInterface;
 import com.goodautodeal.goodautodeal.webview.response.Response;
-import com.goodautodeal.goodautodeal.webview.response.SellApiClient;
+import com.goodautodeal.goodautodeal.webview.SellApiClient;
 
 import org.json.JSONObject;
 
@@ -27,7 +25,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 /**
@@ -66,12 +63,12 @@ public class SellAdPostingRepo {
         dataStatus.isLoadingList = true;
         status.setValue(dataStatus);
 
-//        Map<String, Object> jsonParams = null;
-//        jsonParams = new ArrayMap<String, Object>();
-//        jsonParams.put("key_VRM", PreferenceHelper.getInstance().getString(ConstUtils.VRM,""));
-//
-//        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
-//                (new JSONObject(jsonParams)).toString());
+        Map<String, Object> jsonParams = null;
+        jsonParams = new ArrayMap<String, Object>();
+        jsonParams.put("key_VRM", PreferenceHelper.getInstance().getString(ConstUtils.VRM,""));
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
+                (new JSONObject(jsonParams)).toString());
 
         AdApiInterface apiInterface = SellApiClient.getValueYourCarClient().create(AdApiInterface.class);
         mainResponseObservable = apiInterface.getCarDetail();
@@ -112,17 +109,15 @@ public class SellAdPostingRepo {
 
         Map<String, Object> jsonParams = null;
         jsonParams = new ArrayMap<String, Object>();
-//        jsonParams.put("key_VRM", vrm);
-//        jsonParams.put("key_mileage", mileage);
+//        jsonParams.put("key_VRM", PreferenceHelper.getInstance().getString(ConstUtils.VRM,""));
+//        jsonParams.put("key_mileage", 30000);
 
-        RequestBody _vrm = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), "AP10NBC");
-        RequestBody _mileage = RequestBody.create(MediaType.parse("application/json; charset=utf-8n"), "30,000");
 
         RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
                 (new JSONObject(jsonParams)).toString());
 
         AdApiInterface apiInterface = SellApiClient.getValueYourCarClient().create(AdApiInterface.class);
-        mainResponseObservable = apiInterface.valueYourCar();
+        mainResponseObservable = apiInterface.valueYourCar("Ap10nbz");
 
         mainResponseLifeData = new MutableLiveData<>();
         compositeDisposable.add(mainResponseObservable

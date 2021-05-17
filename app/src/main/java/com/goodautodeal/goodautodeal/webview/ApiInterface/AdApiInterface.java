@@ -4,7 +4,10 @@ import com.goodautodeal.goodautodeal.constants.ConstUtils;
 import com.goodautodeal.goodautodeal.webview.response.Response;
 
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 /**
  * Created by Bilal Zaman on 05/05/21.
@@ -12,7 +15,7 @@ import retrofit2.http.GET;
 public interface AdApiInterface {
 
     @GET(Request.VALUE_YOUR_CAR)
-    Observable<Response> valueYourCar();
+    Observable<Response> valueYourCar(@Query("key_VRM") String vrm);
 
     @GET(Request.GET_CAR_DETAIL)
     Observable<Response> getCarDetail();

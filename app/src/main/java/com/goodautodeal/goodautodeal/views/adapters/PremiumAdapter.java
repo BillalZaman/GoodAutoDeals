@@ -67,16 +67,17 @@ public class PremiumAdapter extends RecyclerView.Adapter<PremiumAdapter.ViewHold
     public void onBindViewHolder(@NonNull final ViewHolder holder, final int position) {
         holder.binding.setModel(data.get(position));
         Glide.with(context)
-                .load(ConstUtils.LocalBaseURL + data.get(position).getAdimage().get(0).getPath())
+                .load(ConstUtils.BaseURL + data.get(position).getAdimage().get(0).getPath())
                 .placeholder(R.drawable.homebanner).apply(new RequestOptions().override(widthdp, heightdp))
                 .into(holder.binding.imgAd);
 
         holder.binding.txtYear.setText(data.get(position).getYear() + " | " + data.get(position).getEngine() +
                 " | " + data.get(position).getMileage());
+
         holder.binding.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uiHelper.openActivity((Activity) context, CarAdDetailActivity.class);
+                uiHelper.openActivityAndSendPosition((Activity) context, CarAdDetailActivity.class, data.get(position).getId());
             }
         });
 

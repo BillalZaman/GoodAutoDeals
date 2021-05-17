@@ -102,37 +102,32 @@ public class DealerMainActivity extends AppCompatActivity implements DealerMoreI
     @Override
     public void itemClick(int position) {
         switch (position) {
+//            case 0: {
+//                //sell my car
+//                uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class, "dealermore");
+//                break;
+//            }
             case 0: {
-                //sell my car
-                uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class, "dealermore");
-                break;
-            }
-            case 1: {
                 // value your car
                 uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class, "dealervalue");
                 break;
             }
-            case 2: {
-                // car history
-                uiHelper.showLongToastInCenter(this, "Working In Progress");
-                break;
-            }
-            case 3: {
+            case 1: {
                 //change password
                 uiHelper.openActivity(this, ChangePasswordActivity.class);
                 break;
             }
-            case 4: {
-                //faq
-                uiHelper.openActivity(this, FAQListActivity.class);
-                break;
-            }
-            case 5: {
+//            case 2: {
+//                //faq
+//                uiHelper.openActivity(this, FAQListActivity.class);
+//                break;
+//            }
+            case 2: {
                 //contact us
                 uiHelper.openActivity(this, ContactUsActivity.class);
                 break;
             }
-            case 6: {
+            case 3: {
                 //logout
                 if (internet.isNetworkAvailable(this)) {
                     viewModel.getLogout();

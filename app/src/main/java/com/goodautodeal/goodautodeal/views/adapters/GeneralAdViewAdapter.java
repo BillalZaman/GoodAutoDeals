@@ -65,7 +65,7 @@ public class GeneralAdViewAdapter extends RecyclerView.Adapter<GeneralAdViewAdap
         holder.binding.txtDescription.setText(Html.fromHtml(data.get(position).getDescription()).toString());
         if (data.get(position).getAdimage()!=null) {
             Glide.with(context)
-                    .load(ConstUtils.LocalBaseURL + data.get(position).getAdimage().get(0).getPath())
+                    .load(ConstUtils.BaseURL + data.get(position).getAdimage().get(0).getPath())
                     .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
 
         }
@@ -75,7 +75,8 @@ public class GeneralAdViewAdapter extends RecyclerView.Adapter<GeneralAdViewAdap
         holder.binding.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uiHelper.openActivity((Activity) context, CarAdDetailActivity.class);
+                uiHelper.openActivityAndSendPosition((Activity) context, CarAdDetailActivity.class, data.get(position).getAdNo());
+
             }
         });
 

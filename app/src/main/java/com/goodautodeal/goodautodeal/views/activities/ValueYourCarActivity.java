@@ -66,7 +66,7 @@ public class ValueYourCarActivity extends AppCompatActivity {
             binding.txtTradePoorPrice.setVisibility(View.VISIBLE);
         }
 
-        getValueYourCar(data);
+        getValueYourCar();
     }
 
     private void getLoadingStatus() {
@@ -102,7 +102,7 @@ public class ValueYourCarActivity extends AppCompatActivity {
         }
     }
 
-    private void getValueYourCar(String data) {
+    private void getValueYourCar() {
         if (internet.isNetworkAvailable(this)) {
             viewModel.getValueYourCar();
             getData();
@@ -119,6 +119,8 @@ public class ValueYourCarActivity extends AppCompatActivity {
             public void onChanged(@Nullable Response response) {
                 if (response.getResp().getStatusCode().equalsIgnoreCase("success")) {
                     binding.setOnModel(response.getResp().getDataItems().getValuationList());
+                    binding.txtCarTitle.setText(response.getResp().getDataItems().getVehicleDescription());
+//                    binding.setOnCarModel(response.getResp().getDataItems());
                 } else {
                     uiHelper.showLongToastInCenter(ValueYourCarActivity.this, response.getResp().getMessage());
                 }

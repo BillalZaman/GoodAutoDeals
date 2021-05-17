@@ -1,4 +1,4 @@
-package com.goodautodeal.goodautodeal.webview.response;
+package com.goodautodeal.goodautodeal.webview;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
