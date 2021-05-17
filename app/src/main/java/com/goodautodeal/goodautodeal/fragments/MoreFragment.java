@@ -37,11 +37,11 @@ public class MoreFragment extends Fragment {
 
     private void init() {
         adapter = new DealerMoreAdapter(getContext());
-        data.add(new DealerMoreModel(getResources().getString(R.string.sell_my_car)));
+//        data.add(new DealerMoreModel(getResources().getString(R.string.sell_my_car)));
         data.add(new DealerMoreModel(getResources().getString(R.string.value_car)));
-        data.add(new DealerMoreModel(getResources().getString(R.string.car_history)));
+//        data.add(new DealerMoreModel(getResources().getString(R.string.car_history)));
         data.add(new DealerMoreModel(getResources().getString(R.string.change_pasword)));
-        data.add(new DealerMoreModel(getResources().getString(R.string.faq_s)));
+//        data.add(new DealerMoreModel(getResources().getString(R.string.faq_s)));
         data.add(new DealerMoreModel(getResources().getString(R.string.contact_us)));
         data.add(new DealerMoreModel(getResources().getString(R.string.logout)));
         adapter.setList(data);

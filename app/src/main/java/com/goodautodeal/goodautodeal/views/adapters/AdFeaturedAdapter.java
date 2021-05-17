@@ -68,7 +68,7 @@ public class AdFeaturedAdapter extends RecyclerView.Adapter<AdFeaturedAdapter.Vi
         if (data.get(position).getAdimage().get(0).getPath() != null) {
             if (data.get(position).getAdimage() != null) {
                 Glide.with(context)
-                        .load(ConstUtils.LocalBaseURL + data.get(position).getAdimage().get(0).getPath())
+                        .load(ConstUtils.BaseURL + data.get(position).getAdimage().get(0).getPath())
                         .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
             }
         }
@@ -78,7 +78,7 @@ public class AdFeaturedAdapter extends RecyclerView.Adapter<AdFeaturedAdapter.Vi
         holder.binding.parent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                uiHelper.openActivity((Activity) context, CarAdDetailActivity.class);
+                uiHelper.openActivityAndSendPosition((Activity) context, CarAdDetailActivity.class, data.get(position).getAdNo());
             }
         });
 

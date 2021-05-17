@@ -196,6 +196,7 @@ public class LoginActivity extends AppCompatActivity {
 //                            PreferenceHelper.getInstance().setString(ConstUtils.USER_EMAIL, response.getResp().getDataObject().getUserInfo().getEmail());
                             uiHelper.openActivity(LoginActivity.this, DealerMainActivity.class);
                             PreferenceHelper.getInstance().setString(ConstUtils.isDealerLogin, ConstUtils.yes);
+                            PreferenceHelper.getInstance().setString(ConstUtils.isUserLogin, ConstUtils.no);
                             finish();
                             
                         } else {
@@ -203,6 +204,7 @@ public class LoginActivity extends AppCompatActivity {
 //                            PreferenceHelper.getInstance().setString(ConstUtils.USER_EMAIL, response.getResp().getDataObject().getUserInfo().getEmail());
                             uiHelper.openActivity(LoginActivity.this, MainActivity.class);
                             PreferenceHelper.getInstance().setString(ConstUtils.isUserLogin, ConstUtils.yes);
+                            PreferenceHelper.getInstance().setString(ConstUtils.isDealerLogin, ConstUtils.no);
                         }
                     }
                 } else {

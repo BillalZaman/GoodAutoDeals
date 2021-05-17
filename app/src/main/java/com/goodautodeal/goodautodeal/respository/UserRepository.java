@@ -328,7 +328,7 @@ public class UserRepository {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
                             if (response.getResp().getCode() == 0) {
-                                uiHelper.showLongToastInCenter(application, "response.getResp().getMessage()");
+                                uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                             } else {
                                 uiHelper.showLongToastInCenter(application, response.getResp().getMessage());
                             }
