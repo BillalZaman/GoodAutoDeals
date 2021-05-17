@@ -6,6 +6,7 @@ import com.goodautodeal.goodautodeal.views.models.AdGeneralViewModel;
 import com.goodautodeal.goodautodeal.views.models.AdPremiumsModel;
 import com.goodautodeal.goodautodeal.views.models.DealerPersonalModel;
 import com.goodautodeal.goodautodeal.views.models.DealersModel;
+import com.goodautodeal.goodautodeal.views.models.PackagesModel;
 import com.goodautodeal.goodautodeal.views.models.SliderModel;
 import com.goodautodeal.goodautodeal.views.models.UserInfoModel;
 import com.goodautodeal.goodautodeal.views.models.ValueYourCarModel;
@@ -83,6 +84,9 @@ public class DataObject implements Serializable {
     @SerializedName("DraftAdsList")
     @Expose
     private ArrayList<AdGeneralViewModel> draftAdList = null;
+    @SerializedName("AdPost")
+    @Expose
+    private PackagesModel adPost;
 
     public String getToken() {
         return token;
@@ -250,5 +254,13 @@ public class DataObject implements Serializable {
 
     public void setDraftAdList(ArrayList<AdGeneralViewModel> draftAdList) {
         this.draftAdList = draftAdList;
+    }
+
+    public PackagesModel getPackages() {
+        return adPost;
+    }
+
+    public void setAdPost(PackagesModel adPost) {
+        this.adPost = adPost;
     }
 }

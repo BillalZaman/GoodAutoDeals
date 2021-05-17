@@ -14,7 +14,7 @@ import java.util.List;
 
 
 public class SpecialSharedPrefHelper {
-    public static final String PREFS_NAME = "SPORT_APP";
+    public static final String PREFS_NAME = "CAR_APP";
     private static SpecialSharedPrefHelper instance_;
 
     public synchronized static SpecialSharedPrefHelper getInstance() {

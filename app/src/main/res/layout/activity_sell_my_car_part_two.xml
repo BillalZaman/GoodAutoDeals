@@ -10,10 +10,6 @@
             type="com.goodautodeal.goodautodeal.views.activities.SellMyCarPartTwoActivity" />
 
         <variable
-            name="onCarTechnicalDetail"
-            type="com.goodautodeal.goodautodeal.views.models.AdTechnicalDetailsModel" />
-
-        <variable
             name="onCarSmmtDetail"
             type="com.goodautodeal.goodautodeal.database.table.AdSmmtDetailsModel" />
 
@@ -32,18 +28,6 @@
         <variable
             name="onCarPower"
             type="com.goodautodeal.goodautodeal.views.models.AdPowerModel" />
-
-        <variable
-            name="onCarUrban"
-            type="com.goodautodeal.goodautodeal.views.models.AdExtraUrbanModel" />
-
-        <variable
-            name="onCarUrbanCold"
-            type="com.goodautodeal.goodautodeal.views.models.AdUrbanColdModel" />
-
-        <variable
-            name="onCarCombined"
-            type="com.goodautodeal.goodautodeal.views.models.AdCombinedModel" />
 
         <variable
             name="onCarVehicleHistory"
@@ -99,7 +83,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/poppins_medium"
             android:text="Vehicle details found:"
@@ -108,6 +92,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tab" />
+
+        <TextView
+            android:id="@+id/textViewVRM"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textnormal"
+            android:hint="AP10FVZ"
+            app:layout_constraintEnd_toStartOf="@+id/textViewMileage"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/textViewMileage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/poppins_medium"
+            android:hint="2000 miles"
+            android:textColor="@color/colorLightBlack"
+            android:textSize="@dimen/textnormal"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewVRM"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/textViewVRM"
+            app:layout_constraintTop_toTopOf="@+id/textViewVRM" />
 
         <View
             android:id="@+id/view3"
@@ -119,7 +133,7 @@
             android:background="@color/barcolor"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/textViewVRM" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
@@ -160,8 +174,8 @@
             android:id="@+id/scroller"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintBottom_toTopOf="@+id/btnNext"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -316,7 +330,6 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:text="@{onCarSmmtDetail.Range}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormal"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -1115,8 +1128,8 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:textSize="@dimen/textnormal"
                     android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/bhp"
                     app:layout_constraintTop_toBottomOf="@+id/bhp" />
@@ -1381,7 +1394,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/txtcombined" />
 
-<!--                m-->
+                <!--                m-->
 
                 <TextView
                     android:id="@+id/destruction"
@@ -1404,9 +1417,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:text="@{Boolean.toString(onCarVehicleRegistration.certificateOfDestructionIssued)}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormal"
-                    android:text="@{Boolean.toString(onCarVehicleRegistration.certificateOfDestructionIssued)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/destruction"
                     app:layout_constraintTop_toBottomOf="@+id/destruction" />
@@ -1445,9 +1458,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:text="@{Boolean.toString(onCarVehicleRegistration.exported)}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormal"
-                    android:text="@{Boolean.toString(onCarVehicleRegistration.exported)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/exported"
                     app:layout_constraintTop_toBottomOf="@+id/exported" />
@@ -1486,9 +1499,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:text="@{Boolean.toString(onCarVehicleRegistration.imported)}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormal"
-                    android:text="@{Boolean.toString(onCarVehicleRegistration.imported)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/imported"
                     app:layout_constraintTop_toBottomOf="@+id/imported" />
@@ -1527,9 +1540,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:text="@{Boolean.toString(onCarVehicleRegistration.importNonEu)}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormal"
-                    android:text="@{Boolean.toString(onCarVehicleRegistration.importNonEu)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/importedNU"
                     app:layout_constraintTop_toBottomOf="@+id/importedNU" />
@@ -1568,9 +1581,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:text="@{Boolean.toString(onCarVehicleRegistration.scrapped)}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormal"
-                    android:text="@{Boolean.toString(onCarVehicleRegistration.scrapped)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/scrapped"
                     app:layout_constraintTop_toBottomOf="@+id/scrapped" />
@@ -1609,9 +1622,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarVehicleHistory.plateChangeCount)}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormal"
-                    android:text="@{Integer.toString(onCarVehicleHistory.plateChangeCount)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/platechange"
                     app:layout_constraintTop_toBottomOf="@+id/platechange" />
@@ -1650,9 +1663,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarVehicleHistory.numberOfPreviousKeepers)}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormal"
-                    android:text="@{Integer.toString(onCarVehicleHistory.numberOfPreviousKeepers)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/numberOfPreviousKeepers"
                     app:layout_constraintTop_toBottomOf="@+id/numberOfPreviousKeepers" />
@@ -1691,9 +1704,9 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="24dp"
                     android:fontFamily="@font/poppins_regular"
+                    android:text="@{Integer.toString(onCarVehicleHistory.V5CCertificateCount)}"
                     android:textColor="@color/colorLightBlack"
                     android:textSize="@dimen/textnormal"
-                    android:text="@{Integer.toString(onCarVehicleHistory.V5CCertificateCount)}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@+id/V5CCertificateCount"
                     app:layout_constraintTop_toBottomOf="@+id/V5CCertificateCount" />

@@ -12,6 +12,7 @@ public class AdExtraUrbanModel {
     @Expose
     private Double mpg;
 
+
     public Double getLkm() {
         return lkm;
     }
@@ -27,5 +28,4 @@ public class AdExtraUrbanModel {
     public void setMpg(Double mpg) {
         this.mpg = mpg;
     }
-
 }

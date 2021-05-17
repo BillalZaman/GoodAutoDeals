@@ -82,9 +82,12 @@ public class SellMyCarPartOneActivity extends AppCompatActivity {
 
                 if (internet.isNetworkAvailable(this)){
                     if (validation()){
+                        PreferenceHelper.getInstance().setString(ConstUtils.VRM, binding.edtVRM.getText().toString());
+                        PreferenceHelper.getInstance().setString(ConstUtils.Mileage, binding.edtMileage.getText().toString());
 
                         if (isActivityName.equalsIgnoreCase("sell my car")) {
-                            viewModel.getCheckVRMDuplication(binding.edtMileage.getText().toString());
+                            viewModel.getCheckVRMDuplication(binding.edtVRM.getText().toString());
+
                             getData();
 
                         } else if (isActivityName.equalsIgnoreCase("value your car")) {
@@ -113,8 +116,6 @@ public class SellMyCarPartOneActivity extends AppCompatActivity {
                 if (response.getResp().getCode() == ConstUtils.SUCCESS_CODE) {
 
                     uiHelper.openActivity(SellMyCarPartOneActivity.this, SellMyCarPartTwoActivity.class);
-                    PreferenceHelper.getInstance().setString(ConstUtils.VRM, binding.edtVRM.getText().toString());
-
 
 //                    if (isActivityName.equalsIgnoreCase("sell my car")) {
 //

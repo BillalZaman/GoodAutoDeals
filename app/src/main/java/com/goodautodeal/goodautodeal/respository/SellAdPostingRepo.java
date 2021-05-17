@@ -63,15 +63,15 @@ public class SellAdPostingRepo {
         dataStatus.isLoadingList = true;
         status.setValue(dataStatus);
 
-        Map<String, Object> jsonParams = null;
-        jsonParams = new ArrayMap<String, Object>();
-        jsonParams.put("key_VRM", PreferenceHelper.getInstance().getString(ConstUtils.VRM,""));
-
-        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
-                (new JSONObject(jsonParams)).toString());
+//        Map<String, Object> jsonParams = null;
+//        jsonParams = new ArrayMap<String, Object>();
+//        jsonParams.put("key_VRM", PreferenceHelper.getInstance().getString(ConstUtils.VRM,""));
+//
+//        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
+//                (new JSONObject(jsonParams)).toString());
 
         AdApiInterface apiInterface = SellApiClient.getValueYourCarClient().create(AdApiInterface.class);
-        mainResponseObservable = apiInterface.getCarDetail();
+        mainResponseObservable = apiInterface.getCarDetail(PreferenceHelper.getInstance().getString(ConstUtils.VRM,""));
 
         mainResponseLifeData = new MutableLiveData<>();
         compositeDisposable.add(mainResponseObservable
@@ -117,7 +117,9 @@ public class SellAdPostingRepo {
                 (new JSONObject(jsonParams)).toString());
 
         AdApiInterface apiInterface = SellApiClient.getValueYourCarClient().create(AdApiInterface.class);
-        mainResponseObservable = apiInterface.valueYourCar("Ap10nbz");
+        mainResponseObservable = apiInterface.valueYourCar(
+                PreferenceHelper.getInstance().getString(ConstUtils.VRM,""),
+                PreferenceHelper.getInstance().getString(ConstUtils.Mileage,""));
 
         mainResponseLifeData = new MutableLiveData<>();
         compositeDisposable.add(mainResponseObservable

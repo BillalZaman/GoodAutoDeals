@@ -25,7 +25,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
-import okhttp3.MediaType;
 import okhttp3.RequestBody;
 
 /**
@@ -234,7 +233,7 @@ public class AdPostingRepository {
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mainResponseObservable = apiInterface.getLogout("Bearer" + " " +
-                PreferenceHelper.getInstance().getString(ConstUtils.APIAccessToken,""));
+                PreferenceHelper.getInstance().getString(ConstUtils.APIAccessToken, ""));
 
         mainResponseLifeData = new MutableLiveData<>();
         compositeDisposable.add(mainResponseObservable
@@ -284,7 +283,7 @@ public class AdPostingRepository {
 
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         mainResponseObservable = apiInterface.getVRMDuplication("Bearer" + " " +
-                PreferenceHelper.getInstance().getString(ConstUtils.APIAccessToken,""), body);
+                PreferenceHelper.getInstance().getString(ConstUtils.APIAccessToken, ""), body);
 
         mainResponseLifeData = new MutableLiveData<>();
         compositeDisposable.add(mainResponseObservable
@@ -301,7 +300,67 @@ public class AdPostingRepository {
                     public void onError(Throwable e) {
                         dataStatus.isLoadingList = false;
                         status.setValue(dataStatus);
-                       uiHelper.showLongToastInCenter(application, "This VRM already exist in our database");
+                        uiHelper.showLongToastInCenter(application, "This VRM already exist in our database");
+                    }
+
+                    @Override
+                    public void onComplete() {
+//                        Toast.makeText(application, "Success" + response.getResp().getMessage(), Toast.LENGTH_SHORT).show();
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        mainResponseLifeData.setValue(response);
+
+                    }
+                }));
+
+        return Observable.just(response);
+    }
+
+    public Observable<Response> getAdSetData(String price, String adTitle, String vehicleType,
+                                             String financeType, String dateRegistration, String motExpire,
+                                             String roadTax, String roadTaxExpires, String bootCapacity,
+                                             String description, String vrm, String mileage) {
+        dataStatus.isLoadingList = true;
+        status.setValue(dataStatus);
+
+        Map<String, Object> jsonParams = null;
+        jsonParams = new ArrayMap<String, Object>();
+        jsonParams.put("price", price);
+        jsonParams.put("ad_title", adTitle);
+        jsonParams.put("vehicle_type", vehicleType);
+        jsonParams.put("finance_type", financeType);
+        jsonParams.put("DateFirstRegisteredUk", dateRegistration);
+        jsonParams.put("MotExpires", motExpire);
+        jsonParams.put("RoadTax", roadTax);
+        jsonParams.put("RoadTaxExpires", roadTaxExpires);
+        jsonParams.put("BootCapacity", bootCapacity);
+        jsonParams.put("description", description);
+        jsonParams.put("vrm", vrm);
+        jsonParams.put("mileage", mileage);
+
+        RequestBody body = RequestBody.create(okhttp3.MediaType.parse("application/json; charset=utf-8"),
+                (new JSONObject(jsonParams)).toString());
+
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        mainResponseObservable = apiInterface.getAdSetData("Bearer" + " " +
+                PreferenceHelper.getInstance().getString(ConstUtils.APIAccessToken, ""), body);
+
+        mainResponseLifeData = new MutableLiveData<>();
+        compositeDisposable.add(mainResponseObservable
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(new DisposableObserver<Response>() {
+                    @Override
+                    public void onNext(Response _response) {
+                        response = _response;
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        dataStatus.isLoadingList = false;
+                        status.setValue(dataStatus);
+                        uiHelper.showLongToastInCenter(application, "This VRM already exist in our database");
                     }
 
                     @Override

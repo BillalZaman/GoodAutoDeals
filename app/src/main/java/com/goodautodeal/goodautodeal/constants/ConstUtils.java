@@ -60,6 +60,20 @@ public class ConstUtils {
     public static final String LiveKey = "229D0629-E95B-4DF6-B5DE-C6E2BD15029A";
     public static final String SANBOXKEY = "ac3f0001-4f94-4c53-987c-e481980d4bbd";
     public static final String VRM = "vrm";
-    public static final String Mileage = "30,000";
+    public static final String Mileage = "mileage";
+
+    public static final String silver = "silver";
+    public static final String gold = "gold";
+    public static final String diamond = "diamond";
+    public static final String platinum = "platinum";
+
+    // special preference helper
+    public static final String SMMTDATA = "smmt";
+    public static final String VEHICLEREGISTRATION = "smmt";
+    public static final String DIMENSION = "smmt";
+    public static final String GENERALDATA = "smmt";
+    public static final String VEHICLEHISTORY = "smmt";
+//    public static final String SMMTDATA = "smmt";
+//    public static final String SMMTDATA = "smmt";
 
 }

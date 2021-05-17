@@ -89,6 +89,9 @@ public interface ApiInterface {
     @POST(Request.VRM_DUPLICATION)
     Observable<Response> getVRMDuplication(@Header("Authorization") String authkey, @Body RequestBody body);
 
+    @POST(Request.AD_POST)
+    Observable<Response> getAdSetData(@Header("Authorization") String authkey, @Body RequestBody body);
+
     interface Request {
         String LOGIN = "login";
         String REGISTER = "register";
@@ -113,5 +116,6 @@ public interface ApiInterface {
         String DEALER_SOLD_AD = "dealer/sold/ads";
         String DEALER_DRAFT_AD = "dealer/draft/ads";
         String VRM_DUPLICATION = "ad/vrm_exist/check";
+        String AD_POST = "customer/ad/post";
     }
 }

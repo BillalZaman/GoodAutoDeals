@@ -50,6 +50,14 @@ public class AdPostingViewModel extends AndroidViewModel {
         adPostingRepository.getCheckVRM(vrm);
     }
 
+    public void getAdSetData(String price, String adTitle, String vehicleType,
+                             String financeType, String dateRegistration, String motExpire,
+                             String roadTax, String roadTaxExpires, String bootCapacity,
+                             String description, String vrm, String mileage){
+        adPostingRepository.getAdSetData(price,adTitle,vehicleType,financeType,dateRegistration,motExpire,roadTax,roadTaxExpires,
+                bootCapacity,description,vrm,mileage);
+    }
+
     public LiveData<Response> getUserData() {
         return adPostingRepository.getMainResponseLifeData();
     }

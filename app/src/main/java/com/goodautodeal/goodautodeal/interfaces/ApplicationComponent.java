@@ -53,6 +53,10 @@ import dagger.Component;
 @Component(modules = {InternetModule.class, UIHelperModule.class})
 public interface ApplicationComponent {
 
+    void injectInternet(PackagesActivity dashboardFragment);
+
+    void injectInternet(SellMyCarPartFourActivity dashboardFragment);
+
     void injectInternet(DraftFragment dashboardFragment);
 
     void injectInternet(SoldVehicleFragment dashboardFragment);
