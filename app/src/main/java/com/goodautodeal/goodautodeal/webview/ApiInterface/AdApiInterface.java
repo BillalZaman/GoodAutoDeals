@@ -14,16 +14,16 @@ import retrofit2.http.Query;
  */
 public interface AdApiInterface {
 
+    @GET(Request.GET_CAR_DETAIL)
+    Observable<Response> getCarDetail(@Query("key_VRM") String vrm, @Query("key_VRM") String mileage);
+
     @GET(Request.VALUE_YOUR_CAR)
     Observable<Response> valueYourCar(@Query("key_VRM") String vrm);
 
-    @GET(Request.GET_CAR_DETAIL)
-    Observable<Response> getCarDetail();
-
     interface Request {
-        String VALUE_YOUR_CAR = "ValuationData?v=2&api_nullitems=1&auth_apikey=" + ConstUtils.STAGING_API + "&user_tag=&key_VRM="
-                + ConstUtils.VRM + "&key_mileage=" + ConstUtils.Mileage;
         String GET_CAR_DETAIL = "VehicleData?v=2&api_nullitems=1&auth_apikey=" + ConstUtils.STAGING_API + "&user_tag=&key_VRM="
                 + ConstUtils.VRM;
+        String VALUE_YOUR_CAR = "ValuationData?v=2&api_nullitems=1&auth_apikey=" + ConstUtils.STAGING_API + "&user_tag=&key_VRM="
+                + ConstUtils.VRM + "&key_mileage=" + ConstUtils.Mileage;
     }
 }

@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                         response.getResp().getSuccess().equalsIgnoreCase("success")) {
                     if (response.getResp().getDataObject().getSlider() != null) {
                         bannerURL = ConstUtils.BaseURL + response.getResp().getDataObject().getSlider().get(0).getImage();
-                        bannerURL1 = ConstUtils.BaseURL + response.getResp().getDataObject().getSlider().get(1).getImage();
+//                        bannerURL1 = ConstUtils.BaseURL + response.getResp().getDataObject().getSlider().get(1).getImage();
 
 //                        bannerURL = "https://app.goodautodeals.com/" + response.getResp().getDataObject().getSlider().get(0).getImage();
 //                        bannerURL1 = ConstUtils.LocalBaseURL + response.getResp().getDataObject().getSlider().get(1).getImage();
@@ -213,73 +213,73 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
                 }
                 break;
             }
-//            case 2: {
-//                // sell my car
-//                uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class, "sell my car");
-//                binding.drawerLayout.closeDrawer(GravityCompat.START);
-//                break;
-//            }
             case 2: {
+                // sell my car
+                uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class, "sell my car");
+                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                break;
+            }
+            case 3: {
                 // new car
                 uiHelper.openActivityAndSendValue(this, CarViewAdListingActivity.class, "new car");
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 3: {
+            case 4: {
                 // used car
                 uiHelper.openActivityAndSendValue(this, CarViewAdListingActivity.class, "used car");
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 4: {
+            case 5: {
                 // fav
                 uiHelper.openActivity(this, FavouriteActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 5: {
+            case 6: {
                 // value your car
                 uiHelper.openActivityAndSendValue(this, SellMyCarPartOneActivity.class, "value your car");
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 6: {
+            case 7: {
                 //dealer list
                 uiHelper.openActivity(this, DealersActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 7: {
+            case 8: {
                 //car insurance
                 uiHelper.openActivity(this, CarInsuranceActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 8: {
+            case 9: {
                 // car finance
                 uiHelper.openActivity(this, CarFinanceActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 9: {
+            case 10: {
                 // change password
                 uiHelper.openActivity(this, ChangePasswordActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 10: {
+            case 11: {
                 // FAQ
                 uiHelper.openActivity(this, FAQListActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 11: {
+            case 12: {
                 // contact us
                 uiHelper.openActivity(this, ContactUsActivity.class);
                 binding.drawerLayout.closeDrawer(GravityCompat.START);
                 break;
             }
-            case 12: {
+            case 13: {
                 // logout
                 if (internet.isNetworkAvailable(this)) {
                     if (PreferenceHelper.getInstance().getString(ConstUtils.isUserLogin, "").equalsIgnoreCase("yes")) {

@@ -21,8 +21,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class ApiClient implements Interceptor {
 
-        public static String BASE_URL = "https://www.goodautodeals.com/api/";
-//    public static String BASE_URL = "https://app.goodautodeals.com/api/";
+//        public static String BASE_URL = "https://www.goodautodeals.com/api/";
+    public static String BASE_URL = "https://app.goodautodeals.com/api/";
 
     private static Retrofit retrofit = null;
 

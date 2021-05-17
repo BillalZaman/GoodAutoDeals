@@ -17,9 +17,9 @@ public class ConstUtils {
     public static final String USER_EMAIL = "userinfo";
     public static final String PRICE = "price";
     public static final String ADName = "name";
-    
-//    public static final String LocalBaseURL = "https://wwww.goodautodeals.com";
-    public static final String LocalBaseURL = "https://app.goodautodeals.com";
+
+//    public static final String BaseURL = "https://wwww.goodautodeals.com";
+    public static final String BaseURL = "https://app.goodautodeals.com";
     public static final String LIVE_API = "229D0629-E95B-4DF6-B5DE-C6E2BD15029A";
     public static final String STAGING_API = "ac3f0001-4f94-4c53-987c-e481980d4bbd";
 
