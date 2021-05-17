@@ -16,8 +16,10 @@ public class ConstUtils {
     public static final String PRICE = "price";
     public static final String ADName = "name";
 
-    public static final String LocalBaseURL = "https://wwww.goodautodeals.com";
-    public static final String BaseURL = "https://app.goodautodeals.com";
+//    public static final String LocalBaseURL = "https://wwww.goodautodeals.com";
+    public static final String LocalBaseURL = "https://app.goodautodeals.com";
+    public static final String LIVE_API = "229D0629-E95B-4DF6-B5DE-C6E2BD15029A";
+    public static final String STAGING_API = "ac3f0001-4f94-4c53-987c-e481980d4bbd";
 
     public static Context CONTEXT = null;
     public static final String PREF_NAMES = "user_preferences";
@@ -52,5 +54,4 @@ public class ConstUtils {
 
     public static final String VRM = "AP10NBZ";
     public static final String Mileage = "30,000";
-    public static final String URL = "VehicleData?v=2&api_nullitems=1&auth_apikey=ac3f0001-4f94-4c53-987c-e481980d4bbd&user_tag=&key_VRM=";
 }
