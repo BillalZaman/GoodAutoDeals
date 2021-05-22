@@ -72,15 +72,17 @@ public class AdFeaturedAdapter extends RecyclerView.Adapter<AdFeaturedAdapter.Vi
                         .placeholder(R.drawable.homebanner).into(holder.binding.imgAd);
             }
         }
-        holder.binding.txtYear.setText(data.get(position).getYear() + " | " + data.get(position).getEngine() +
-                " | " + data.get(position).getMileage());
+        if (data.get(position).getDateFirstRegisteredUk()!=null) {
+            holder.binding.txtYear.setText(data.get(position).getDateFirstRegisteredUk() + " | " +
+                    data.get(position).getNominalEngineCapacity() + " L" +
+                    " | " + data.get(position).getMileage() + " miles");
+        } else {
+            holder.binding.txtYear.setText(data.get(position).getYear() + " | " +
+                    data.get(position).getNominalEngineCapacity() + " L" +
+                    " | " + data.get(position).getMileage() + " miles");
+        }
 
-        holder.binding.parent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uiHelper.openActivityAndSendPosition((Activity) context, CarAdDetailActivity.class, data.get(position).getAdNo());
-            }
-        });
+        holder.binding.parent.setOnClickListener(v -> uiHelper.openActivityAndSendPosition((Activity) context, CarAdDetailActivity.class, data.get(position).getId()));
 
         if (PreferenceHelper.getInstance().getString(ConstUtils.FAV, "0").equalsIgnoreCase("1")){
             holder.binding.imgHeart.setImageResource(R.drawable.fav);

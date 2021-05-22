@@ -33,7 +33,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-//                uiHelper.openActivity(SplashActivity.this, MainActivity.class);
+//                uiHelper.openActivity(SplashActivity.this, ScrollingActivity.class);
 
                 if (!PreferenceHelper.getInstance().getBol(ConstUtils.IS_OPON_FIRST_TIME, false)) {
                     uiHelper.openActivity(SplashActivity.this, MainActivity.class);
@@ -41,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 } else {
 
-                    if (!(PreferenceHelper.getInstance().getString(ConstUtils.isUserLogin, ConstUtils.no)
+                    if ((PreferenceHelper.getInstance().getString(ConstUtils.isUserLogin, ConstUtils.no)
                             .equalsIgnoreCase("yes"))) {
                         uiHelper.openAndClearActivity(SplashActivity.this, MainActivity.class);
                     } else {

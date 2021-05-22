@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
         binding.imageSlider.setOnIndicatorClickListener(new DrawController.ClickListener() {
             @Override
             public void onIndicatorClicked(int position) {
-                Log.i("GGG", "onIndicatorClicked: " + binding.imageSlider.getCurrentPagePosition());
+//                Log.i("GGG", "onIndicatorClicked: " + binding.imageSlider.getCurrentPagePosition());
             }
         });
         renewItems(binding.imageSlider);
@@ -263,23 +263,23 @@ public class MainActivity extends AppCompatActivity implements FragmentNavigatio
             }
             case 9: {
                 // change password
-                uiHelper.openActivity(this, ChangePasswordActivity.class);
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
+                if (PreferenceHelper.getInstance().getString(ConstUtils.isUserLogin,
+                        "").equalsIgnoreCase(ConstUtils.yes)) {
+                    uiHelper.openActivity(this, ChangePasswordActivity.class);
+                } else {
+                    uiHelper.openActivityAndSendValue(this, LoginActivity.class, "user");
+                    binding.drawerLayout.closeDrawer(GravityCompat.START);
+                    finish();
+                }
                 break;
             }
+//            case 11: {
+//                // contact us
+//                uiHelper.openActivity(this, ContactUsActivity.class);
+//                binding.drawerLayout.closeDrawer(GravityCompat.START);
+//                break;
+//            }
             case 10: {
-                // FAQ
-                uiHelper.openActivity(this, FAQListActivity.class);
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-                break;
-            }
-            case 11: {
-                // contact us
-                uiHelper.openActivity(this, ContactUsActivity.class);
-                binding.drawerLayout.closeDrawer(GravityCompat.START);
-                break;
-            }
-            case 12: {
                 // logout
                 if (internet.isNetworkAvailable(this)) {
                     if (PreferenceHelper.getInstance().getString(ConstUtils.isUserLogin, "").equalsIgnoreCase("yes")) {

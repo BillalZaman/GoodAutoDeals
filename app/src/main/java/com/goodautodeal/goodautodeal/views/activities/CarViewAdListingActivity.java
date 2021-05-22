@@ -124,6 +124,16 @@ public class CarViewAdListingActivity extends AppCompatActivity {
                         generalAdViewAdapter.setData(data);
                         binding.recyclerview.setAdapter(generalAdViewAdapter);
                     }
+
+                    if (response.getResp().getDataObject().getFeatureAd().isEmpty()
+                            && response.getResp().getDataObject().getNewCarAds().isEmpty()){
+
+                        binding.recyclerFeatured.setVisibility(View.GONE);
+                        binding.recyclerview.setVisibility(View.GONE);
+                        binding.textView32.setVisibility(View.VISIBLE);
+                        binding.textView34.setVisibility(View.VISIBLE);
+
+                    }
                 } else {
                     uiHelper.showLongToastInCenter(CarViewAdListingActivity.this, response.getResp().getMessage());
                 }
@@ -139,6 +149,10 @@ public class CarViewAdListingActivity extends AppCompatActivity {
             }
             case R.id.imgFilter: {
                 uiHelper.openActivity(this, FilterActivity.class);
+                break;
+            }
+            case R.id.textView34:{
+                finish();
                 break;
             }
         }

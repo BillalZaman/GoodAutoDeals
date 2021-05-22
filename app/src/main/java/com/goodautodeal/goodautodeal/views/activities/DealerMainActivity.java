@@ -142,16 +142,16 @@ public class DealerMainActivity extends AppCompatActivity implements DealerMoreI
     }
 
     private void getData() {
-        viewModel.getUserData().observe(this, new Observer<Response>() {
-            @Override
-            public void onChanged(@Nullable Response response) {
-                if (response.getResp().getCode() == 1 &&
-                        response.getResp().getSuccess().equalsIgnoreCase("success")) {
-                    uiHelper.showLongToastInCenter(DealerMainActivity.this, "Logout Successfully");
-                    PreferenceHelper.getInstance().clearAllPreferences();
-                    PreferenceHelper.getInstance().setString(ConstUtils.isDealerLogin,"No");
-                    uiHelper.openAndClearActivity(DealerMainActivity.this, MainActivity.class);
-                }
+        viewModel.getUserData().observe(this, response -> {
+            if (response.getResp().getCode() == 1 &&
+                    response.getResp().getSuccess().equalsIgnoreCase("success")) {
+                uiHelper.showLongToastInCenter(DealerMainActivity.this, "Logout Successfully");
+                PreferenceHelper.getInstance().clearAllPreferences();
+                PreferenceHelper.getInstance().removeall();
+                PreferenceHelper.getInstance().removePreference(ConstUtils.IS_OPON_FIRST_TIME);
+                PreferenceHelper.getInstance().removePreference(ConstUtils.isUserLogin);
+                PreferenceHelper.getInstance().removePreference(ConstUtils.isDealerLogin);
+                uiHelper.openAndClearActivity(DealerMainActivity.this, MainActivity.class);
             }
         });
     }

@@ -14,12 +14,6 @@
         android:roundIcon="@mipmap/ic_launcher_circle"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".views.activities.ScrollingActivity"
-            android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".views.activities.FAQDetailActivity"
-            android:screenOrientation="portrait"/>
         <activity android:name=".views.activities.OtpVerificationActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".views.activities.PackagesActivity"
@@ -55,8 +49,6 @@
         <activity android:name=".views.activities.PostAdSucesssActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".views.activities.ValueYourCarActivity"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".views.activities.FAQListActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".views.activities.AccessoriesActivity"
             android:screenOrientation="portrait"/>
