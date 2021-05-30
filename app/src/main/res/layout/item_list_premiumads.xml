@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
@@ -31,10 +32,11 @@
             <ImageView
                 android:id="@+id/imgAd"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="150dp"
                 android:adjustViewBounds="true"
-                android:cropToPadding="false"
-                android:minHeight="150dp"
+                android:cropToPadding="true"
+                android:minHeight="200dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -52,83 +54,39 @@
                 android:text="@{model.title}"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/textnormallarge"
-                app:layout_constraintEnd_toStartOf="@+id/txtPrice"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imgAd" />
 
             <TextView
                 android:id="@+id/txtPrice"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppins_bold"
                 android:hint="£6000"
                 android:text="@{'£'+Integer.toString(model.price)}"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/textnormal"
-                app:layout_constraintBottom_toBottomOf="@+id/txtAdName"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/txtAdName" />
-
-
-            <TextView
-                android:id="@+id/txtYear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="24dp"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center|start"
-                android:textSize="@dimen/textsmall"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/txtEngine"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintEnd_toEndOf="@+id/txtAdName"
                 app:layout_constraintStart_toStartOf="@+id/txtAdName"
                 app:layout_constraintTop_toBottomOf="@+id/txtAdName" />
 
 
             <TextView
-                android:id="@+id/txtEngine"
-                android:layout_width="wrap_content"
+                android:id="@+id/txtYear"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="24dp"
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="center|start"
                 android:textSize="@dimen/textsmall"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/txtYear"
-                app:layout_constraintEnd_toStartOf="@+id/txtMileage"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toEndOf="@+id/txtYear"
-                app:layout_constraintTop_toTopOf="@+id/txtYear" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/txtAdName"
+                app:layout_constraintStart_toStartOf="@+id/txtPrice"
+                app:layout_constraintTop_toBottomOf="@+id/txtPrice" />
 
-
-            <TextView
-                android:id="@+id/txtMileage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/poppins_medium"
-                android:gravity="center|start"
-                android:text="@{Integer.toString(model.mileage)}"
-                android:textSize="@dimen/textsmall"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/txtEngine"
-                app:layout_constraintStart_toEndOf="@+id/txtEngine"
-                app:layout_constraintTop_toTopOf="@+id/txtEngine" />
-
-            <CheckBox
-                android:id="@+id/compare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:gravity="center|start"
-                android:padding="5dp"
-                android:text="compare"
-                android:textSize="@dimen/textnormal"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/imgHeart"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imgHeart" />
 
             <ImageView
                 android:id="@+id/imgHeart"

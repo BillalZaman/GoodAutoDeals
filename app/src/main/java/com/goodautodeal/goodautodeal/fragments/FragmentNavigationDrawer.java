@@ -39,7 +39,7 @@ public class FragmentNavigationDrawer extends Fragment {
     private static final Integer[] imgDrawer = {R.drawable.menu_home, R.drawable.menu_profile, R.drawable.menu_sellcar,
             R.drawable.menu_car, R.drawable.menu_car, R.drawable.menu_fav, R.drawable.menu_sellcar,
             R.drawable.menu_dealer, R.drawable.menu_insurance, R.drawable.menu_finance,
-            R.drawable.menu_password, R.drawable.menu_help, R.drawable.menu_contact,  R.drawable.menu_logout};
+            R.drawable.menu_password,  R.drawable.menu_logout};
     private static String[] titles = null;
     @Inject
     UIHelper uiHelper;

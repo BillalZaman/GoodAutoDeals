@@ -71,7 +71,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@{onModel.description}"
+
             android:textSize="@dimen/textsmall"
             android:textColor="@color/colorLightBlack"
             android:fontFamily="@font/poppins_medium"

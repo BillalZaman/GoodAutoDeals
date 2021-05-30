@@ -1,17 +1,402 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".views.activities.ScrollingActivity"
-    tools:showIn="@layout/activity_scrolling">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
+    <data>
 
-</androidx.core.widget.NestedScrollView>
+        <variable
+            name="onAdUserModel"
+            type="com.goodautodeal.goodautodeal.views.models.AdUsersModel" />
+
+        <variable
+            name="onAdDealerModel"
+            type="com.goodautodeal.goodautodeal.views.models.AdDealerModel" />
+
+        <variable
+            name="onAddetailModel"
+            type="com.goodautodeal.goodautodeal.views.models.AdDetailModel" />
+
+        <variable
+            name="activity"
+            type="com.goodautodeal.goodautodeal.views.activities.CarAdDetailActivity" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".views.activities.ScrollingActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtCarTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:hint="Honda Civic Reborn"
+                android:text="@{onAddetailModel.title}"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="@dimen/large"
+                app:layout_constraintEnd_toStartOf="@+id/txtCarPrice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtCarPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:hint="£ 6000"
+                android:text="@{'£' + String.valueOf(onAddetailModel.price)}"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/textnormallarge"
+                app:layout_constraintBottom_toBottomOf="@+id/txtCarTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txtCarTitle" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Specification"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/eight_btn"
+                app:layout_constraintEnd_toEndOf="@+id/txtCarTitle"
+                app:layout_constraintStart_toStartOf="@+id/txtCarTitle"
+                app:layout_constraintTop_toBottomOf="@+id/txtCarTitle" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/const_spec"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                app:layout_constraintEnd_toEndOf="@+id/txtCarPrice"
+                app:layout_constraintStart_toStartOf="@+id/textView18"
+                app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+
+                <TextView
+                    android:id="@+id/textView37"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Registration:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toStartOf="@+id/textView43"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/txtRegistration"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="@+id/textView37"
+                    app:layout_constraintStart_toStartOf="@+id/textView37"
+                    app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+                <TextView
+                    android:id="@+id/textView43"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Mileage:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView37"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/textView37"
+                    app:layout_constraintTop_toTopOf="@+id/textView37" />
+
+                <TextView
+                    android:id="@+id/txtMileage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{String.valueOf(onAddetailModel.mileage)}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/txtRegistration"
+                    app:layout_constraintTop_toTopOf="@+id/txtRegistration" />
+
+                <TextView
+                    android:id="@+id/textView38"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Colour:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtRegistration" />
+
+                <TextView
+                    android:id="@+id/txtColor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{onAddetailModel.colour}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintStart_toStartOf="@+id/textView38"
+                    app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+                <TextView
+                    android:id="@+id/textView44"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Body Style:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintBottom_toBottomOf="@+id/textView38"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView43"
+                    app:layout_constraintTop_toTopOf="@+id/textView38" />
+
+                <TextView
+                    android:id="@+id/txtBodystyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{onAddetailModel.bodyStyle}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtColor"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView44"
+                    app:layout_constraintTop_toTopOf="@+id/txtColor" />
+
+                <TextView
+                    android:id="@+id/textView39"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Engine:"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtColor" />
+
+                <TextView
+                    android:id="@+id/txtEngine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{onAddetailModel.nominalEngineCapacity}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="@+id/textView39"
+                    app:layout_constraintStart_toStartOf="@+id/textView39"
+                    app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+                <TextView
+                    android:id="@+id/textView45"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="No of Doors"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView43"
+                    app:layout_constraintTop_toBottomOf="@+id/txtBodystyle" />
+
+                <TextView
+                    android:id="@+id/txtNoOfDoors"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{onAddetailModel.numberofdoors}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintBottom_toBottomOf="@+id/txtEngine"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/textView45"
+                    app:layout_constraintTop_toTopOf="@+id/txtEngine" />
+
+                <TextView
+                    android:id="@+id/textView40"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/transmission_"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="@dimen/textnormallarge"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txtEngine" />
+
+                <TextView
+                    android:id="@+id/txtTransmission"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@{onAddetailModel.transmission}"
+                    android:textColor="@color/colorLightBlack"
+                    android:textSize="@dimen/textnormal"
+                    app:layout_constraintEnd_toEndOf="@+id/textView40"
+                    app:layout_constraintStart_toStartOf="@+id/textView40"
+                    app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView190"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Description"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/eight_btn"
+                app:layout_constraintEnd_toEndOf="@+id/const_spec"
+                app:layout_constraintStart_toStartOf="@+id/const_spec"
+                app:layout_constraintTop_toBottomOf="@+id/const_spec" />
+
+            <TextView
+                android:id="@+id/txtDescrption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_regular"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="@dimen/textnormal"
+                android:maxLines="3"
+                app:layout_constraintEnd_toEndOf="@+id/textView190"
+                app:layout_constraintStart_toStartOf="@+id/textView190"
+                app:layout_constraintTop_toBottomOf="@+id/textView190" />
+
+            <TextView
+                android:id="@+id/txtReadMore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/read_more"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/textsmall"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/txtDescrption"
+                app:layout_constraintTop_toBottomOf="@+id/txtDescrption" />
+
+            <TextView
+                android:id="@+id/txtShowLess"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="@string/read_less"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/textsmall"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="@+id/txtDescrption"
+                app:layout_constraintTop_toBottomOf="@+id/txtDescrption" />
+
+            <TextView
+                android:id="@+id/textSeller"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="Seller Detail"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/eight_btn"
+                app:layout_constraintEnd_toEndOf="@+id/textView190"
+                app:layout_constraintStart_toStartOf="@+id/textView190"
+                app:layout_constraintTop_toBottomOf="@+id/txtReadMore" />
+
+            <com.goodautodeal.goodautodeal.helpers.CircleImageView
+                android:id="@+id/imgDealer"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/user_profile_demo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textSeller"
+                app:layout_constraintTop_toBottomOf="@+id/textSeller" />
+
+            <TextView
+                android:id="@+id/textSellerName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@{onAdDealerModel.companyName}"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="@dimen/textnormal"
+                app:drawableStartCompat="@drawable/person_black"
+                app:layout_constraintEnd_toEndOf="@+id/textSeller"
+                app:layout_constraintStart_toEndOf="@+id/imgDealer"
+                app:layout_constraintTop_toTopOf="@+id/imgDealer" />
+
+            <TextView
+                android:id="@+id/txtSellContact"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@{onAdDealerModel.businessNo}"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="@dimen/textnormal"
+                app:drawableStartCompat="@drawable/ic_baseline_call_24"
+                app:layout_constraintEnd_toEndOf="@+id/textSeller"
+                app:layout_constraintStart_toStartOf="@+id/textSellerName"
+                app:layout_constraintTop_toBottomOf="@+id/textSellerName" />
+
+            <TextView
+                android:id="@+id/imgSellerLocation"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/poppins_medium"
+                android:text="@{onAdUserModel.address}"
+                android:textColor="@color/colorLightBlack"
+                android:textSize="@dimen/textnormal"
+                app:drawableStartCompat="@drawable/ic_baseline_location_on_24"
+                app:layout_constraintBottom_toBottomOf="@+id/imgDealer"
+                app:layout_constraintEnd_toEndOf="@+id/textSeller"
+                app:layout_constraintStart_toStartOf="@+id/textSellerName"
+                app:layout_constraintTop_toBottomOf="@+id/txtSellContact" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

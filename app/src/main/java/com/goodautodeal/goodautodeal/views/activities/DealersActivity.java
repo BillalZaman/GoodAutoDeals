@@ -82,15 +82,6 @@ public class DealersActivity extends AppCompatActivity {
         loading.cancel();
     }
 
-    private void setRecyclerView() {
-        adapter = new DealerAdapter(this);
-        for (int i = 0; i <= 20; i++) {
-//            data.add(new DealersModel("Good Auto Cars", "120 Cars", "34 Cliveland Street, Birmingham, B19 3SH"));
-        }
-        adapter.setData(data);
-        binding.recyclerview.setAdapter(adapter);
-    }
-
     private void getDataList() {
         userViewModel.getUserData().observe(this, new Observer<Response>() {
             @Override

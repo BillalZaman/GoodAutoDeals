@@ -2,14 +2,16 @@ package com.goodautodeal.goodautodeal.views.activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.graphics.Color;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewTreeObserver;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.text.HtmlCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -24,18 +26,17 @@ import com.goodautodeal.goodautodeal.helpers.Internet;
 import com.goodautodeal.goodautodeal.helpers.UIHelper;
 import com.goodautodeal.goodautodeal.viewmodels.UserViewModel;
 import com.goodautodeal.goodautodeal.viewmodels.ViewModelStatus;
+import com.goodautodeal.goodautodeal.views.adapters.AdImageCarouselAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.CarDetailAdapter;
 import com.goodautodeal.goodautodeal.views.adapters.HomeSliderAdapter;
+import com.goodautodeal.goodautodeal.views.models.AdImageCrousalModel;
+import com.goodautodeal.goodautodeal.views.models.AdImagesModel;
 import com.goodautodeal.goodautodeal.views.models.CarDetailModel;
-import com.goodautodeal.goodautodeal.views.models.SliderItem;
+import com.goodautodeal.goodautodeal.views.models.DealerPersonalModel;
 import com.goodautodeal.goodautodeal.webview.response.Response;
-import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
-import com.smarteist.autoimageslider.IndicatorView.draw.controller.DrawController;
-import com.smarteist.autoimageslider.SliderAnimations;
-import com.smarteist.autoimageslider.SliderView;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -51,8 +52,10 @@ public class CarAdDetailActivity extends AppCompatActivity {
     private CarDetailAdapter adapterCarDetailVRM;
     private String isActivityName;
     private UserViewModel adPostingViewModel;
-    private String website, videoLink;
+    private String website, videoLink, adTitle;
     private int adno;
+    private AdImageCarouselAdapter adImageCarouselAdapter;
+    DealerPersonalModel data = new DealerPersonalModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +69,8 @@ public class CarAdDetailActivity extends AppCompatActivity {
     }
 
     private void init() {
-//        setupSlider();
         getLoadingStatus();
-        binding.setActivity(this);
+        binding.include.setActivity(this);
         adno = getIntent().getIntExtra(ConstUtils.CLASS_NAME,0);
 
         isActivityName = "5";
@@ -81,7 +83,10 @@ public class CarAdDetailActivity extends AppCompatActivity {
                 uiHelper.showLongToastInCenter(this, getString(R.string.no_interrnet_connection));
             }
         }
-//        recyclerviewCarDetailVRM();
+
+        setSupportActionBar(binding.toolbar);
+
+        binding.toolbarLayout.setTitle(adTitle);
     }
 
     private void getLoadingStatus() {
@@ -113,37 +118,67 @@ public class CarAdDetailActivity extends AppCompatActivity {
                 if (response.getResp().getCode() == 1 && response.getResp().getSuccess().equalsIgnoreCase("Success")) {
 
                     if (response.getResp().getDataObject().getAdDetailModels()!=null){
-//                        binding.setOnAddetailModel(response.getResp().getDataObject().getAdDetailModels());
-                        binding.setOnAddetailModel(response.getResp().getDataObject().getAdDetailModels());
-                        binding.setOnAdUserModel(response.getResp().getDataObject().getAdDetailModels().getUsers());
-                        binding.setOnAdDealerModel(response.getResp().getDataObject().getAdDetailModels().getDealer());
-
+                        adTitle = response.getResp().getDataObject().getAdDetailModels().getTitle();
+                        binding.include.setOnAddetailModel(response.getResp().getDataObject().getAdDetailModels());
+                        binding.include.setOnAdUserModel(response.getResp().getDataObject().getAdDetailModels().getUsers());
+                        binding.include.setOnAdDealerModel(response.getResp().getDataObject().getAdDetailModels().getDealer());
                         Glide.with(CarAdDetailActivity.this).load(ConstUtils.BaseURL +
                                 response.getResp().getDataObject().getAdDetailModels().getAdimage().get(0).getPath()).into(binding.carImage);
 
+                        if (response.getResp().getDataObject().getAdDetailModels().getDateFirstRegisteredUk()!=null) {
+                           binding.include.txtRegistration.setText(response.getResp().getDataObject().getAdDetailModels().getDateFirstRegisteredUk());
+
+                        } else {
+                            binding.include.txtRegistration.setText(response.getResp().getDataObject().getAdDetailModels().getYear());
+
+                        }
+
                         Glide.with(CarAdDetailActivity.this).load(ConstUtils.BaseURL +
                                 response.getResp().getDataObject().getAdDetailModels().getDealer().getCompanyLogo())
-                                .placeholder(R.drawable.user_profile_demo).into(binding.imgDealer);
-                        website = response.getResp().getDataObject().getAdDetailModels().getDealer().getWebsite();
+                                .placeholder(R.drawable.user_profile_demo).into(binding.include.imgDealer);
+
+//                        website = response.getResp().getDataObject().getAdDetailModels().getDealer().getWebsite();
 //                        videoLink = response.getResp().getDataObject().getAdDetailModels().getAdVideoModel().getVideoId();
 
-                        binding.txtDescrption.setText(
+                        binding.include.txtDescrption.setText(
                                 android.text.Html.fromHtml(
                                         response.getResp().getDataObject().getAdDetailModels().getDescription(),
                                         HtmlCompat.FROM_HTML_MODE_LEGACY).toString()
                         );
 
-                        if (response.getResp().getDataObject().getAdDetailModels().getFeatures()!=null){
+                        data.setExpendable(false);
+                        binding.include.txtDescrption.setPaintFlags(binding.include.txtDescrption.getPaintFlags());
+                        binding.include.txtReadMore.setPaintFlags(binding.include.txtDescrption.getPaintFlags());
+                        binding.include.txtShowLess.setPaintFlags(binding.include.txtDescrption.getPaintFlags());
 
-                        }
+                        binding.include.txtDescrption.getViewTreeObserver().addOnPreDrawListener(() -> {
 
-                    } else {
-                        uiHelper.showLongToastInCenter(CarAdDetailActivity.this, "hi else");
+                            int lineCount = binding.include.txtDescrption.getLayout().getLineCount();
+
+                            if (lineCount > 3) {
+                                binding.include.txtReadMore.setVisibility(View.VISIBLE);
+                            } else {
+                                binding.include.txtReadMore.setVisibility(View.GONE);
+                            }
+                            return true;
+                        });
+
+                        binding.include.txtReadMore.setOnClickListener(view -> {
+                            if (data.getExpendable()) {
+                                data.setExpendable(false);
+                                binding.include.txtDescrption.setMaxLines(10);
+                                binding.include.txtReadMore.setText(R.string.read_less);
+                            } else {
+                                data.setExpendable(true);
+                                binding.include.txtDescrption.setMaxLines(3);
+                                binding.include.txtReadMore.setText(R.string.read_more);
+                            }
+                        });
+
                     }
-
-
                 } else {
-                    uiHelper.showLongToastInCenter(CarAdDetailActivity.this, "getMessage()");
+                    uiHelper.showLongToastInCenter(CarAdDetailActivity.this,
+                            "Issue in getting data from Server. Please reload the screen again");
                 }
             }
         });
