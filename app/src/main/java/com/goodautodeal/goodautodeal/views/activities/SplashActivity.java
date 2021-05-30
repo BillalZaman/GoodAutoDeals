@@ -42,10 +42,11 @@ public class SplashActivity extends AppCompatActivity {
                 } else {
 
                     if ((PreferenceHelper.getInstance().getString(ConstUtils.isUserLogin, ConstUtils.no)
-                            .equalsIgnoreCase("yes"))) {
-                        uiHelper.openAndClearActivity(SplashActivity.this, MainActivity.class);
-                    } else {
+                            .equalsIgnoreCase(ConstUtils.yes))) {
                         uiHelper.openAndClearActivity(SplashActivity.this, DealerMainActivity.class);
+                    } else {
+                        uiHelper.openAndClearActivity(SplashActivity.this, MainActivity.class);
+
                     }
                 }
             }
